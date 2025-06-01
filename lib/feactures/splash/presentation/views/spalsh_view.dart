@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:yumquick/core/app_assets.dart';
-import 'package:yumquick/core/colors.dart';
+import 'package:yumquick/core/utils/app_assets.dart';
+import 'package:yumquick/core/utils/colors.dart';
 
 class SpalshView extends StatelessWidget {
   const SpalshView({super.key});

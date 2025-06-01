@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/splash/presentation/views/spalsh_view.dart';
 
 void main() {
@@ -10,6 +11,9 @@ class YumQuick extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: SpalshView());
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: AppRouter.router,
+    );
   }
 }
