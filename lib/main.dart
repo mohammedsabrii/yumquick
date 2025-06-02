@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_router.dart';
-import 'package:yumquick/feactures/splash/presentation/views/spalsh_view.dart';
 
 void main() {
   runApp(const YumQuick());
