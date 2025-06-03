@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:yumquick/core/utils/app_assets.dart';
-import 'package:yumquick/core/utils/app_router.dart';
+
 import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/feactures/splash/presentation/views/widget/spalash_view_body.dart';
 
 class SpalshView extends StatelessWidget {
   const SpalshView({super.key});
@@ -15,38 +12,5 @@ class SpalshView extends StatelessWidget {
       backgroundColor: AppColor.kYellowBase,
       body: SplashViewBody(),
     );
-  }
-}
-
-class SplashViewBody extends StatefulWidget {
-  const SplashViewBody({super.key});
-
-  @override
-  State<SplashViewBody> createState() => _SplashViewBodyState();
-}
-
-class _SplashViewBodyState extends State<SplashViewBody> {
-  @override
-  void initState() {
-    navigateToNextScreen();
-    super.initState();
-  }
-
-  void navigateToNextScreen() async {
-    await Future.delayed(const Duration(seconds: 5));
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
-
-    if (isFirstTime) {
-      await prefs.setBool('isFirstTime', false);
-      GoRouter.of(context).pushReplacement(AppRouter.kOnPordingView);
-    } else {
-      GoRouter.of(context).push(AppRouter.kStartView);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: SvgPicture.asset(AppAssets.kLogo1));
   }
 }
