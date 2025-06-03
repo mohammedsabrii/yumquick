@@ -7,11 +7,13 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.color,
     required this.title,
+    this.textColor = AppColor.kMainColor,
     this.onTap,
   });
-  final Color color;
+  final Color color, textColor;
   final String title;
   final void Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -30,9 +32,9 @@ class CustomButton extends StatelessWidget {
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: AppStyles.styleLeagueSpartanMediem24(
+              style: AppStyles.styleLeagueSpartanBold24(
                 context,
-              ).copyWith(color: AppColor.kMainColor),
+              ).copyWith(color: textColor),
             ),
           ),
         ),

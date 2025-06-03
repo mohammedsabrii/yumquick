@@ -8,4 +8,6 @@ class AppAssets {
   static const kPaymentIcon = 'assets/images/payment_icon.svg';
   static const kDeliveryIcon = 'assets/images/delivery_icon.svg';
   static const kNextIcon = 'assets/images/Next icon Arrow.svg';
+  static const kFacebookIcon = 'assets/images/Facebook Icon.svg';
+  static const kGoogleIcon = 'assets/images/Google Icon.svg';
 }
