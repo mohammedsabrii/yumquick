@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.title, this.onTap});
+class CustomOnPordingButton extends StatelessWidget {
+  const CustomOnPordingButton({super.key, required this.title, this.onTap});
   final String title;
   final void Function()? onTap;
   @override

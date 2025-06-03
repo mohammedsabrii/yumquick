@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/onPording/presentation/views/widget/custom_button.dart';
+import 'package:yumquick/feactures/onPording/presentation/views/widget/custom_onpording_button.dart';
 import 'package:yumquick/feactures/onPording/presentation/views/widget/custom_dot_indicator_list.dart';
 
 class OnPordingDetailsBody extends StatelessWidget {
@@ -51,8 +53,13 @@ class OnPordingDetailsBody extends StatelessWidget {
         SizedBox(
           child:
               cruntPageIndex < 2
-                  ? CustomButton(title: 'Next', onTap: onTap)
-                  : const CustomButton(title: 'Get Started'),
+                  ? CustomOnPordingButton(title: 'Next', onTap: onTap)
+                  : CustomOnPordingButton(
+                    title: 'Get Started',
+                    onTap: () {
+                      GoRouter.of(context).go(AppRouter.kStartView);
+                    },
+                  ),
         ),
       ],
     );
