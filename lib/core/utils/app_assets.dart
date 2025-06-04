@@ -10,4 +10,5 @@ class AppAssets {
   static const kNextIcon = 'assets/images/Next icon Arrow.svg';
   static const kFacebookIcon = 'assets/images/Facebook Icon.svg';
   static const kGoogleIcon = 'assets/images/Google Icon.svg';
+  static const kBackIcon = 'assets/images/Back icon Arrow.svg';
 }

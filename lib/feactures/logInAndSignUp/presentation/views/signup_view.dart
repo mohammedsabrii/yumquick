@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_view_body.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -12,28 +12,6 @@ class SignUpView extends StatelessWidget {
         backgroundColor: AppColor.kYellowBase,
         body: SignupViewBody(),
       ),
-    );
-  }
-}
-
-class SignupViewBody extends StatelessWidget {
-  const SignupViewBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Column(
-          children: [
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.09),
-            Text(
-              'New Account',
-              style: AppStyles.styleLeagueSpartanBold28(context),
-            ),
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.07),
-          ],
-        ),
-      ],
     );
   }
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:yumquick/core/utils/app_assets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custom_textfild.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_facebook_and_gmail.dart';
 
 class LoginViewBodyDetails extends StatelessWidget {
   const LoginViewBodyDetails({super.key});
@@ -45,19 +46,8 @@ class LoginViewBodyDetails extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Center(
-            child: Container(
-              height: 45,
-              width: MediaQuery.sizeOf(context).width * 0.82,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(13),
-                color: const Color(0xFFF3E9B5),
-              ),
-              child: const CustomTextFaild(
-                // lableText: 'Email or Mobile Number',
-                suffixIcon: Icons.alternate_email,
-              ),
-            ),
+          const Center(
+            child: CustomTextFaild(lableText: 'Email or Mobile Number'),
           ),
           const SizedBox(height: 22),
           Padding(
@@ -70,18 +60,10 @@ class LoginViewBodyDetails extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Center(
-            child: Container(
-              height: 45,
-              width: MediaQuery.sizeOf(context).width * 0.82,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(13),
-                color: const Color(0xFFF3E9B5),
-              ),
-              child: const CustomTextFaild(
-                // lableText: 'Password',
-                suffixIcon: Icons.remove_red_eye,
-              ),
+          const Center(
+            child: CustomTextFaild(
+              lableText: 'Password',
+              suffixIcon: Icons.remove_red_eye,
             ),
           ),
           const SizedBox(height: 14),
@@ -91,7 +73,6 @@ class LoginViewBodyDetails extends StatelessWidget {
               padding: const EdgeInsets.only(right: 35),
               child: Text(
                 'forget password',
-
                 style: AppStyles.styleLeagueSpartanMediem14(
                   context,
                 ).copyWith(color: const Color(0xFFE95322)),
@@ -115,16 +96,15 @@ class LoginViewBodyDetails extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 7),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(AppAssets.kGoogleIcon),
-              const SizedBox(width: 9),
-              SvgPicture.asset(AppAssets.kFacebookIcon),
-            ],
-          ),
+          const SignUpWithFacebookAndGmail(),
           SizedBox(height: MediaQuery.sizeOf(context).height * 0.0375),
-          const CustomSignupWidget(),
+          CustomSignupWidget(
+            title: 'Don’t have an account?',
+            subTitle: '  Sign Up',
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kSignUpView);
+            },
+          ),
         ],
       ),
     );

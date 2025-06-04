@@ -20,7 +20,7 @@ class StartViewBody extends StatelessWidget {
           color: AppColor.kYellowBase,
           title: 'Log In',
           onTap: () {
-            GoRouter.of(context).go(AppRouter.kLogInView);
+            GoRouter.of(context).push(AppRouter.kLogInView);
           },
         ),
         const SizedBox(height: 4),
