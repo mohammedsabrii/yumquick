@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:yumquick/feactures/onPording/presentation/views/data/onpording_list.dart';
-import 'package:yumquick/feactures/onPording/presentation/views/widget/custom_dot_indicator.dart';
+import 'package:yumquick/feactures/home/presentation/view/data/offers_list.dart';
+import 'package:yumquick/core/widget/custom_dot_indicator.dart';
 
 class CustomDotIdctorList extends StatelessWidget {
   const CustomDotIdctorList({super.key, required this.cruntPageIndex});
@@ -9,7 +9,7 @@ class CustomDotIdctorList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(onpordingList.length, (index) {
+      children: List.generate(offersList.length, (index) {
         return CustomDotIndicator(isActive: index == cruntPageIndex);
       }),
     );
