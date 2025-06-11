@@ -11,4 +11,12 @@ class AppAssets {
   static const kFacebookIcon = 'assets/images/Facebook Icon.svg';
   static const kGoogleIcon = 'assets/images/Google Icon.svg';
   static const kBackIcon = 'assets/images/Back icon Arrow.svg';
+  static const kNotiFicationIcon = 'assets/images/notification icon.svg';
+  static const kUserIcon = 'assets/images/user icon.svg';
+  static const kCartIcon = 'assets/images/cart icon.svg';
+  static const kVeganIcon = 'assets/images/vegan icon.svg';
+  static const kSnacksIcon = 'assets/images/snacks icon.svg';
+  static const kMealIcon = 'assets/images/meal icon.svg';
+  static const kDrinksIcon = 'assets/images/drinks icon.svg';
+  static const kDessertsIcon = 'assets/images/desserts icon.svg';
 }

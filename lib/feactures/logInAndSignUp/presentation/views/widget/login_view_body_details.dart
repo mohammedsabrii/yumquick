@@ -3,8 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/core/widget/custom_Container.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custom_textfild.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custom_login_and_signup_textfield.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_facebook_and_gmail.dart';
 
@@ -13,16 +14,7 @@ class LoginViewBodyDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.sizeOf(context).width,
-      height: MediaQuery.sizeOf(context).height * 0.766,
-      decoration: const BoxDecoration(
-        color: AppColor.kCultured,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
-      ),
+    return CustomContainer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -47,7 +39,9 @@ class LoginViewBodyDetails extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           const Center(
-            child: CustomTextFaild(lableText: 'Email or Mobile Number'),
+            child: CustomLogInAndSignUpTextField(
+              lableText: 'Email or Mobile Number',
+            ),
           ),
           const SizedBox(height: 22),
           Padding(
@@ -61,7 +55,7 @@ class LoginViewBodyDetails extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           const Center(
-            child: CustomTextFaild(
+            child: CustomLogInAndSignUpTextField(
               lableText: 'Password',
               suffixIcon: Icons.remove_red_eye,
             ),

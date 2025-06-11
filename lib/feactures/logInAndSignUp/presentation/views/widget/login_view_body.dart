@@ -11,7 +11,7 @@ class LoginViewBody extends StatelessWidget {
       children: [
         Column(
           children: [
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.09),
+            SizedBox(height: MediaQuery.sizeOf(context).height * 0.0515),
             CustomLoginAndSignUpHeader(
               title: 'Log In',
               space: MediaQuery.sizeOf(context).width * 0.31,

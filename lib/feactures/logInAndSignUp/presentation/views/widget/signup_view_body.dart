@@ -5,7 +5,7 @@ import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custom_login_and_signup_header.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custom_textfild.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custom_login_and_signup_textfield.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/date_of_birth_text_fild.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_facebook_and_gmail.dart';
@@ -46,7 +46,9 @@ class SignupViewBody extends StatelessWidget {
                     ),
                   ),
                   const Center(
-                    child: CustomTextFaild(lableText: 'Enter Your Name'),
+                    child: CustomLogInAndSignUpTextField(
+                      lableText: 'Enter Your Name',
+                    ),
                   ),
                   const SizedBox(height: 6),
                   Padding(
@@ -56,7 +58,9 @@ class SignupViewBody extends StatelessWidget {
                       style: AppStyles.styleLeagueSpartanMediem20(context),
                     ),
                   ),
-                  const Center(child: CustomTextFaild(lableText: 'Password')),
+                  const Center(
+                    child: CustomLogInAndSignUpTextField(lableText: 'Password'),
+                  ),
                   const SizedBox(height: 6),
                   Padding(
                     padding: const EdgeInsets.only(left: 35),
@@ -65,7 +69,11 @@ class SignupViewBody extends StatelessWidget {
                       style: AppStyles.styleLeagueSpartanMediem20(context),
                     ),
                   ),
-                  const Center(child: CustomTextFaild(lableText: 'Your Email')),
+                  const Center(
+                    child: CustomLogInAndSignUpTextField(
+                      lableText: 'Your Email',
+                    ),
+                  ),
                   const SizedBox(height: 6),
                   Padding(
                     padding: const EdgeInsets.only(left: 35),
@@ -75,7 +83,9 @@ class SignupViewBody extends StatelessWidget {
                     ),
                   ),
                   const Center(
-                    child: CustomTextFaild(lableText: 'Your Mobile Number'),
+                    child: CustomLogInAndSignUpTextField(
+                      lableText: 'Your Mobile Number',
+                    ),
                   ),
                   const SizedBox(height: 6),
                   Padding(

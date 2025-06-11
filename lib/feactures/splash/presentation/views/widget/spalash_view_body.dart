@@ -28,7 +28,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       await prefs.setBool('isFirstTime', false);
       GoRouter.of(context).pushReplacement(AppRouter.kOnPordingView);
     } else {
-      GoRouter.of(context).push(AppRouter.kStartView);
+      GoRouter.of(context).push(AppRouter.kHomeView);
     }
   }
 
