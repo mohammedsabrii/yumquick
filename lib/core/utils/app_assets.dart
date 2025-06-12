@@ -21,4 +21,6 @@ class AppAssets {
   static const kDessertsIcon = 'assets/images/desserts icon.svg';
   static const kTestImage = 'assets/images/test image.jpg';
   static const kPazzaPhoto = 'assets/images/Photo Pizza.jpg';
+  static const kTestImage2 = 'assets/images/test image 2.jpg';
+  static const kStar = 'assets/images/star.svg';
 }

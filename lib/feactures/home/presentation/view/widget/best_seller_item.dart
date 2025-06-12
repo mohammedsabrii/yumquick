@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/best_seller_item_image.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/best_seller_item_price.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/price_item.dart';
 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key});
@@ -12,7 +12,7 @@ class BestSellerItem extends StatelessWidget {
       child: Stack(
         children: [
           BestSellerItemImage(),
-          Positioned(bottom: 30, right: 3, child: BestSellerItemPrice()),
+          Positioned(bottom: 30, right: 3, child: PriceItem()),
         ],
       ),
     );

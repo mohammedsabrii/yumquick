@@ -24,7 +24,7 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.034),
-        HomeViewDetiles(),
+        const HomeViewDetiles(),
       ],
     );
   }

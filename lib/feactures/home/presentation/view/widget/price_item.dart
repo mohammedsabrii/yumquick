@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
-class BestSellerItemPrice extends StatelessWidget {
-  const BestSellerItemPrice({super.key});
+class PriceItem extends StatelessWidget {
+  const PriceItem({super.key});
 
   @override
   Widget build(BuildContext context) {
