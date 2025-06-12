@@ -23,4 +23,9 @@ class AppAssets {
   static const kPazzaPhoto = 'assets/images/Photo Pizza.jpg';
   static const kTestImage2 = 'assets/images/test image 2.jpg';
   static const kStar = 'assets/images/star.svg';
+  static const kFavoriteIcon = 'assets/images/favorite icon.svg';
+  static const kHelpIcon = 'assets/images/help icon.svg';
+  static const kHomeIcon = 'assets/images/home icon.svg';
+  static const kMenuIcon = 'assets/images/menu icon.svg';
+  static const kMyOrdersIcon = 'assets/images/my orders icon.svg';
 }
