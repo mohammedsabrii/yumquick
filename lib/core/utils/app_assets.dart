@@ -28,4 +28,14 @@ class AppAssets {
   static const kHomeIcon = 'assets/images/home icon.svg';
   static const kMenuIcon = 'assets/images/menu icon.svg';
   static const kMyOrdersIcon = 'assets/images/my orders icon.svg';
+  static const kProfileImage = 'assets/images/profile image.svg';
+  static const kSettingsIcon = 'assets/images/settings icon.svg';
+  static const kPaymentMethodsDrawer =
+      'assets/images/payment methods drawer.svg';
+  static const kMyOrderDrawer = 'assets/images/my order drawer.svg';
+  static const kLogOutIcon = 'assets/images/log out icon.svg';
+  static const kDeliveryAdress = 'assets/images/delivery address icon.svg';
+  static const kContactUs = 'assets/images/contact us icon.svg';
+  static const kHelpDrowerIcon = 'assets/images/help drawer icon.svg';
+  static const kUserDrawrIcon = 'assets/images/user drawer icon.svg';
 }

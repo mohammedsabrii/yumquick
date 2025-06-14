@@ -9,8 +9,10 @@ class HomeViewDetiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomContainer(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.sizeOf(context).width * 0.091,
+        padding: EdgeInsets.only(
+          top: MediaQuery.sizeOf(context).height * 0.0234,
+          left: MediaQuery.sizeOf(context).width * 0.091,
+          right: MediaQuery.sizeOf(context).width * 0.091,
         ),
         child: const HomeViewDetilesBody(),
       ),

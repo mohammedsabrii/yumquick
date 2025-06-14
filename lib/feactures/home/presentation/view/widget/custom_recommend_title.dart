@@ -9,7 +9,7 @@ class CustomRecommendTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 20),
+        const SizedBox(height: 15),
         Align(
           alignment: Alignment.topLeft,
           child: Text(
