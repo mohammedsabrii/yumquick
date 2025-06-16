@@ -4,7 +4,7 @@ import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custom_login_and_signup_header.dart';
+import 'package:yumquick/core/widget/custom_page_header.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custom_login_and_signup_textfield.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/date_of_birth_text_fild.dart';
@@ -20,7 +20,7 @@ class SignupViewBody extends StatelessWidget {
         Column(
           children: [
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.09),
-            CustomLoginAndSignUpHeader(
+            CustomPageHeader(
               title: 'New Account',
               space: MediaQuery.sizeOf(context).width * 0.22,
             ),

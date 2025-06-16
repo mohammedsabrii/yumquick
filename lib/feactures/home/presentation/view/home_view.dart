@@ -13,12 +13,7 @@ class HomeView extends StatelessWidget {
       child: Scaffold(
         endDrawer: const DrawerWidget(),
 
-        bottomNavigationBar: Container(
-          width: MediaQuery.sizeOf(context).width,
-          height: MediaQuery.sizeOf(context).height * 0.0715,
-          color: Colors.white,
-          child: const CustomBouttonNavigationBar(),
-        ),
+        bottomNavigationBar: const CustomBouttonNavigationBar(),
         backgroundColor: AppColor.kYellowBase,
         body: const HomeViewBody(),
       ),

@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/custom_boutton_navigation_bar.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/my%20orders%20widget/my_orders_view_body.dart';
+
+class MyOrdersView extends StatelessWidget {
+  const MyOrdersView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      bottomNavigationBar: CustomBouttonNavigationBar(),
+      backgroundColor: AppColor.kYellowBase,
+      body: MyOrdersViewBody(),
+    );
+  }
+}

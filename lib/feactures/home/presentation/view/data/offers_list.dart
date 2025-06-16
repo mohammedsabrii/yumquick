@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/offers_model.dart';
 

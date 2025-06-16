@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer_header.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer_item.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_logout_widget.dart';
@@ -13,7 +15,10 @@ class DrawerDetails extends StatelessWidget {
       children: [
         const CustomDrawerHeader(),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.0550),
-        const CustomDrawerItem(
+        CustomDrawerItem(
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kMyOrders);
+          },
           title: 'My Orders',
           icon: AppAssets.kMyOrderDrawer,
         ),
