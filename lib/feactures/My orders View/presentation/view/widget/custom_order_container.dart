@@ -18,8 +18,9 @@ class CustomOrderContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.28,
-        height: 33,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+
+        height: 35,
         decoration: ShapeDecoration(
           color: color,
           shape: RoundedRectangleBorder(

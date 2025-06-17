@@ -44,4 +44,5 @@ class AppAssets {
       'assets/images/Transfer Document icon.svg';
   static const korderTestImage = 'assets/images/order test image.svg';
   static const kCancelcon = 'assets/images/Cancel Icon.svg';
+  static const kCompletedIcon = 'assets/images/Completed icon.svg';
 }

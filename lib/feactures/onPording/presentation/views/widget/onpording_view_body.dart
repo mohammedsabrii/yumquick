@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yumquick/feactures/onPording/presentation/views/data/onpording_list.dart';
+import 'package:yumquick/feactures/onPording/data/onpording_list.dart';
 import 'package:yumquick/feactures/onPording/presentation/views/widget/custom_onpording_header.dart';
 import 'package:yumquick/feactures/onPording/presentation/views/widget/onpording_background_image.dart';
 import 'package:yumquick/feactures/onPording/presentation/views/widget/onpording_details.dart';

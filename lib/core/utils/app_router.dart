@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:yumquick/feactures/home/presentation/view/home_view.dart';
-import 'package:yumquick/feactures/home/presentation/view/my_orders_view.dart';
+import 'package:yumquick/feactures/My%20orders%20View/presentation/view/my_orders_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_widget.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/my%20orders%20widget/cancel_order_view.dart';
+import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/cancel_order_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/login_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/signup_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/start_view.dart';

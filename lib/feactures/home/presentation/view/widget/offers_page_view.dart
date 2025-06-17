@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yumquick/feactures/home/presentation/view/data/offers_list.dart';
+import 'package:yumquick/feactures/home/data/offers_list.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_offers_widget.dart';
 import 'package:yumquick/feactures/onPording/presentation/views/widget/custom_dot_indicator_list.dart';
 

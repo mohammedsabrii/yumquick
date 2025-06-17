@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/my%20orders%20widget/my_order_page_view_container.dart';
+import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/my_order_page_view_container.dart';
 
 class CustomMyOrdersPageViewList extends StatelessWidget {
   const CustomMyOrdersPageViewList({super.key, required this.cruntPageIndex});
