@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/my%20orders%20widget/custom_show_model_botton_sheet_container.dart';
@@ -29,15 +31,19 @@ class CustomShowModalBottomSheetForCancelOrder extends StatelessWidget {
               ).copyWith(color: AppColor.kDarkRed),
             ),
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.028),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomShowModalBottomSheetContainer(
+                  onTap: () {
+                    GoRouter.of(context).pop();
+                    GoRouter.of(context).push(AppRouter.kCancelOrderView);
+                  },
                   color: AppColor.kMainColor,
                   text: 'Cancel Order',
                   textColor: AppColor.kCultured,
                 ),
-                CustomShowModalBottomSheetContainer(
+                const CustomShowModalBottomSheetContainer(
                   text: 'Keep order',
                   color: AppColor.kPinkishOrange,
                   textColor: AppColor.kMainColor,

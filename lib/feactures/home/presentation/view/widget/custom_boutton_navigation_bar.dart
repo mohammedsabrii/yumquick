@@ -4,14 +4,14 @@ import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
 class CustomBouttonNavigationBar extends StatelessWidget {
-  const CustomBouttonNavigationBar({super.key});
-
+  const CustomBouttonNavigationBar({super.key, this.color = Colors.white});
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width,
       height: MediaQuery.sizeOf(context).height * 0.0715,
-      color: Colors.white,
+      color: color,
       child: Container(
         width: MediaQuery.sizeOf(context).width,
         height: MediaQuery.sizeOf(context).height * 0.0715,

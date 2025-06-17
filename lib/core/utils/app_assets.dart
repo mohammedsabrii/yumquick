@@ -43,4 +43,5 @@ class AppAssets {
   static const ktransferDocumentIcon =
       'assets/images/Transfer Document icon.svg';
   static const korderTestImage = 'assets/images/order test image.svg';
+  static const kCancelcon = 'assets/images/Cancel Icon.svg';
 }
