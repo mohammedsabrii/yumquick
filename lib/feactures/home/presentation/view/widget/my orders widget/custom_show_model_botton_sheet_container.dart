@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 
-class CustomOrderContainer extends StatelessWidget {
-  const CustomOrderContainer({
+class CustomShowModalBottomSheetContainer extends StatelessWidget {
+  const CustomShowModalBottomSheetContainer({
     super.key,
-    required this.title,
     required this.color,
+    required this.text,
     required this.textColor,
     this.onTap,
   });
-  final String title;
   final Color color, textColor;
+  final String text;
   final Function()? onTap;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.28,
-        height: 33,
-        decoration: ShapeDecoration(
+        height: 40,
+        width: MediaQuery.sizeOf(context).width * 0.39,
+        decoration: BoxDecoration(
           color: color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(38),
-          ),
+          borderRadius: BorderRadius.circular(50),
         ),
         child: Center(
           child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: AppStyles.styleLeagueSpartanMediem17(
+            text,
+            style: AppStyles.styleLeagueSpartanMediem20(
               context,
-            ).copyWith(color: textColor),
+            ).copyWith(fontSize: 22, color: textColor),
           ),
         ),
       ),

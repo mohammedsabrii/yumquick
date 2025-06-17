@@ -9,13 +9,15 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        endDrawer: const DrawerWidget(),
+    return const SafeArea(
+      child: SafeArea(
+        child: Scaffold(
+          endDrawer: DrawerWidget(),
 
-        bottomNavigationBar: const CustomBouttonNavigationBar(),
-        backgroundColor: AppColor.kYellowBase,
-        body: const HomeViewBody(),
+          bottomNavigationBar: CustomBouttonNavigationBar(),
+          backgroundColor: AppColor.kYellowBase,
+          body: HomeViewBody(),
+        ),
       ),
     );
   }

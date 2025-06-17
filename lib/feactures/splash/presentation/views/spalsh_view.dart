@@ -8,9 +8,11 @@ class SpalshView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.kYellowBase,
-      body: SplashViewBody(),
+    return const SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColor.kYellowBase,
+        body: SplashViewBody(),
+      ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/my%20orders%20widget/custom_order_container.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/my%20orders%20widget/custom_show_modal_bottom_sheet_for_cancel_order.dart';
 
 class HaveActiveOrderItem extends StatelessWidget {
   const HaveActiveOrderItem({super.key});
@@ -36,7 +37,15 @@ class HaveActiveOrderItem extends StatelessWidget {
                 ),
               ),
             ),
-            const CustomOrderContainer(
+            CustomOrderContainer(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return const CustomShowModalBottomSheetForCancelOrder();
+                  },
+                );
+              },
               title: 'Cancel Order',
               color: AppColor.kMainColor,
               textColor: AppColor.kCultured,

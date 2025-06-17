@@ -8,10 +8,12 @@ class MyOrdersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      bottomNavigationBar: CustomBouttonNavigationBar(),
-      backgroundColor: AppColor.kYellowBase,
-      body: MyOrdersViewBody(),
+    return const SafeArea(
+      child: Scaffold(
+        bottomNavigationBar: CustomBouttonNavigationBar(),
+        backgroundColor: AppColor.kYellowBase,
+        body: MyOrdersViewBody(),
+      ),
     );
   }
 }
