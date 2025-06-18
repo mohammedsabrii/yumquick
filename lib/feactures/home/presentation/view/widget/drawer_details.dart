@@ -22,7 +22,10 @@ class DrawerDetails extends StatelessWidget {
           title: 'My Orders',
           icon: AppAssets.kMyOrderDrawer,
         ),
-        const CustomDrawerItem(
+        CustomDrawerItem(
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kMyProfileView);
+          },
           title: 'My Profile',
           icon: AppAssets.kUserDrawrIcon,
         ),

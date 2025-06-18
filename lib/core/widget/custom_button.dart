@@ -20,7 +20,7 @@ class CustomButton extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          width: 207,
+          width: MediaQuery.sizeOf(context).width * 0.526,
           height: 45,
           decoration: ShapeDecoration(
             color: color,

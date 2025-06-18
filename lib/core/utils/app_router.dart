@@ -6,6 +6,7 @@ import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/c
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/login_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/signup_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/start_view.dart';
+import 'package:yumquick/feactures/my%20profile/presentation/view/my_profile_view.dart';
 import 'package:yumquick/feactures/onPording/presentation/views/onpording_view.dart';
 import 'package:yumquick/feactures/splash/presentation/views/spalsh_view.dart';
 
@@ -18,6 +19,7 @@ class AppRouter {
   static const kDrawer = '/Drawer';
   static const kMyOrders = '/MyOrders';
   static const kCancelOrderView = '/CancelOrderView';
+  static const kMyProfileView = '/MyProfileView';
 
   static final router = GoRouter(
     routes: [
@@ -41,6 +43,10 @@ class AppRouter {
       GoRoute(
         path: kCancelOrderView,
         builder: (context, state) => const CancelOrderView(),
+      ),
+      GoRoute(
+        path: kMyProfileView,
+        builder: (context, state) => const MyProfileView(),
       ),
     ],
   );

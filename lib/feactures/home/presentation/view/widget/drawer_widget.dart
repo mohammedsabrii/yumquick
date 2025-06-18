@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:yumquick/core/utils/app_assets.dart';
-import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer_header.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer_item.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_details.dart';
 
 class DrawerWidget extends StatelessWidget {

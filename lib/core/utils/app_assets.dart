@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class AppAssets {
   static const kLogo1 = 'assets/images/logo1.svg';
   static const kLogo2 = 'assets/images/logo2.svg';
@@ -45,4 +43,7 @@ class AppAssets {
   static const korderTestImage = 'assets/images/order test image.svg';
   static const kCancelcon = 'assets/images/Cancel Icon.svg';
   static const kCompletedIcon = 'assets/images/Completed icon.svg';
+  static const kTestProfileImage = 'assets/images/test profile image.jpg';
+  static const kCamIcon = 'assets/images/cam icon.svg';
+  static const kSuffixSearchIcon = 'assets/images/suffix search Icon.svg';
 }
