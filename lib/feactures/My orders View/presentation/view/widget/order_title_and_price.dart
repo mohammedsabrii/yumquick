@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
-class CancelOrderTitleAndPrice extends StatelessWidget {
-  const CancelOrderTitleAndPrice({super.key});
+class OrderTitleAndPrice extends StatelessWidget {
+  const OrderTitleAndPrice({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
-class CancelOrderMetaData extends StatelessWidget {
-  const CancelOrderMetaData({super.key});
+class OrderMetaData extends StatelessWidget {
+  const OrderMetaData({super.key});
 
   @override
   Widget build(BuildContext context) {

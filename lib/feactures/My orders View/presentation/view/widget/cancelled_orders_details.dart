@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/cancel_order_actions.dart';
 import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/order_meta_data.dart';
+import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/order_status.dart';
 import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/order_title_and_price.dart';
 
-class CancelOrderDetails extends StatelessWidget {
-  const CancelOrderDetails({super.key});
+class CancelledOrdersDetails extends StatelessWidget {
+  const CancelledOrdersDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CancelOrderDetails extends StatelessWidget {
         SizedBox(height: 5),
         OrderTitleAndPrice(),
         OrderMetaData(),
-        CancelOrderActions(),
+        OrderStatus(),
         SizedBox(height: 5),
       ],
     );

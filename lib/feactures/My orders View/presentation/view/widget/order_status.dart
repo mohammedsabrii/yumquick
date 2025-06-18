@@ -4,8 +4,8 @@ import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
-class CompletedOrderStatus extends StatelessWidget {
-  const CompletedOrderStatus({super.key});
+class OrderStatus extends StatelessWidget {
+  const OrderStatus({super.key});
 
   @override
   Widget build(BuildContext context) {
