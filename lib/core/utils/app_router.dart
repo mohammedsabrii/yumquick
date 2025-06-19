@@ -1,8 +1,10 @@
 import 'package:go_router/go_router.dart';
+import 'package:yumquick/feactures/Delivery%20Address/presentation/view/add_new_address_view.dart';
+import 'package:yumquick/feactures/Delivery%20Address/presentation/view/delivery_address_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/home_view.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/my_orders_view.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/my_orders_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_widget.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/cancel_order_view.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/cancel_order_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/login_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/signup_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/start_view.dart';
@@ -20,7 +22,8 @@ class AppRouter {
   static const kMyOrders = '/MyOrders';
   static const kCancelOrderView = '/CancelOrderView';
   static const kMyProfileView = '/MyProfileView';
-
+  static const kDeliveryAddress = '/DeliveryAddress';
+  static const kAddNewAddess = '/AddNewAddress';
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SpalshView()),
@@ -47,6 +50,14 @@ class AppRouter {
       GoRoute(
         path: kMyProfileView,
         builder: (context, state) => const MyProfileView(),
+      ),
+      GoRoute(
+        path: kDeliveryAddress,
+        builder: (context, state) => const DeliveryAddressView(),
+      ),
+      GoRoute(
+        path: kAddNewAddess,
+        builder: (context, state) => const AddNewAddressView(),
       ),
     ],
   );

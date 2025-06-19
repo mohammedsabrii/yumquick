@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/cancelled_orders_item.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/cancelled_orders_item.dart';
 
 class CancelledOrders extends StatelessWidget {
   const CancelledOrders({super.key});

@@ -9,19 +9,22 @@ class CustomButton extends StatelessWidget {
     required this.title,
     this.textColor = AppColor.kMainColor,
     this.onTap,
+    this.textStyle,
+    this.width,
   });
   final Color color, textColor;
   final String title;
   final void Function()? onTap;
-
+  final TextStyle? textStyle;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          width: MediaQuery.sizeOf(context).width * 0.526,
-          height: 45,
+          width: width ?? MediaQuery.sizeOf(context).width * 0.526,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: ShapeDecoration(
             color: color,
             shape: RoundedRectangleBorder(
@@ -32,9 +35,11 @@ class CustomButton extends StatelessWidget {
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: AppStyles.styleLeagueSpartanBold24(
-                context,
-              ).copyWith(color: textColor),
+              style:
+                  textStyle ??
+                  AppStyles.styleLeagueSpartanBold24(
+                    context,
+                  ).copyWith(color: textColor),
             ),
           ),
         ),

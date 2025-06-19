@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
@@ -36,7 +37,14 @@ class MyProfileViewDetailes extends StatelessWidget {
                 textFieldTitle: 'Phone Number',
               ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.0445),
-              const CustomButton(
+              CustomButton(
+                width: MediaQuery.sizeOf(context).width * 0.361,
+                textStyle: AppStyles.styleLeagueSpartanMediem17(
+                  context,
+                ).copyWith(
+                  color: AppColor.kCultured,
+                  fontWeight: FontWeight.w600,
+                ),
                 color: AppColor.kMainColor,
                 title: 'Update Profile',
                 textColor: AppColor.kCultured,

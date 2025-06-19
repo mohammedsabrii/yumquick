@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/widget/custom_container.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/my_order_page_view_with_index.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/my_order_page_view_with_index.dart';
 
 class MyOrdersViewBodyDetails extends StatelessWidget {
   const MyOrdersViewBodyDetails({super.key});

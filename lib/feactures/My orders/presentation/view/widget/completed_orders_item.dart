@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/cancelled_orders_details.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/order_details.dart';
 
-class CancelledOrdersItem extends StatelessWidget {
-  const CancelledOrdersItem({super.key});
+class CompletedOrdersItem extends StatelessWidget {
+  const CompletedOrdersItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +16,9 @@ class CancelledOrdersItem extends StatelessWidget {
           children: [
             SvgPicture.asset(AppAssets.korderTestImage),
             SizedBox(width: MediaQuery.sizeOf(context).width * 0.033),
-            const Expanded(child: CancelledOrdersDetails()),
+            const Expanded(child: CompletedOrderDetails()),
           ],
         ),
-
         const Divider(thickness: 1, color: AppColor.kMainColor),
       ],
     );

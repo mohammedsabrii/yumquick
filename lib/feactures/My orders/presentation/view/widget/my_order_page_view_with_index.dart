@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/my_order_page_view.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/my_order_page_view_list.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/my_order_page_view.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/my_order_page_view_list.dart';
 
 class MyOrdersPageViewWithIndex extends StatefulWidget {
   const MyOrdersPageViewWithIndex({super.key});

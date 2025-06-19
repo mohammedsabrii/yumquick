@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/cancel_order_details.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/cancel_order_details.dart';
 
 class HaveActiveOrderItem extends StatelessWidget {
   const HaveActiveOrderItem({super.key});

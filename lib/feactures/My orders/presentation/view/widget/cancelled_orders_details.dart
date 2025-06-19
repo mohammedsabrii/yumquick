@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/order_meta_data.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/order_status.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/order_title_and_price.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/order_meta_data.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/order_status.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/order_title_and_price.dart';
 
 class CancelledOrdersDetails extends StatelessWidget {
   const CancelledOrdersDetails({super.key});

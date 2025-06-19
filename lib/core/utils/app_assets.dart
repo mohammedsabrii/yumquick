@@ -46,4 +46,6 @@ class AppAssets {
   static const kTestProfileImage = 'assets/images/test profile image.jpg';
   static const kCamIcon = 'assets/images/cam icon.svg';
   static const kSuffixSearchIcon = 'assets/images/suffix search Icon.svg';
+  static const kdeliveryHomeIcon = 'assets/images/delivery home Icon.svg';
+  static const kcheckPointIcon = 'assets/images/Check Point icon.svg';
 }

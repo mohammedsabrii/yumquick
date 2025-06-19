@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/My%20orders%20View/presentation/view/widget/custom_order_container.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/custom_order_container.dart';
 
-class CompletedOrderActions extends StatelessWidget {
-  const CompletedOrderActions({super.key});
+class CancelOrderActions extends StatelessWidget {
+  const CancelOrderActions({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +12,13 @@ class CompletedOrderActions extends StatelessWidget {
       children: [
         CustomOrderContainer(
           onTap: () {},
-          title: 'Leave a review',
+          title: 'Cancel Order',
           color: AppColor.kMainColor,
           textColor: AppColor.kCultured,
         ),
 
         const CustomOrderContainer(
-          title: 'Order Again',
+          title: 'Track Driver',
           color: AppColor.kPinkishOrange,
           textColor: AppColor.kMainColor,
         ),
