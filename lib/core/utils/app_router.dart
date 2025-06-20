@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:yumquick/feactures/Delivery%20Address/presentation/view/add_new_address_view.dart';
 import 'package:yumquick/feactures/Delivery%20Address/presentation/view/delivery_address_view.dart';
+import 'package:yumquick/feactures/Payment%20Methods/presentation/view/payment_methods_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/home_view.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/my_orders_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_widget.dart';
@@ -24,6 +25,8 @@ class AppRouter {
   static const kMyProfileView = '/MyProfileView';
   static const kDeliveryAddress = '/DeliveryAddress';
   static const kAddNewAddess = '/AddNewAddress';
+  static const kPaymentMethods = '/PaymentMethods';
+
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SpalshView()),
@@ -58,6 +61,10 @@ class AppRouter {
       GoRoute(
         path: kAddNewAddess,
         builder: (context, state) => const AddNewAddressView(),
+      ),
+      GoRoute(
+        path: kPaymentMethods,
+        builder: (context, state) => const PaymentMethodsView(),
       ),
     ],
   );

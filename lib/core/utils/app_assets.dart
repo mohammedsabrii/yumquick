@@ -48,4 +48,8 @@ class AppAssets {
   static const kSuffixSearchIcon = 'assets/images/suffix search Icon.svg';
   static const kdeliveryHomeIcon = 'assets/images/delivery home Icon.svg';
   static const kcheckPointIcon = 'assets/images/Check Point icon.svg';
+  static const kSelectedCheckedPointIcon =
+      'assets/images/Selected Check Point.svg';
+  static const kPaypalIcon = 'assets/images/Paypal icon.svg';
+  static const kApplePayIcon = 'assets/images/apple pay icon.svg';
 }

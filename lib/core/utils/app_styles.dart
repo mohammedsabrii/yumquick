@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:yumquick/core/utils/colors.dart';
 
 class AppStyles {
   static TextStyle syleInterExtraBold24(context) {
@@ -60,6 +61,15 @@ class AppStyles {
   static TextStyle styleLeagueSpartanregular16(context) {
     return const TextStyle(
       fontSize: 16,
+      fontFamily: 'League Spartan',
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle styleLeagueSpartanregular20(context) {
+    return const TextStyle(
+      color: AppColor.kDarkRed,
+      fontSize: 20,
       fontFamily: 'League Spartan',
       fontWeight: FontWeight.w400,
     );

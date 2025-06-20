@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
-import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer_header.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer_item.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_logout_widget.dart';
@@ -37,7 +36,10 @@ class DrawerDetails extends StatelessWidget {
           title: 'Delivery Address',
           icon: AppAssets.kDeliveryAdress,
         ),
-        const CustomDrawerItem(
+        CustomDrawerItem(
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kPaymentMethods);
+          },
           title: 'Payment Methods',
           icon: AppAssets.kPaymentMethodsDrawer,
         ),
