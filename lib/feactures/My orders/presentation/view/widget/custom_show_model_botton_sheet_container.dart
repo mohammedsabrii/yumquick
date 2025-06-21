@@ -28,7 +28,7 @@ class CustomShowModalBottomSheetContainer extends StatelessWidget {
             text,
             style: AppStyles.styleLeagueSpartanMediem20(
               context,
-            ).copyWith(fontSize: 22, color: textColor),
+            ).copyWith(color: textColor),
           ),
         ),
       ),

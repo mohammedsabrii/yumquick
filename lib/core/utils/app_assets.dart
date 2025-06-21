@@ -52,4 +52,15 @@ class AppAssets {
       'assets/images/Selected Check Point.svg';
   static const kPaypalIcon = 'assets/images/Paypal icon.svg';
   static const kApplePayIcon = 'assets/images/apple pay icon.svg';
+  static const kWebsiteIcon = 'assets/images/Website icon.svg';
+  static const kWhatsappIcon = 'assets/images/WhatsApp icon.svg';
+  static const kShowPasswordOff = 'assets/images/Show Password Off.svg';
+  static const kPasswordSettingIcon = 'assets/images/Password Setting icon.svg';
+  static const kNotificationSettingIcon =
+      'assets/images/Notification Settings Icon.svg';
+  static const kInstagramIcon = 'assets/images/Instagram icon.svg';
+  static const kDeleteAccountIcon = 'assets/images/Delete Account Icon.svg';
+  static const kCustomerServiceIcon = 'assets/images/Customer service icon.svg';
+  static const kContactUsFacebookIcon =
+      'assets/images/contact us facebook icon.svg';
 }

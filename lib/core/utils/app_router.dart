@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:yumquick/feactures/Contact%20Us/presentation/view/contact_us_view.dart';
 import 'package:yumquick/feactures/Delivery%20Address/presentation/view/add_new_address_view.dart';
 import 'package:yumquick/feactures/Delivery%20Address/presentation/view/delivery_address_view.dart';
 import 'package:yumquick/feactures/Payment%20Methods/presentation/view/payment_methods_view.dart';
@@ -26,6 +27,7 @@ class AppRouter {
   static const kDeliveryAddress = '/DeliveryAddress';
   static const kAddNewAddess = '/AddNewAddress';
   static const kPaymentMethods = '/PaymentMethods';
+  static const kContactUs = '/ContactUs';
 
   static final router = GoRouter(
     routes: [
@@ -65,6 +67,10 @@ class AppRouter {
       GoRoute(
         path: kPaymentMethods,
         builder: (context, state) => const PaymentMethodsView(),
+      ),
+      GoRoute(
+        path: kContactUs,
+        builder: (context, state) => const ContactUsView(),
       ),
     ],
   );

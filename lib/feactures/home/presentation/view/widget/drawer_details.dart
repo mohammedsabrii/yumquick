@@ -43,10 +43,10 @@ class DrawerDetails extends StatelessWidget {
           title: 'Payment Methods',
           icon: AppAssets.kPaymentMethodsDrawer,
         ),
-        const CustomDrawerItem(title: 'Contact Us', icon: AppAssets.kContactUs),
-        const CustomDrawerItem(
-          title: 'Help & FAQs',
-          icon: AppAssets.kHelpDrowerIcon,
+        CustomDrawerItem(
+          onTap: () => GoRouter.of(context).push(AppRouter.kContactUs),
+          title: 'Contact Us',
+          icon: AppAssets.kContactUs,
         ),
         const CustomDrawerItem(
           title: 'Settings',

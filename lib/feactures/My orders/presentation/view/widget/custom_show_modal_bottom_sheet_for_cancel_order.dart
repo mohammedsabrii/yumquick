@@ -39,6 +39,7 @@ class CustomShowModalBottomSheetForCancelOrder extends StatelessWidget {
                     GoRouter.of(context).pop();
                     GoRouter.of(context).push(AppRouter.kCancelOrderView);
                   },
+
                   color: AppColor.kMainColor,
                   text: 'Cancel Order',
                   textColor: AppColor.kCultured,
