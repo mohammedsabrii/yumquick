@@ -42,7 +42,7 @@ class LoginViewBodyDetails extends StatelessWidget {
                 child: CustomTextField(
                   textFieldTitle: 'Password',
                   lableText: 'Password',
-                  suffixIcon: Icons.remove_red_eye,
+                  suffixIcon: Icon(Icons.remove_red_eye),
                 ),
               ),
               const SizedBox(height: 14),

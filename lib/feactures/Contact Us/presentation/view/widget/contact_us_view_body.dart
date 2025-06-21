@@ -23,8 +23,8 @@ class ContactUsViewBody extends StatelessWidget {
             context,
           ).copyWith(color: AppColor.kMainColor),
         ),
-        SizedBox(height: 5),
-        ContactUsDetailes(),
+        const SizedBox(height: 5),
+        const ContactUsDetailes(),
       ],
     );
   }

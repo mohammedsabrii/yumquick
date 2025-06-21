@@ -48,7 +48,8 @@ class DrawerDetails extends StatelessWidget {
           title: 'Contact Us',
           icon: AppAssets.kContactUs,
         ),
-        const CustomDrawerItem(
+        CustomDrawerItem(
+          onTap: () => GoRouter.of(context).push(AppRouter.kSettings),
           title: 'Settings',
           icon: AppAssets.kSettingsIcon,
         ),

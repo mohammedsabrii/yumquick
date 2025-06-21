@@ -12,6 +12,8 @@ import 'package:yumquick/feactures/logInAndSignUp/presentation/views/signup_view
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/start_view.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/view/my_profile_view.dart';
 import 'package:yumquick/feactures/onPording/presentation/views/onpording_view.dart';
+import 'package:yumquick/feactures/settings/presentation/view/password_settings_view.dart';
+import 'package:yumquick/feactures/settings/presentation/view/settings_view.dart';
 import 'package:yumquick/feactures/splash/presentation/views/spalsh_view.dart';
 
 class AppRouter {
@@ -28,6 +30,8 @@ class AppRouter {
   static const kAddNewAddess = '/AddNewAddress';
   static const kPaymentMethods = '/PaymentMethods';
   static const kContactUs = '/ContactUs';
+  static const kSettings = '/Settings';
+  static const kPasswordSettings = '/PasswordSettings';
 
   static final router = GoRouter(
     routes: [
@@ -71,6 +75,14 @@ class AppRouter {
       GoRoute(
         path: kContactUs,
         builder: (context, state) => const ContactUsView(),
+      ),
+      GoRoute(
+        path: kSettings,
+        builder: (context, state) => const SettingsView(),
+      ),
+      GoRoute(
+        path: kPasswordSettings,
+        builder: (context, state) => const PasswordSettingsView(),
       ),
     ],
   );

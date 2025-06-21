@@ -15,7 +15,7 @@ class ContactUsDetailes extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.0469),
+            SizedBox(height: MediaQuery.sizeOf(context).height * 0.0656),
             const ContactUsItem(
               height: 28,
               width: 40,

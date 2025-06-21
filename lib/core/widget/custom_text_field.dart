@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String? p1)? validator;
   final Function(String p1)? onChanged;
   final String lableText, textFieldTitle;
-  final IconData? suffixIcon;
+  final Widget? suffixIcon;
   final TextStyle? labelStyle;
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,8 @@ class CustomTextField extends StatelessWidget {
                   AppStyles.styleLeagueSpartanMediem14(
                     context,
                   ).copyWith(color: Colors.grey),
-              suffixIcon: Icon(suffixIcon),
+              suffixIcon: suffixIcon,
+
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(13),
                 borderSide: const BorderSide(color: Color(0xFFF3E9B5)),
