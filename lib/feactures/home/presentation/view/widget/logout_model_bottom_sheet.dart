@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:yumquick/core/utils/app_router.dart';
+import 'package:flutter/widgets.dart';
+
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_show_model_botton_sheet_bottom.dart';
 
-class CustomShowModalBottomSheetForCancelOrder extends StatelessWidget {
-  const CustomShowModalBottomSheetForCancelOrder({super.key});
+class LogoutModelBottomSheet extends StatelessWidget {
+  const LogoutModelBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,30 +23,25 @@ class CustomShowModalBottomSheetForCancelOrder extends StatelessWidget {
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.058),
 
             Text(
-              'Are you sure about canceling order?',
+              'Are you sure you want to log out?',
               textAlign: TextAlign.center,
               style: AppStyles.syleInterExtraBold24(
                 context,
               ).copyWith(color: AppColor.kDarkRed),
             ),
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.028),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomShowModalBottomSheetBottom(
-                  onTap: () {
-                    GoRouter.of(context).pop();
-                    GoRouter.of(context).push(AppRouter.kCancelOrderView);
-                  },
-
-                  color: AppColor.kMainColor,
-                  text: 'Cancel Order',
-                  textColor: AppColor.kCultured,
-                ),
-                const CustomShowModalBottomSheetBottom(
-                  text: 'Keep order',
+                  text: 'Cancel',
                   color: AppColor.kPinkishOrange,
                   textColor: AppColor.kMainColor,
+                ),
+                CustomShowModalBottomSheetBottom(
+                  color: AppColor.kMainColor,
+                  text: 'Yes, logout',
+                  textColor: AppColor.kCultured,
                 ),
               ],
             ),

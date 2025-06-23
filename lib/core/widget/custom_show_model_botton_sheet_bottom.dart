@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 
-class CustomShowModalBottomSheetContainer extends StatelessWidget {
-  const CustomShowModalBottomSheetContainer({
+class CustomShowModalBottomSheetBottom extends StatelessWidget {
+  const CustomShowModalBottomSheetBottom({
     super.key,
     required this.color,
     required this.text,
