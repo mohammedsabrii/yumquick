@@ -4,7 +4,6 @@ import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/widget/custom_container.dart';
 import 'package:yumquick/feactures/settings/presentation/view/widget/settings_item.dart';
-import 'package:yumquick/feactures/settings/presentation/view/widget/settings_view_body.dart';
 
 class SettingsViewDetailes extends StatelessWidget {
   const SettingsViewDetailes({super.key});
@@ -21,7 +20,10 @@ class SettingsViewDetailes extends StatelessWidget {
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.0656),
             SettingsItem(
               space: MediaQuery.sizeOf(context).width * 0.06183,
-
+              onTap:
+                  () => GoRouter.of(
+                    context,
+                  ).push(AppRouter.kNotificationSettings),
               width: 24.50,
               height: 35.06,
               icon: AppAssets.kNotificationSettingIcon,
