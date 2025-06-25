@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/drawer_details.dart';
 
-class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({super.key});
-
+class CustomDrawer extends StatelessWidget {
+  const CustomDrawer({super.key, this.child});
+  final Widget? child;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -21,7 +20,7 @@ class DrawerWidget extends StatelessWidget {
             left: MediaQuery.sizeOf(context).width * 0.0839,
             right: MediaQuery.sizeOf(context).width * 0.0839,
           ),
-          child: const DrawerDetails(),
+          child: child,
         ),
       ),
     );

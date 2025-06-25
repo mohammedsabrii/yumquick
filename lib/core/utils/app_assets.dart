@@ -63,4 +63,12 @@ class AppAssets {
   static const kCustomerServiceIcon = 'assets/images/Customer service icon.svg';
   static const kContactUsFacebookIcon =
       'assets/images/contact us facebook icon.svg';
+  static const kNotificationDrawerIcon =
+      'assets/images/Notification drawer Icon.svg';
+  static const kDeliveryManIcon = 'assets/images/delivery man icon.svg';
+  static const kProdactYoyMightBeLike =
+      'assets/images/prodact you might be like icon.svg';
+  static const kOrderDeliveredIcon = 'assets/images/order delivered icon.svg';
+  static const kNotificationFavoriteIcon =
+      'assets/images/notification favorite icon.svg';
 }

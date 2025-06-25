@@ -5,7 +5,7 @@ import 'package:yumquick/feactures/Delivery%20Address/presentation/view/delivery
 import 'package:yumquick/feactures/Payment%20Methods/presentation/view/payment_methods_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/home_view.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/my_orders_view.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/drawer_widget.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/cancel_order_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/login_view.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/signup_view.dart';
@@ -49,7 +49,7 @@ class AppRouter {
         builder: (context, state) => const SignUpView(),
       ),
       GoRoute(path: kHomeView, builder: (context, state) => const HomeView()),
-      GoRoute(path: kDrawer, builder: (context, state) => const DrawerWidget()),
+      GoRoute(path: kDrawer, builder: (context, state) => const CustomDrawer()),
       GoRoute(
         path: kMyOrders,
         builder: (context, state) => const MyOrdersView(),

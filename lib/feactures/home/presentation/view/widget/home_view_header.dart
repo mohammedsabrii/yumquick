@@ -16,7 +16,12 @@ class HomeViewHeader extends StatelessWidget {
         SizedBox(width: MediaQuery.sizeOf(context).width * 0.074),
         SvgPicture.asset(AppAssets.kCartIcon),
         const SizedBox(width: 7),
-        SvgPicture.asset(AppAssets.kNotiFicationIcon),
+        GestureDetector(
+          onTap: () {
+            Scaffold.of(context).openEndDrawer();
+          },
+          child: SvgPicture.asset(AppAssets.kNotiFicationIcon),
+        ),
         const SizedBox(width: 7),
         GestureDetector(
           onTap: () {
