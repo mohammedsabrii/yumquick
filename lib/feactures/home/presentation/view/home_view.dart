@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_boutton_navigation_bar.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_empty_cart.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/drawer_have_item_cart.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/home_view_body.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/notifications_drawer_details.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -12,7 +12,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Scaffold(
-        endDrawer: DrawerEmptyCart(),
+        endDrawer: DrawerHaveItemCart(),
         bottomNavigationBar: CustomBouttonNavigationBar(),
         backgroundColor: AppColor.kYellowBase,
         body: HomeViewBody(),

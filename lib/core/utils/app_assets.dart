@@ -73,4 +73,6 @@ class AppAssets {
       'assets/images/notification favorite icon.svg';
   static const kDrawerCartIcon = 'assets/images/drawer cart icon.svg';
   static const kAddToCartIcon = 'assets/images/add to cart icon.svg';
+  static const kAddIcon = 'assets/images/Add Icon.svg';
+  static const kLessIcon = 'assets/images/Less Icon.svg';
 }
