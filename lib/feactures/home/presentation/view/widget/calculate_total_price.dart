@@ -1,0 +1,72 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yumquick/core/utils/app_styles.dart';
+import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
+
+class CalculateTotalPrice extends StatelessWidget {
+  const CalculateTotalPrice({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<CartModel>(
+      builder: (context, cart, child) {
+        return Column(
+          children: [
+            CalculateTotalPriceItem(
+              title: 'Subtotal',
+              price: '\$${cart.subtotal.toStringAsFixed(2)}',
+            ),
+            const SizedBox(height: 10),
+            CalculateTotalPriceItem(
+              title: 'Tax and Fees',
+              price: '\$${cart.taxAndFees.toStringAsFixed(2)}',
+            ),
+            const SizedBox(height: 10),
+            CalculateTotalPriceItem(
+              title: 'Delivery',
+              price: '\$${cart.delivery.toStringAsFixed(2)}',
+            ),
+            const SizedBox(height: 10),
+            const Divider(thickness: 2, color: AppColor.kCultured),
+            const SizedBox(height: 10),
+            CalculateTotalPriceItem(
+              title: 'Total',
+              price: '\$${cart.total.toStringAsFixed(2)}',
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class CalculateTotalPriceItem extends StatelessWidget {
+  const CalculateTotalPriceItem({
+    super.key,
+    required this.title,
+    required this.price,
+  });
+  final String title;
+  final String price;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: AppStyles.styleLeagueSpartanMediem20(
+            context,
+          ).copyWith(color: AppColor.kCultured),
+        ),
+        Text(
+          price,
+          style: AppStyles.styleLeagueSpartanMediem20(
+            context,
+          ).copyWith(color: AppColor.kCultured),
+        ),
+      ],
+    );
+  }
+}

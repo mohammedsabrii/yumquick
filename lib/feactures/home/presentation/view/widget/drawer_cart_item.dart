@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/cart_date_and_time_and_total_item.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/cart_item_title_and_price.dart';
 
 class DrawerCartItem extends StatelessWidget {
-  const DrawerCartItem({super.key});
+  final CartItem cartItem;
+
+  const DrawerCartItem({super.key, required this.cartItem});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 10),
         Row(
           children: [
-            Image.asset('assets/images/drawer cart item test .png'),
+            Image.asset(cartItem.imagePath),
             const SizedBox(width: 9),
-            const CartItemTitleAndPrice(),
+            CartItemTitleAndPrice(cartItem: cartItem),
             const Spacer(),
-            const CartDateAndTimeAndTotalItem(),
+            CartDateAndTimeAndTotalItem(cartItem: cartItem),
           ],
         ),
         const SizedBox(height: 10),

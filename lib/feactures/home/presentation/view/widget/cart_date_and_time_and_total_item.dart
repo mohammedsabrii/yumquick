@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/cart_total_item.dart';
 
 class CartDateAndTimeAndTotalItem extends StatelessWidget {
-  const CartDateAndTimeAndTotalItem({super.key});
+  final CartItem cartItem;
+
+  const CartDateAndTimeAndTotalItem({super.key, required this.cartItem});
 
   @override
   Widget build(BuildContext context) {
@@ -12,18 +15,18 @@ class CartDateAndTimeAndTotalItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
-          '29/11/24',
+          cartItem.date,
           style: AppStyles.styleLeagueSpartanMediem14(
             context,
           ).copyWith(fontSize: 13, color: AppColor.kCultured),
         ),
         Text(
-          '15:00',
+          cartItem.time,
           style: AppStyles.styleLeagueSpartanMediem14(
             context,
           ).copyWith(fontSize: 13, color: AppColor.kCultured),
         ),
-        const CartTotalItem(),
+        CartTotalItem(cartItem: cartItem),
       ],
     );
   }

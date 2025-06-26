@@ -11,12 +11,14 @@ class CustomButton extends StatelessWidget {
     this.onTap,
     this.textStyle,
     this.width,
+    this.padding,
   });
   final Color color, textColor;
   final String title;
   final void Function()? onTap;
   final TextStyle? textStyle;
   final double? width;
+  final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -24,7 +26,9 @@ class CustomButton extends StatelessWidget {
         onTap: onTap,
         child: Container(
           width: width ?? MediaQuery.sizeOf(context).width * 0.526,
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          padding:
+              padding ??
+              const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: ShapeDecoration(
             color: color,
             shape: RoundedRectangleBorder(
