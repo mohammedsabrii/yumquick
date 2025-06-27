@@ -75,4 +75,7 @@ class AppAssets {
   static const kAddToCartIcon = 'assets/images/add to cart icon.svg';
   static const kAddIcon = 'assets/images/Add Icon.svg';
   static const kLessIcon = 'assets/images/Less Icon.svg';
+  static const kEditIcon = 'assets/images/Edit Icon.svg';
+  static const kAddIconOrang = 'assets/images/Add Icon orang.svg';
+  static const kLessIconOrang = 'assets/images/Less Icon orang.svg';
 }

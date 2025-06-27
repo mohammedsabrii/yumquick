@@ -5,10 +5,13 @@ import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
 
-class CartItemTitleAndPrice extends StatelessWidget {
-  final CartItem cartItem;
+class ConfirmOrderDateAndTimeAndRemoveButton extends StatelessWidget {
+  const ConfirmOrderDateAndTimeAndRemoveButton({
+    super.key,
+    required this.cartItem,
+  });
 
-  const CartItemTitleAndPrice({super.key, required this.cartItem});
+  final CartItem cartItem;
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +20,15 @@ class CartItemTitleAndPrice extends StatelessWidget {
       children: [
         Text(
           cartItem.name,
-          style: AppStyles.styleLeagueSpartanMediem16(
+          style: AppStyles.styleLeagueSpartanMediem20(
             context,
-          ).copyWith(color: AppColor.kCultured),
+          ).copyWith(color: AppColor.kDarkRed),
         ),
         Text(
-          '\$${cartItem.price.toStringAsFixed(2)}',
+          '${cartItem.date}, ${cartItem.time} ',
           style: AppStyles.styleLeagueSpartanMediem14(
             context,
-          ).copyWith(color: AppColor.kCultured, fontWeight: FontWeight.w300),
+          ).copyWith(color: AppColor.kDarkRed, fontWeight: FontWeight.w300),
         ),
         const SizedBox(height: 5),
         CustomButton(

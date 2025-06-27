@@ -5,8 +5,8 @@ import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
 
 class CalculateTotalPrice extends StatelessWidget {
-  const CalculateTotalPrice({super.key});
-
+  const CalculateTotalPrice({super.key, this.color, this.dividerColor});
+  final Color? color, dividerColor;
   @override
   Widget build(BuildContext context) {
     return Consumer<CartModel>(
@@ -14,23 +14,27 @@ class CalculateTotalPrice extends StatelessWidget {
         return Column(
           children: [
             CalculateTotalPriceItem(
+              color: color ?? AppColor.kCultured,
               title: 'Subtotal',
               price: '\$${cart.subtotal.toStringAsFixed(2)}',
             ),
             const SizedBox(height: 10),
             CalculateTotalPriceItem(
+              color: color ?? AppColor.kCultured,
               title: 'Tax and Fees',
               price: '\$${cart.taxAndFees.toStringAsFixed(2)}',
             ),
             const SizedBox(height: 10),
             CalculateTotalPriceItem(
+              color: color ?? AppColor.kCultured,
               title: 'Delivery',
               price: '\$${cart.delivery.toStringAsFixed(2)}',
             ),
             const SizedBox(height: 10),
-            const Divider(thickness: 2, color: AppColor.kCultured),
+            Divider(thickness: 2, color: dividerColor ?? AppColor.kCultured),
             const SizedBox(height: 10),
             CalculateTotalPriceItem(
+              color: color ?? AppColor.kCultured,
               title: 'Total',
               price: '\$${cart.total.toStringAsFixed(2)}',
             ),
@@ -46,9 +50,11 @@ class CalculateTotalPriceItem extends StatelessWidget {
     super.key,
     required this.title,
     required this.price,
+    required this.color,
   });
   final String title;
   final String price;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -58,13 +64,13 @@ class CalculateTotalPriceItem extends StatelessWidget {
           title,
           style: AppStyles.styleLeagueSpartanMediem20(
             context,
-          ).copyWith(color: AppColor.kCultured),
+          ).copyWith(color: color),
         ),
         Text(
           price,
           style: AppStyles.styleLeagueSpartanMediem20(
             context,
-          ).copyWith(color: AppColor.kCultured),
+          ).copyWith(color: color),
         ),
       ],
     );

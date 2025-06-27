@@ -75,6 +75,15 @@ class AppStyles {
     );
   }
 
+  static TextStyle styleLeagueSpartanregular23(context) {
+    return const TextStyle(
+      color: AppColor.kMainColor,
+      fontSize: 23,
+      fontFamily: 'League Spartan',
+      fontWeight: FontWeight.w400,
+    );
+  }
+
   static TextStyle styleLeagueSpartanBold24(context) {
     return const TextStyle(
       fontSize: 24,

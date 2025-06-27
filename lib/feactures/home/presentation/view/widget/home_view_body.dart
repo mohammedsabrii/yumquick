@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/home_view_detiles.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/home_view_details.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/home_view_header.dart';
 
 class HomeViewBody extends StatelessWidget {

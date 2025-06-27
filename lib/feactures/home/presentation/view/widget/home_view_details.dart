@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/home_view_detiles_body.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/home_view_details_body.dart';
 
 class HomeViewDetiles extends StatelessWidget {
   const HomeViewDetiles({super.key});

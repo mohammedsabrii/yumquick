@@ -3,6 +3,7 @@ import 'package:yumquick/feactures/Contact%20Us/presentation/view/contact_us_vie
 import 'package:yumquick/feactures/Delivery%20Address/presentation/view/add_new_address_view.dart';
 import 'package:yumquick/feactures/Delivery%20Address/presentation/view/delivery_address_view.dart';
 import 'package:yumquick/feactures/Payment%20Methods/presentation/view/payment_methods_view.dart';
+import 'package:yumquick/feactures/home/presentation/view/confirm_order_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/home_view.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/my_orders_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer.dart';
@@ -34,6 +35,7 @@ class AppRouter {
   static const kSettings = '/Settings';
   static const kPasswordSettings = '/PasswordSettings';
   static const kNotificationSettings = '/NotificationSettings';
+  static const kConfirmOrderView = '/ConfirmOrderView';
 
   static final router = GoRouter(
     routes: [
@@ -89,6 +91,10 @@ class AppRouter {
       GoRoute(
         path: kNotificationSettings,
         builder: (context, state) => const NotificationSettingsView(),
+      ),
+      GoRoute(
+        path: kConfirmOrderView,
+        builder: (context, state) => const ConfirmOrderView(),
       ),
     ],
   );

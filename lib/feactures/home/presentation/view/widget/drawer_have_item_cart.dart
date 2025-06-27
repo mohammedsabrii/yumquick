@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/calculate_total_price.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer.dart';
@@ -51,8 +54,20 @@ class DrawerHaveItemCart extends StatelessWidget {
                   },
                 ),
               ),
-
               const CalculateTotalPrice(),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.045),
+              CustomButton(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kConfirmOrderView);
+                },
+                color: AppColor.kYellowBase,
+                title: 'Checkout',
+                width: 131,
+                textStyle: AppStyles.styleLeagueSpartanBold24(context).copyWith(
+                  color: AppColor.kMainColor,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ],
           );
         },
