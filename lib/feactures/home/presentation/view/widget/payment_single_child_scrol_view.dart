@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
@@ -47,6 +49,9 @@ class PaymentSingleChildScrolView extends StatelessWidget {
                 const PaymentDeliveryTime(),
                 const SizedBox(height: 40),
                 CustomButton(
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.kConfirmedOrderView);
+                  },
                   width: 157,
                   padding: const EdgeInsets.all(5),
                   color: AppColor.kPinkishOrange,
