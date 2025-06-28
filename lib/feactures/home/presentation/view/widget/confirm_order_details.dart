@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
@@ -58,6 +60,9 @@ class ConfirmOrderDetails extends StatelessWidget {
                         ),
                         const SizedBox(height: 30),
                         CustomButton(
+                          onTap: () {
+                            GoRouter.of(context).push(AppRouter.kPaymentView);
+                          },
                           width: 150,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 7,

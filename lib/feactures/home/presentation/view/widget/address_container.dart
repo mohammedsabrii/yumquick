@@ -15,7 +15,7 @@ class AddressContainer extends StatelessWidget {
         width: double.infinity,
         height: 35,
         decoration: BoxDecoration(
-          color: AppColor.kYellowBase,
+          color: AppColor.kYellow,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Center(
