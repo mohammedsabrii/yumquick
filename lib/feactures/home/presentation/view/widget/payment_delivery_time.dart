@@ -16,7 +16,7 @@ class PaymentDeliveryTime extends StatelessWidget {
             context,
           ).copyWith(color: AppColor.kDarkRed),
         ),
-        const SizedBox(height: 10),
+        // const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -34,7 +34,7 @@ class PaymentDeliveryTime extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         const Divider(thickness: 2, color: AppColor.kPinkishOrange),
       ],
     );

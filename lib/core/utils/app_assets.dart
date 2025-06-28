@@ -78,4 +78,5 @@ class AppAssets {
   static const kEditIcon = 'assets/images/Edit Icon.svg';
   static const kAddIconOrang = 'assets/images/Add Icon orang.svg';
   static const kLessIconOrang = 'assets/images/Less Icon orang.svg';
+  static const kMapTest = 'assets/images/map test.jpg';
 }
