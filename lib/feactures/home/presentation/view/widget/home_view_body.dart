@@ -4,15 +4,26 @@ import 'package:yumquick/feactures/home/presentation/view/widget/home_view_detai
 import 'package:yumquick/feactures/home/presentation/view/widget/home_view_header.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
-
+  const HomeViewBody({
+    super.key,
+    required this.onOpenCartDrawer,
+    required this.onOpenNotificationDrawer,
+    required this.onOpenUserDrawer,
+  });
+  final VoidCallback onOpenCartDrawer;
+  final VoidCallback onOpenNotificationDrawer;
+  final VoidCallback onOpenUserDrawer;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.035),
-        const HomeViewHeader(),
+        HomeViewHeader(
+          onOpenCartDrawer: onOpenCartDrawer,
+          onOpenNotificationDrawer: onOpenNotificationDrawer,
+          onOpenUserDrawer: onOpenUserDrawer,
+        ),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.018),
         Padding(
           padding: EdgeInsets.only(

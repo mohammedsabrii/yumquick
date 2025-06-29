@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/feactures/home/data/offers_list.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_offers_widget.dart';
-import 'package:yumquick/feactures/onPording/presentation/views/widget/custom_dot_indicator_list.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/offers_dot_indicator_list.dart';
 
 class OffersPageView extends StatefulWidget {
   const OffersPageView({super.key});
@@ -37,7 +37,7 @@ class _OffersPageViewState extends State<OffersPageView> {
             children: [
               CustomOffersWidget(model: offersList[index]),
               const SizedBox(height: 5),
-              CustomDotIdctorList(cruntPageIndex: pageIndex),
+              OffersDotIndicatorList(cruntPageIndex: pageIndex),
             ],
           );
         },
