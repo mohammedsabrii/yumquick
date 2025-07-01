@@ -4,17 +4,15 @@ import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_search_text_field.dart';
 
 class HomeViewHeader extends StatelessWidget {
-  final VoidCallback onOpenCartDrawer;
-  final VoidCallback onOpenNotificationDrawer;
-  final VoidCallback onOpenUserDrawer;
-
   const HomeViewHeader({
     super.key,
     required this.onOpenCartDrawer,
     required this.onOpenNotificationDrawer,
     required this.onOpenUserDrawer,
   });
-
+  final VoidCallback onOpenCartDrawer;
+  final VoidCallback onOpenNotificationDrawer;
+  final VoidCallback onOpenUserDrawer;
   @override
   Widget build(BuildContext context) {
     return Row(

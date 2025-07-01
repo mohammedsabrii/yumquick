@@ -14,29 +14,29 @@ class HomeView extends StatefulWidget {
 }
 
 class HomeViewState extends State<HomeView> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  Widget? _currentDrawer;
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  Widget? currentDrawer;
 
-  void _openDrawer(Widget drawer) {
+  void openDrawer(Widget drawer) {
     setState(() {
-      _currentDrawer = drawer;
+      currentDrawer = drawer;
     });
-    _scaffoldKey.currentState?.openEndDrawer();
+    scaffoldKey.currentState?.openEndDrawer();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        key: _scaffoldKey,
-        endDrawer: _currentDrawer,
+        key: scaffoldKey,
+        endDrawer: currentDrawer,
         bottomNavigationBar: const CustomBouttonNavigationBar(),
         backgroundColor: AppColor.kYellowBase,
         body: HomeViewBody(
-          onOpenCartDrawer: () => _openDrawer(const DrawerEmptyCart()),
+          onOpenCartDrawer: () => openDrawer(const DrawerEmptyCart()),
           onOpenNotificationDrawer:
-              () => _openDrawer(const NotificationDrawerDetails()),
-          onOpenUserDrawer: () => _openDrawer(const DrawerDetails()),
+              () => openDrawer(const NotificationDrawerDetails()),
+          onOpenUserDrawer: () => openDrawer(const DrawerDetails()),
         ),
       ),
     );

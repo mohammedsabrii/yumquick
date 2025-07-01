@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/widget/grid_view_item.dart';
 
-class RecommendGridView extends StatelessWidget {
-  const RecommendGridView({super.key});
+class SearchSliverGride extends StatelessWidget {
+  const SearchSliverGride({super.key});
 
   @override
   Widget build(BuildContext context) {

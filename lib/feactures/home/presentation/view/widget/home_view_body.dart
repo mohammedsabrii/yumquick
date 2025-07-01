@@ -18,7 +18,7 @@ class HomeViewBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.035),
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.037),
         HomeViewHeader(
           onOpenCartDrawer: onOpenCartDrawer,
           onOpenNotificationDrawer: onOpenNotificationDrawer,

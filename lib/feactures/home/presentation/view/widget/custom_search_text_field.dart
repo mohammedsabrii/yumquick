@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
@@ -32,6 +34,9 @@ class CustomSaerchTextField extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
       child: TextFormField(
+        onTap: () {
+          GoRouter.of(context).push(AppRouter.kSearchView);
+        },
         cursorColor: Colors.black,
         canRequestFocus: canRequestFocus,
         obscureText: obscureText,
