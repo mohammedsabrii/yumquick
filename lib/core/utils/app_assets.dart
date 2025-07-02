@@ -80,4 +80,12 @@ class AppAssets {
   static const kLessIconOrang = 'assets/images/Less Icon orang.svg';
   static const kMapTest = 'assets/images/map test.jpg';
   static const kBestSellerTest = 'assets/images/best seller test.jpg';
+  static const kVeganCatgoryIcon = 'assets/images/Vegan catgory icon.svg';
+  static const kSnacksCatgoryIcon = 'assets/images/Snacks catgory icon.svg';
+  static const kMealsCatgoryIcon = 'assets/images/Meals catgory icon.svg';
+  static const kDrinksCatgoryIcon = 'assets/images/Drinks catgory icon.svg';
+  static const kDessertsCatgoryIcon = 'assets/images/Desserts catgory icon.svg';
+  static const kFavoritesIconActive = 'assets/images/Favorites icon active.svg';
+  static const kFavoritesIconUnActive =
+      'assets/images/Favorites icon unactive.svg';
 }
