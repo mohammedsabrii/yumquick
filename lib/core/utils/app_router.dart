@@ -8,6 +8,7 @@ import 'package:yumquick/feactures/home/presentation/view/confirmed_order_view.d
 import 'package:yumquick/feactures/home/presentation/view/delivery_time_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/home_view.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/my_orders_view.dart';
+import 'package:yumquick/feactures/home/presentation/view/more_best_seller_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/payment_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/cancel_order_view.dart';
@@ -29,6 +30,7 @@ class AppRouter {
   static const kSignUpView = '/SignUpView';
   static const kHomeView = '/HomeView';
   static const kSearchView = '/SearchView';
+  static const kMoreBestSellerView = '/MoreBestSellerView';
   static const kDrawer = '/Drawer';
   static const kMyOrders = '/MyOrders';
   static const kCancelOrderView = '/CancelOrderView';
@@ -62,7 +64,10 @@ class AppRouter {
         path: kSearchView,
         builder: (context, state) => const SearchView(),
       ),
-
+      GoRoute(
+        path: kMoreBestSellerView,
+        builder: (context, state) => const MoreBestSellerView(),
+      ),
       GoRoute(path: kDrawer, builder: (context, state) => const CustomDrawer()),
       GoRoute(
         path: kMyOrders,
