@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/best_seller_item_image.dart';
 import 'package:yumquick/core/widget/price_item.dart';
 
@@ -7,13 +9,18 @@ class BestSellerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(right: 11.32),
-      child: Stack(
-        children: [
-          BestSellerItemImage(),
-          Positioned(bottom: 30, right: 3, child: PriceItem()),
-        ],
+    return Padding(
+      padding: const EdgeInsets.only(right: 11.32),
+      child: GestureDetector(
+        onTap: () {
+          GoRouter.of(context).push(AppRouter.kProdactDetailsView);
+        },
+        child: const Stack(
+          children: [
+            BestSellerItemImage(),
+            Positioned(bottom: 30, right: 3, child: PriceItem()),
+          ],
+        ),
       ),
     );
   }

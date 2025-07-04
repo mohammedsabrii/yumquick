@@ -3,7 +3,7 @@ import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/cart_total_item.dart';
+import 'package:yumquick/core/widget/custom_total_item.dart';
 
 class ConfirmOrderPriceAndTotalItems extends StatelessWidget {
   const ConfirmOrderPriceAndTotalItems({super.key, required this.cartItem});
@@ -26,7 +26,7 @@ class ConfirmOrderPriceAndTotalItems extends StatelessWidget {
             context,
           ).copyWith(color: AppColor.kDarkRed, fontWeight: FontWeight.w300),
         ),
-        CartTotalItem(
+        CustomTotalItem(
           cartItem: cartItem,
           addIcon: AppAssets.kAddIconOrang,
           lessIcon: AppAssets.kLessIconOrang,

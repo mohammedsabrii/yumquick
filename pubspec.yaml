@@ -90,6 +90,10 @@ flutter:
       fonts:
         - asset: assets/fonts/LeagueSpartan-Medium.ttf
           weight: 500
+    - family: League Spartan Light
+      fonts:
+        - asset: assets/fonts/LeagueSpartan-Light.ttf
+          weight: 300     
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

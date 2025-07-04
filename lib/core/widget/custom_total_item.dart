@@ -6,23 +6,27 @@ import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
 
-class CartTotalItem extends StatefulWidget {
-  final CartItem cartItem;
-  final String? lessIcon, addIcon;
-  final Color? textColor;
-  const CartTotalItem({
+class CustomTotalItem extends StatefulWidget {
+  const CustomTotalItem({
     super.key,
     required this.cartItem,
     this.lessIcon,
     this.addIcon,
     this.textColor,
+    this.height,
+    this.width,
+    this.style,
   });
-
+  final CartItem cartItem;
+  final String? lessIcon, addIcon;
+  final Color? textColor;
+  final double? height, width;
+  final TextStyle? style;
   @override
-  State<CartTotalItem> createState() => _CartTotalItemState();
+  State<CustomTotalItem> createState() => _CustomTotalItemState();
 }
 
-class _CartTotalItemState extends State<CartTotalItem> {
+class _CustomTotalItemState extends State<CustomTotalItem> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -34,16 +38,22 @@ class _CartTotalItemState extends State<CartTotalItem> {
               widget.cartItem.quantity - 1,
             );
           },
-          child: SvgPicture.asset(widget.lessIcon ?? AppAssets.kLessIcon),
+          child: SvgPicture.asset(
+            widget.lessIcon ?? AppAssets.kLessIcon,
+            width: widget.width,
+            height: widget.height,
+          ),
         ),
         const SizedBox(width: 5),
         Text(
           '${widget.cartItem.quantity}',
           textAlign: TextAlign.center,
-          style: AppStyles.styleLeagueSpartanMediem14(context).copyWith(
-            fontSize: 13,
-            color: widget.textColor ?? AppColor.kCultured,
-          ),
+          style:
+              widget.style ??
+              AppStyles.styleLeagueSpartanMediem14(context).copyWith(
+                fontSize: 13,
+                color: widget.textColor ?? AppColor.kCultured,
+              ),
         ),
         const SizedBox(width: 5),
         GestureDetector(
@@ -53,7 +63,11 @@ class _CartTotalItemState extends State<CartTotalItem> {
               widget.cartItem.quantity + 1,
             );
           },
-          child: SvgPicture.asset(widget.addIcon ?? AppAssets.kAddIcon),
+          child: SvgPicture.asset(
+            widget.addIcon ?? AppAssets.kAddIcon,
+            width: widget.width,
+            height: widget.height,
+          ),
         ),
       ],
     );

@@ -18,10 +18,28 @@ class AppStyles {
     );
   }
 
+  static TextStyle styleLeagueSpartanLight12(context) {
+    return const TextStyle(
+      color: AppColor.kDarkRed,
+      fontSize: 12,
+      fontFamily: 'League Spartan Light',
+      fontWeight: FontWeight.w300,
+    );
+  }
+
   static TextStyle styleLeagueSpartanLight14(context) {
     return const TextStyle(
       fontSize: 14,
-      fontFamily: 'League Spartan',
+      fontFamily: 'League Spartan Light',
+      fontWeight: FontWeight.w300,
+    );
+  }
+
+  static TextStyle styleLeagueSpartanLight16(context) {
+    return const TextStyle(
+      color: AppColor.kDarkRed,
+      fontSize: 16,
+      fontFamily: 'League Spartan Light',
       fontWeight: FontWeight.w300,
     );
   }
@@ -92,9 +110,25 @@ class AppStyles {
     );
   }
 
+  static TextStyle styleLeagueSpartanBold15(context) {
+    return const TextStyle(
+      fontSize: 15,
+      fontFamily: 'League Spartan',
+      fontWeight: FontWeight.w700,
+    );
+  }
+
   static TextStyle styleLeagueSpartanBold24(context) {
     return const TextStyle(
       fontSize: 24,
+      fontFamily: 'League Spartan',
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle styleLeagueSpartanBold20(context) {
+    return const TextStyle(
+      fontSize: 20,
       fontFamily: 'League Spartan',
       fontWeight: FontWeight.w700,
     );

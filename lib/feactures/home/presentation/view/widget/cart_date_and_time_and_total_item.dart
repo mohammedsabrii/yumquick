@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/cart_total_item.dart';
+import 'package:yumquick/core/widget/custom_total_item.dart';
 
 class CartDateAndTimeAndTotalItem extends StatelessWidget {
   final CartItem cartItem;
@@ -26,7 +26,7 @@ class CartDateAndTimeAndTotalItem extends StatelessWidget {
             context,
           ).copyWith(fontSize: 13, color: AppColor.kCultured),
         ),
-        CartTotalItem(cartItem: cartItem),
+        CustomTotalItem(cartItem: cartItem),
       ],
     );
   }

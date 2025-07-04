@@ -88,4 +88,8 @@ class AppAssets {
   static const kFavoritesIconActive = 'assets/images/Favorites icon active.svg';
   static const kFavoritesIconUnActive =
       'assets/images/Favorites icon unactive.svg';
+  static const kOffarStar = 'assets/images/offar star.svg';
+  static const kProdactDetailsTest =
+      'assets/images/prodact details test icon.jpg';
+  static const kAddProdactToCart = 'assets/images/add prodact to cart.svg';
 }
