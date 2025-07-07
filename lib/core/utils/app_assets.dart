@@ -92,4 +92,5 @@ class AppAssets {
   static const kProdactDetailsTest =
       'assets/images/prodact details test icon.jpg';
   static const kAddProdactToCart = 'assets/images/add prodact to cart.svg';
+  static const kUnion = 'assets/images/Union.svg';
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
 class CustomBouttonNavigationBar extends StatelessWidget {
@@ -32,7 +34,12 @@ class CustomBouttonNavigationBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SvgPicture.asset(AppAssets.kHomeIcon),
-              SvgPicture.asset(AppAssets.kMyOrdersIcon),
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kMenuView);
+                },
+                child: SvgPicture.asset(AppAssets.kMyOrdersIcon),
+              ),
               SvgPicture.asset(AppAssets.kFavoriteIcon),
               SvgPicture.asset(AppAssets.kMenuIcon),
               SvgPicture.asset(AppAssets.kHelpIcon),

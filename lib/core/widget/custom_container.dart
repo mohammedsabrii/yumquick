@@ -8,7 +8,7 @@ class CustomContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        width: MediaQuery.sizeOf(context).width,
+        width: double.infinity,
         height: MediaQuery.sizeOf(context).height * 0.82,
         decoration: const BoxDecoration(
           color: AppColor.kCultured,

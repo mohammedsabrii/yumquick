@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/feactures/Menu/presentation/view/widget/menu_view_body.dart';
 import 'package:yumquick/core/widget/custom_boutton_navigation_bar.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_details.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_empty_cart.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/home_view_body.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/notifications_drawer_details.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class MenuView extends StatefulWidget {
+  const MenuView({super.key});
 
   @override
-  HomeViewState createState() => HomeViewState();
+  State<MenuView> createState() => _MenuViewState();
 }
 
-class HomeViewState extends State<HomeView> {
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+class _MenuViewState extends State<MenuView> {
   Widget? currentDrawer;
-
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   void openDrawer(Widget drawer) {
     setState(() {
       currentDrawer = drawer;
@@ -30,9 +29,9 @@ class HomeViewState extends State<HomeView> {
       child: Scaffold(
         key: scaffoldKey,
         endDrawer: currentDrawer,
-        bottomNavigationBar: const CustomBouttonNavigationBar(),
         backgroundColor: AppColor.kYellowBase,
-        body: HomeViewBody(
+        bottomNavigationBar: const CustomBouttonNavigationBar(),
+        body: MenuViewBody(
           onOpenCartDrawer: () => openDrawer(const DrawerEmptyCart()),
           onOpenNotificationDrawer:
               () => openDrawer(const NotificationDrawerDetails()),

@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:yumquick/feactures/Contact%20Us/presentation/view/contact_us_view.dart';
 import 'package:yumquick/feactures/Delivery%20Address/presentation/view/add_new_address_view.dart';
 import 'package:yumquick/feactures/Delivery%20Address/presentation/view/delivery_address_view.dart';
+import 'package:yumquick/feactures/Menu/presentation/view/menu_view.dart';
 import 'package:yumquick/feactures/Payment%20Methods/presentation/view/payment_methods_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/confirm_order_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/confirmed_order_view.dart';
@@ -33,6 +34,7 @@ class AppRouter {
   static const kSearchView = '/SearchView';
   static const kProdactDetailsView = '/ProdactDetailsView';
   static const kMoreBestSellerView = '/MoreBestSellerView';
+  static const kMenuView = '/MenuView';
   static const kDrawer = '/Drawer';
   static const kMyOrders = '/MyOrders';
   static const kCancelOrderView = '/CancelOrderView';
@@ -74,6 +76,7 @@ class AppRouter {
         path: kMoreBestSellerView,
         builder: (context, state) => const MoreBestSellerView(),
       ),
+      GoRoute(path: kMenuView, builder: (context, state) => const MenuView()),
       GoRoute(path: kDrawer, builder: (context, state) => const CustomDrawer()),
       GoRoute(
         path: kMyOrders,

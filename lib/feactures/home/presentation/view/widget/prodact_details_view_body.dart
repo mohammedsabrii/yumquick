@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/core/widget/custom_container.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/prodact_details_button.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/prodact_details_image.dart';
