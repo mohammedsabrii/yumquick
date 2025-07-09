@@ -93,4 +93,9 @@ class AppAssets {
       'assets/images/prodact details test icon.jpg';
   static const kAddProdactToCart = 'assets/images/add prodact to cart.svg';
   static const kUnion = 'assets/images/Union.svg';
+  static const kVeganImageTest = 'assets/images/vegan iamge test.png';
+  static const kSnaksImageTest = 'assets/images/Snacks image test.png';
+  static const kMaleImageTest = 'assets/images/male image test.png';
+  static const kDrinksImageTest = 'assets/images/drinks image test.png';
+  static const kDessertImageTest = 'assets/images/dessert image test.png';
 }

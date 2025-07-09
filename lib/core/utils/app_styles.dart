@@ -60,6 +60,15 @@ class AppStyles {
     );
   }
 
+  static TextStyle styleLeagueSpartanSemiBold18(context) {
+    return const TextStyle(
+      color: AppColor.kDarkRed,
+      fontSize: 18,
+      fontFamily: 'League Spartan',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
   static TextStyle styleLeagueSpartanMediem33(context) {
     return const TextStyle(
       fontSize: 33,
@@ -87,6 +96,14 @@ class AppStyles {
   static TextStyle styleLeagueSpartanregular16(context) {
     return const TextStyle(
       fontSize: 16,
+      fontFamily: 'League Spartan',
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle styleLeagueSpartanregular18(context) {
+    return const TextStyle(
+      fontSize: 18,
       fontFamily: 'League Spartan',
       fontWeight: FontWeight.w400,
     );

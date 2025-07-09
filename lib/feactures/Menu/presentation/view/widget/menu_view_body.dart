@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:yumquick/feactures/Menu/presentation/view/widget/catgory_coutainer.dart';
+import 'package:yumquick/feactures/Menu/presentation/view/widget/snacks_details.dart';
+import 'package:yumquick/feactures/Menu/presentation/view/widget/vigan_details.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/home_view_header.dart';
 
 class MenuViewBody extends StatelessWidget {
@@ -23,7 +24,8 @@ class MenuViewBody extends StatelessWidget {
           onOpenUserDrawer: onOpenUserDrawer,
         ),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.0316),
-        const Expanded(child: CatgoryContiner()),
+
+        const SnacksDetails(),
       ],
     );
   }

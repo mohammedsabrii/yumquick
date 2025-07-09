@@ -4,6 +4,7 @@ import 'package:yumquick/core/utils/colors.dart';
 class CustomContainer extends StatelessWidget {
   const CustomContainer({super.key, required this.child});
   final Widget child;
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
