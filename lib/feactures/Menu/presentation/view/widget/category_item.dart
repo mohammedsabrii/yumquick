@@ -3,16 +3,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 
-class CatgoryItem extends StatelessWidget {
-  const CatgoryItem({
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({
     super.key,
-    required this.catgoryIcon,
+    required this.categoryIcon,
     required this.isActive,
-    required this.catgoryActiveIcon,
+    required this.categoryActiveIcon,
     this.onTap,
+    required this.categoryName,
   });
   final Function()? onTap;
-  final String catgoryIcon, catgoryActiveIcon;
+  final String categoryIcon, categoryActiveIcon, categoryName;
   final bool isActive;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class CatgoryItem extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10.0),
               child: Column(
                 children: [
-                  SvgPicture.asset(catgoryActiveIcon),
+                  SvgPicture.asset(categoryActiveIcon),
                   Text(
                     'Snacks',
                     textAlign: TextAlign.center,
@@ -46,7 +47,7 @@ class CatgoryItem extends StatelessWidget {
           onTap: onTap,
           child: Column(
             children: [
-              SvgPicture.asset(catgoryIcon),
+              SvgPicture.asset(categoryIcon),
               Text(
                 'Snacks',
                 textAlign: TextAlign.center,

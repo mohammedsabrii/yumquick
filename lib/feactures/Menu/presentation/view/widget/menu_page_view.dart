@@ -26,6 +26,7 @@ class _MenuPageViewState extends State<MenuPageView> {
     );
   }
 
+  @override
   void dispose() {
     widget.pageController!.dispose();
     super.dispose();

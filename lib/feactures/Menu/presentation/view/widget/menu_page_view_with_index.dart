@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:yumquick/feactures/Menu/presentation/view/widget/catgory_coutainer.dart';
-import 'package:yumquick/feactures/Menu/presentation/view/widget/catgory_page_view_list.dart';
+import 'package:yumquick/feactures/Menu/presentation/view/widget/category_coutainer.dart';
+import 'package:yumquick/feactures/Menu/presentation/view/widget/category_page_view_list.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/widget/menu_page_view.dart';
 
 class MenuPageViewWithIndex extends StatefulWidget {
@@ -32,11 +32,11 @@ class _MenuPageViewWithIndexState extends State<MenuPageViewWithIndex> {
 
   @override
   Widget build(BuildContext context) {
-    return CatgoryContiner(
+    return CategoryContiner(
       child: Column(
         children: [
           SizedBox(height: MediaQuery.sizeOf(context).height * 0.0234),
-          CatgoryPageViewList(
+          CategoryPageViewList(
             cruntPageIndex: pageIndex,
             pageController: pageController,
           ),

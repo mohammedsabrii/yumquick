@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/manger/catgory_item_model.dart';
-import 'package:yumquick/feactures/Menu/presentation/view/widget/catgory_prodact.dart';
+import 'package:yumquick/feactures/Menu/presentation/view/widget/category_prodact.dart';
 
 class DrinksCategoryListView extends StatelessWidget {
   const DrinksCategoryListView({super.key});
@@ -11,8 +11,8 @@ class DrinksCategoryListView extends StatelessWidget {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return CatgoryProdact(
-          catgoryItemModel: CatgoryItemModel(
+        return CategoryProdact(
+          categoryItemModel: CategoryItemModel(
             image: AppAssets.kSnaksImageTest,
             title: 'Mojito',
             price: '15',

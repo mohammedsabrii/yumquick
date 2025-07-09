@@ -1,10 +1,10 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/widget/category_header.dart';
-import 'package:yumquick/feactures/Menu/presentation/view/widget/snacks_category_list_view.dart';
+import 'package:yumquick/feactures/Menu/presentation/view/widget/vigan_category_list_view.dart';
 
-class SnacksDetails extends StatelessWidget {
-  const SnacksDetails({super.key});
+class VeganDetails extends StatelessWidget {
+  const VeganDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,17 +13,19 @@ class SnacksDetails extends StatelessWidget {
       height: MediaQuery.sizeOf(context).height * 0.738,
       decoration: const BoxDecoration(
         color: AppColor.kCultured,
-        borderRadius: BorderRadius.only(topRight: Radius.circular(30)),
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(30),
+          topLeft: Radius.circular(30),
+        ),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.sizeOf(context).width * 0.089,
         ),
-
         child: const Column(
           children: [
             CategoryHeader(),
-            Expanded(child: SnacksCategoryListView()),
+            Expanded(child: ViganCategoryListView()),
           ],
         ),
       ),

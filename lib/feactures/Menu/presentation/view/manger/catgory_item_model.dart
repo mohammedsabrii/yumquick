@@ -1,7 +1,7 @@
-class CatgoryItemModel {
+class CategoryItemModel {
   final String image, title, price, subTitle;
 
-  CatgoryItemModel({
+  CategoryItemModel({
     required this.image,
     required this.title,
     required this.price,

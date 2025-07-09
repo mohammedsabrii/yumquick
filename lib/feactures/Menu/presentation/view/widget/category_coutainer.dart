@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
-class CatgoryContiner extends StatelessWidget {
-  const CatgoryContiner({super.key, required this.child});
+class CategoryContiner extends StatelessWidget {
+  const CategoryContiner({super.key, required this.child});
   final Widget child;
   @override
   Widget build(BuildContext context) {

@@ -4,9 +4,9 @@ import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/rate_widget.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/manger/catgory_item_model.dart';
 
-class CatgoryProdact extends StatelessWidget {
-  const CatgoryProdact({super.key, required this.catgoryItemModel});
-  final CatgoryItemModel catgoryItemModel;
+class CategoryProdact extends StatelessWidget {
+  const CategoryProdact({super.key, required this.categoryItemModel});
+  final CategoryItemModel categoryItemModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +19,7 @@ class CatgoryProdact extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(36),
             image: DecorationImage(
-              image: AssetImage(catgoryItemModel.image),
+              image: AssetImage(categoryItemModel.image),
               fit: BoxFit.fill,
             ),
           ),
@@ -27,7 +27,7 @@ class CatgoryProdact extends StatelessWidget {
         Row(
           children: [
             Text(
-              catgoryItemModel.title,
+              categoryItemModel.title,
               style: AppStyles.styleLeagueSpartanSemiBold18(context),
             ),
             const SizedBox(width: 24),
@@ -37,7 +37,7 @@ class CatgoryProdact extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              '\$${catgoryItemModel.price}',
+              '\$${categoryItemModel.price}',
               style: AppStyles.styleLeagueSpartanregular18(
                 context,
               ).copyWith(color: AppColor.kMainColor),
@@ -45,7 +45,7 @@ class CatgoryProdact extends StatelessWidget {
           ],
         ),
         Text(
-          catgoryItemModel.subTitle,
+          categoryItemModel.subTitle,
           style: AppStyles.styleLeagueSpartanLight12(context),
         ),
         const Divider(thickness: 2, color: AppColor.kPinkishOrange),

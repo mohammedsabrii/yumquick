@@ -4,8 +4,8 @@ import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
-class CatgoryHeader extends StatelessWidget {
-  const CatgoryHeader({super.key});
+class CategoryHeader extends StatelessWidget {
+  const CategoryHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
