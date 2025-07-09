@@ -39,15 +39,15 @@ class CatgoryPageViewList extends StatelessWidget {
                 onTap: () {
                   pageController.animateToPage(
                     index,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.bounceInOut,
+                    duration: const Duration(milliseconds: 1),
+                    curve: Curves.easeInOut,
                   );
                 },
                 isActive: index == cruntPageIndex,
                 catgoryActiveIcon: catgoryActiveIcon[index],
                 catgoryIcon: catgoryIcon[index],
               ),
-              if (index < catgoryIcon.length - 1) const SizedBox(width: 19),
+              if (index < catgoryIcon.length - 1) SizedBox(width: 19),
             ],
           );
         }),
