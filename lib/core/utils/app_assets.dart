@@ -98,4 +98,12 @@ class AppAssets {
   static const kMaleImageTest = 'assets/images/male image test.png';
   static const kDrinksImageTest = 'assets/images/drinks image test.png';
   static const kDessertImageTest = 'assets/images/dessert image test.png';
+  static const kActiveDessertiIcon =
+      'assets/images/Active Desserts catgory icon.svg';
+  static const kActivedrinksicon =
+      'assets/images/Active Drinks catgory icon.svg';
+  static const kActiveMealsIcon = 'assets/images/Active Meals catgory icon.svg';
+  static const kActiveSnacksIcon =
+      'assets/images/Active Snacks catgory icon.svg';
+  static const kActiveVeganIcon = 'assets/images/Active Vegan catgory icon.svg';
 }

@@ -1,56 +1,61 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
-import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/core/widget/rate_widget.dart';
-import 'package:yumquick/feactures/Menu/presentation/view/manger/catgory_item_model.dart';
 
 class CatgoryItem extends StatelessWidget {
-  const CatgoryItem({super.key, required this.catgoryItemModel});
-  final CatgoryItemModel catgoryItemModel;
+  const CatgoryItem({
+    super.key,
+    required this.catgoryIcon,
+    required this.isActive,
+    required this.catgoryActiveIcon,
+    this.onTap,
+  });
+  final Function()? onTap;
+  final String catgoryIcon, catgoryActiveIcon;
+  final bool isActive;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: double.infinity,
-          height: MediaQuery.sizeOf(context).height * 0.204,
-
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(36),
-            image: DecorationImage(
-              image: AssetImage(catgoryItemModel.image),
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
-        Row(
+    return isActive
+        ? Stack(
+          clipBehavior: Clip.none,
           children: [
-            Text(
-              catgoryItemModel.title,
-              style: AppStyles.styleLeagueSpartanSemiBold18(context),
+            Positioned(
+              left: MediaQuery.sizeOf(context).width * -0.09,
+              bottom: 0,
+              child: SvgPicture.asset(AppAssets.kUnion),
             ),
-            const SizedBox(width: 24),
-            const RateWidget(
-              color: AppColor.kMainColor,
-              textColor: AppColor.kCultured,
-            ),
-            const Spacer(),
-            Text(
-              '\$${catgoryItemModel.price}',
-              style: AppStyles.styleLeagueSpartanregular18(
-                context,
-              ).copyWith(color: AppColor.kMainColor),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Column(
+                children: [
+                  SvgPicture.asset(catgoryActiveIcon),
+                  Text(
+                    'Snacks',
+                    textAlign: TextAlign.center,
+                    style: AppStyles.styleLeagueSpartanLight12(
+                      context,
+                    ).copyWith(fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
             ),
           ],
-        ),
-        Text(
-          catgoryItemModel.subTitle,
-          style: AppStyles.styleLeagueSpartanLight12(context),
-        ),
-        const Divider(thickness: 2, color: AppColor.kPinkishOrange),
-        const SizedBox(height: 24),
-      ],
-    );
+        )
+        : GestureDetector(
+          onTap: onTap,
+          child: Column(
+            children: [
+              SvgPicture.asset(catgoryIcon),
+              Text(
+                'Snacks',
+                textAlign: TextAlign.center,
+                style: AppStyles.styleLeagueSpartanLight12(
+                  context,
+                ).copyWith(fontWeight: FontWeight.w400),
+              ),
+            ],
+          ),
+        );
   }
 }

@@ -8,25 +8,23 @@ class SnacksDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.82,
-        decoration: const BoxDecoration(
-          color: AppColor.kCultured,
-          borderRadius: BorderRadius.only(topRight: Radius.circular(30)),
+    return Container(
+      width: double.infinity,
+      height: MediaQuery.sizeOf(context).height * 0.738,
+      decoration: const BoxDecoration(
+        color: AppColor.kCultured,
+        borderRadius: BorderRadius.only(topRight: Radius.circular(30)),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.sizeOf(context).width * 0.089,
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.sizeOf(context).width * 0.089,
-          ),
 
-          child: const Column(
-            children: [
-              CatgoryHeader(),
-              Expanded(child: SnacksCategoryListView()),
-            ],
-          ),
+        child: const Column(
+          children: [
+            CatgoryHeader(),
+            Expanded(child: SnacksCategoryListView()),
+          ],
         ),
       ),
     );
