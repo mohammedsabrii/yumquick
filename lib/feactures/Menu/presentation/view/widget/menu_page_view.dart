@@ -25,10 +25,4 @@ class _MenuPageViewState extends State<MenuPageView> {
       itemBuilder: (context, index) => menuList[index],
     );
   }
-
-  @override
-  void dispose() {
-    widget.pageController!.dispose();
-    super.dispose();
-  }
 }
