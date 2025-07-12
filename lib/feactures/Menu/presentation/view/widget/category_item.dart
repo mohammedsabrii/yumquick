@@ -2,18 +2,19 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
+import 'package:yumquick/core/utils/colors.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
     super.key,
     required this.categoryIcon,
     required this.isActive,
-    required this.categoryActiveIcon,
+
     this.onTap,
     required this.categoryName,
   });
   final Function()? onTap;
-  final String categoryIcon, categoryActiveIcon, categoryName;
+  final String categoryIcon, categoryName;
   final bool isActive;
   @override
   Widget build(BuildContext context) {
@@ -30,9 +31,9 @@ class CategoryItem extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10.0),
               child: Column(
                 children: [
-                  SvgPicture.asset(categoryActiveIcon),
+                  SvgPicture.asset(categoryIcon),
                   Text(
-                    'Snacks',
+                    categoryName,
                     textAlign: TextAlign.center,
                     style: AppStyles.styleLeagueSpartanLight12(
                       context,
@@ -49,7 +50,7 @@ class CategoryItem extends StatelessWidget {
             children: [
               SvgPicture.asset(categoryIcon),
               Text(
-                'Snacks',
+                categoryName,
                 textAlign: TextAlign.center,
                 style: AppStyles.styleLeagueSpartanLight12(
                   context,

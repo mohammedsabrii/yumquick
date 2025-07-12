@@ -9,7 +9,7 @@ class FavoriteGridView extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       itemCount: 10,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 7,

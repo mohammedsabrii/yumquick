@@ -16,13 +16,7 @@ class CategoryPageViewList extends StatelessWidget {
     AppAssets.kDessertsIcon,
     AppAssets.kDrinksIcon,
   ];
-  final List<String> categoryActiveIcon = const [
-    AppAssets.kActiveSnacksIcon,
-    AppAssets.kActiveMealsIcon,
-    AppAssets.kActiveVeganIcon,
-    AppAssets.kActiveDessertiIcon,
-    AppAssets.kActivedrinksicon,
-  ];
+
   final List<String> categoryName = const [
     'Snacks',
     'Meal',
@@ -43,16 +37,19 @@ class CategoryPageViewList extends StatelessWidget {
         children: List.generate(menuList.length, (index) {
           return Row(
             children: [
-              CategoryItem(
-                onTap: () {
-                  pageController.jumpToPage(index);
-                },
-                isActive: index == cruntPageIndex,
-                categoryActiveIcon: categoryActiveIcon[index],
-                categoryIcon: categoryIcon[index],
-                categoryName: categoryName[index],
+              Padding(
+                padding: const EdgeInsets.only(right: 18),
+                child: CategoryItem(
+                  onTap: () {
+                    pageController.jumpToPage(index);
+                  },
+                  isActive: index == cruntPageIndex,
+
+                  categoryIcon: categoryIcon[index],
+                  categoryName: categoryName[index],
+                ),
               ),
-              if (index < categoryIcon.length - 1) const SizedBox(width: 19),
+              // if (index < categoryIcon.length - 1) const SizedBox(width: 19),
             ],
           );
         }),

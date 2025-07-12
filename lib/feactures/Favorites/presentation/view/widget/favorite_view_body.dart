@@ -15,7 +15,7 @@ class FavoriteViewBody extends StatelessWidget {
           space: MediaQuery.sizeOf(context).width * 0.244,
         ),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.035),
-        FavoriteViewDetails(),
+        const FavoriteViewDetails(),
       ],
     );
   }

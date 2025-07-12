@@ -51,8 +51,18 @@ class CustomBouttonNavigationBar extends StatelessWidget {
                 },
                 child: SvgPicture.asset(AppAssets.kFavoriteIcon),
               ),
-              SvgPicture.asset(AppAssets.kMenuIcon),
-              SvgPicture.asset(AppAssets.kHelpIcon),
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kMyOrders);
+                },
+                child: SvgPicture.asset(AppAssets.kMenuIcon),
+              ),
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kContactUs);
+                },
+                child: SvgPicture.asset(AppAssets.kHelpIcon),
+              ),
             ],
           ),
         ),

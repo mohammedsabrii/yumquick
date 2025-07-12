@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/core/widget/custom_container.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/widget/favorite_grid_view.dart';
-import 'package:yumquick/feactures/Favorites/presentation/view/widget/favorite_view_item.dart';
 
 class FavoriteViewDetails extends StatelessWidget {
   const FavoriteViewDetails({super.key});

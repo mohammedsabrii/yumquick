@@ -25,12 +25,6 @@ class _MenuPageViewWithIndexState extends State<MenuPageViewWithIndex> {
   }
 
   @override
-  void dispose() {
-    pageController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return CategoryContiner(
       child: Column(
@@ -44,5 +38,11 @@ class _MenuPageViewWithIndexState extends State<MenuPageViewWithIndex> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
   }
 }
