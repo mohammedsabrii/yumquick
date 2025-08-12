@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/signup_cubit/signup_cubit.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(url: supbaseUrl, anonKey: supbaseAnonKey);
   runApp(
     ChangeNotifierProvider(
       create: (context) => CartModel(),
@@ -17,9 +23,12 @@ class YumQuick extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
+    return MultiProvider(
+      providers: [BlocProvider(create: (context) => SignupCubit())],
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerConfig: AppRouter.router,
+      ),
     );
   }
 }

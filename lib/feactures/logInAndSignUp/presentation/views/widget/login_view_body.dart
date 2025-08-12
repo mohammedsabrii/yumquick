@@ -7,19 +7,15 @@ class LoginViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: [
-        Column(
-          children: [
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.0515),
-            CustomPageHeader(
-              title: 'Log In',
-              space: MediaQuery.sizeOf(context).width * 0.31,
-            ),
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.07),
-            const LoginViewBodyDetails(),
-          ],
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.0515),
+        CustomPageHeader(
+          title: 'Log In',
+          space: MediaQuery.sizeOf(context).width * 0.31,
         ),
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.07),
+        const LoginViewBodyDetails(),
       ],
     );
   }
