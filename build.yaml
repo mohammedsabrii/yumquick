@@ -1,0 +1,25 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - swagger/**
+    builders:
+      swagger_dart_code_generator:
+        options:
+          input_folder: "lib/swagger/"
+          output_folder: "lib/generated_code/"
+          with_base_url: true
+          with_converter: true
+          use_path_for_request_names: true
+          build_only_models: false
+          scalars:
+            uuid:
+              type: String
+              deserialize: Uuid.parse
+              serialize: toString
+            binary:
+              type: String
+              deserialize: String.fromCharCodes
+              serialize: toString
+          import_paths:
+            - "package:uuid/uuid.dart"

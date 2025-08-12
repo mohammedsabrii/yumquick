@@ -15,7 +15,7 @@ class LoginViewBody extends StatelessWidget {
           space: MediaQuery.sizeOf(context).width * 0.31,
         ),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.07),
-        const LoginViewBodyDetails(),
+        LoginViewBodyDetails(),
       ],
     );
   }
