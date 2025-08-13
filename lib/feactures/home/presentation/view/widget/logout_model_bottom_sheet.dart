@@ -1,4 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
@@ -30,15 +33,19 @@ class LogoutModelBottomSheet extends StatelessWidget {
               ).copyWith(color: AppColor.kDarkRed),
             ),
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.028),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomShowModalBottomSheetBottom(
+                const CustomShowModalBottomSheetBottom(
                   text: 'Cancel',
                   color: AppColor.kPinkishOrange,
                   textColor: AppColor.kMainColor,
                 ),
                 CustomShowModalBottomSheetBottom(
+                  onTap: () async {
+                    await Supabase.instance.client.auth.signOut();
+                    GoRouter.of(context).pushReplacement(AppRouter.kLogInView);
+                  },
                   color: AppColor.kMainColor,
                   text: 'Yes, logout',
                   textColor: AppColor.kCultured,

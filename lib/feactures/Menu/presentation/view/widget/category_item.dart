@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
-import 'package:yumquick/core/utils/colors.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
