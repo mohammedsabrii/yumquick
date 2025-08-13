@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 
@@ -27,8 +28,15 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     if (isFirstTime) {
       await prefs.setBool('isFirstTime', false);
       GoRouter.of(context).pushReplacement(AppRouter.kOnPordingView);
+      return;
+    }
+    User? user = Supabase.instance.client.auth.currentUser;
+    bool? isLoggedIn = prefs.getBool('isLoggedIn');
+
+    if (user != null && isLoggedIn == true) {
+      GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
     } else {
-      GoRouter.of(context).push(AppRouter.kLogInView);
+      GoRouter.of(context).pushReplacement(AppRouter.kLogInView);
     }
   }
 

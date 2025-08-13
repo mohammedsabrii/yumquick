@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     this.textStyle,
     this.width,
     this.padding,
+    this.isLodaing = false,
   });
   final Color color, textColor;
   final String title;
@@ -19,6 +20,7 @@ class CustomButton extends StatelessWidget {
   final TextStyle? textStyle;
   final double? width;
   final EdgeInsetsGeometry? padding;
+  final bool? isLodaing;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -36,15 +38,22 @@ class CustomButton extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              style:
-                  textStyle ??
-                  AppStyles.styleLeagueSpartanBold24(
-                    context,
-                  ).copyWith(color: textColor),
-            ),
+            child:
+                isLodaing!
+                    ? const SizedBox(
+                      height: 25,
+                      width: 25,
+                      child: CircularProgressIndicator(color: Colors.white),
+                    )
+                    : Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style:
+                          textStyle ??
+                          AppStyles.styleLeagueSpartanBold24(
+                            context,
+                          ).copyWith(color: textColor),
+                    ),
           ),
         ),
       ),

@@ -85,6 +85,7 @@ class LoginViewBodyDetails extends StatelessWidget {
                     color: AppColor.kMainColor,
                     title: 'Log In',
                     textColor: Colors.white,
+                    isLodaing: isLoading,
                   ),
                   SizedBox(height: MediaQuery.sizeOf(context).height * 0.034),
                   Center(

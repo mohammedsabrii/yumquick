@@ -101,6 +101,7 @@ class SignUpViewBodyDetails extends StatelessWidget {
                 color: AppColor.kMainColor,
                 title: 'Sign Up',
                 textColor: Colors.white,
+                isLodaing: isLoading,
               ),
               const SizedBox(height: 9),
               Center(
