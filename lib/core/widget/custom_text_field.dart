@@ -13,6 +13,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.labelStyle,
     required this.textFieldTitle,
+    this.controller,
   });
 
   final bool? canRequestFocus;
@@ -22,6 +23,7 @@ class CustomTextField extends StatelessWidget {
   final String lableText, textFieldTitle;
   final Widget? suffixIcon;
   final TextStyle? labelStyle;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,6 +45,7 @@ class CustomTextField extends StatelessWidget {
             color: const Color(0xFFF3E9B5),
           ),
           child: TextFormField(
+            controller: controller,
             cursorColor: Colors.black,
             canRequestFocus: canRequestFocus ?? true,
             obscureText: obscureText ?? false,

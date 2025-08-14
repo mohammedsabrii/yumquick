@@ -30,6 +30,7 @@ class SignupCubit extends Cubit<SignupState> {
       await Supabase.instance.client.from('profiles').insert({
         'username': name,
         'phone': phoneNumber,
+        'email': email,
         'id': user.user!.id,
       });
       emit(SignupSuccess());
