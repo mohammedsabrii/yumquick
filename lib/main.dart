@@ -7,6 +7,7 @@ import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/login_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/signup_cubit/signup_cubit.dart';
+import 'package:yumquick/feactures/my%20profile/presentation/manger/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class YumQuick extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => SignupCubit()),
         BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => EditProfileCubit()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

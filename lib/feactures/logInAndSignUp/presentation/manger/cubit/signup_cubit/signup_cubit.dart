@@ -50,7 +50,7 @@ class SignupCubit extends Cubit<SignupState> {
       }
     } catch (e) {
       customShowSnackBar(context, title: e.toString());
-      print(e.toString());
+
       emit(SignupFailure(errorMassage: e.toString()));
     }
   }
