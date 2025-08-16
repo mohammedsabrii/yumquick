@@ -27,7 +27,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           phone: response['phone'] ?? '',
         ),
       );
-      customShowSnackBar(context, title: 'Success');
     } on AuthApiException catch (e) {
       emit(EditProfileFailure(errorMassage: e.toString()));
       customShowSnackBar(context, title: e.toString());

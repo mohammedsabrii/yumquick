@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
@@ -11,9 +12,10 @@ class UpdateProfileButton extends StatelessWidget {
     required this.email,
     required this.name,
     required this.phone,
+    required this.title,
   });
 
-  final String email;
+  final String email, title;
   final String name;
   final String phone;
 
@@ -25,7 +27,7 @@ class UpdateProfileButton extends StatelessWidget {
         context,
       ).copyWith(color: AppColor.kCultured, fontWeight: FontWeight.w600),
       color: AppColor.kMainColor,
-      title: 'Update Profile',
+      title: title,
       textColor: AppColor.kCultured,
       onTap: () async {
         final supabase = Supabase.instance.client;
@@ -36,6 +38,7 @@ class UpdateProfileButton extends StatelessWidget {
             .from('profiles')
             .update({'username': name, 'phone': phone, 'email': email})
             .eq('id', userId!);
+        GoRouter.of(context).pop();
         customShowSnackBar(context, title: 'Success');
       },
     );

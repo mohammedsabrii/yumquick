@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
 import 'package:yumquick/core/widget/custom_text_field.dart';
@@ -12,11 +13,19 @@ class MyProfileViewDetailes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<EditProfileCubit>(context).editPrifile(context);
     return BlocBuilder<EditProfileCubit, EditProfileState>(
       builder: (context, state) {
         if (state is EditProfileLoading) {
           return const Center(
             child: CircularProgressIndicator(color: AppColor.kMainColor),
+          );
+        } else if (state is EditProfileFailure) {
+          return Center(
+            child: Text(
+              state.errorMassage,
+              style: const TextStyle(color: Colors.red),
+            ),
           );
         } else if (state is EditProfileSuccess) {
           return CustomContainer(
@@ -34,45 +43,47 @@ class MyProfileViewDetailes extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.0469,
                     ),
-
                     CustomTextField(
                       lableText:
                           state.name.isNotEmpty ? state.name : 'No name set',
                       textFieldTitle: 'Full Name',
                       onChanged: (value) {
-                        BlocProvider.of<EditProfileCubit>(
+                        context.read<EditProfileCubit>().updateLocalData(
                           context,
-                        ).updateLocalData(context, newName: value);
+                          newName: value,
+                        );
                       },
                     ),
-
                     CustomTextField(
                       lableText:
                           state.email.isNotEmpty ? state.email : 'No email set',
                       textFieldTitle: 'Email',
                       onChanged: (value) {
-                        BlocProvider.of<EditProfileCubit>(
+                        context.read<EditProfileCubit>().updateLocalData(
                           context,
-                        ).updateLocalData(context, newEmail: value);
+                          newEmail: value,
+                        );
                       },
                     ),
-
                     CustomTextField(
                       lableText:
                           state.phone.isNotEmpty ? state.phone : 'No phone set',
                       textFieldTitle: 'Phone Number',
                       onChanged: (value) {
-                        BlocProvider.of<EditProfileCubit>(
+                        context.read<EditProfileCubit>().updateLocalData(
                           context,
-                        ).updateLocalData(context, newPhone: value);
+                          newPhone: value,
+                        );
                       },
                     ),
-
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.0445,
                     ),
-
                     UpdateProfileButton(
+                      title:
+                          state is EditProfileLoading
+                              ? 'Loading...'
+                              : 'Update Profile',
                       email: state.email,
                       name: state.name,
                       phone: state.phone,
@@ -86,13 +97,13 @@ class MyProfileViewDetailes extends StatelessWidget {
               ),
             ),
           );
-        } else if (state is EditProfileFailure) {
-          return Center(child: Text('Error: ${state.errorMassage}'));
-        } else {
-          return const Center(
-            child: Text('There is an error, please try again.'),
-          );
         }
+        return Text(
+          'OOPS, There was an error please try again ',
+          style: AppStyles.styleLeagueSpartanBold28(
+            context,
+          ).copyWith(color: AppColor.kDarkRed),
+        );
       },
     );
   }

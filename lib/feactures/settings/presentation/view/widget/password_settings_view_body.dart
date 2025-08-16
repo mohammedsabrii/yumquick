@@ -16,7 +16,7 @@ class PasswordSettingsViewBody extends StatelessWidget {
           space: MediaQuery.sizeOf(context).width * 0.122,
         ),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.034),
-        const PasswordSettingsDetailes(),
+        PasswordSettingsDetailes(),
       ],
     );
   }
