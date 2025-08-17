@@ -15,7 +15,7 @@ class SettingsViewBody extends StatelessWidget {
           space: MediaQuery.sizeOf(context).width * 0.262,
         ),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.034),
-        SettingsViewDetailes(),
+        const SettingsViewDetailes(),
       ],
     );
   }

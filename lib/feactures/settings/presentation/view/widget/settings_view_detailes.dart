@@ -1,8 +1,9 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/widget/custom_container.dart';
+import 'package:yumquick/feactures/settings/presentation/view/widget/delete_account_model_bottom_sheet.dart';
 import 'package:yumquick/feactures/settings/presentation/view/widget/settings_item.dart';
 
 class SettingsViewDetailes extends StatelessWidget {
@@ -39,6 +40,12 @@ class SettingsViewDetailes extends StatelessWidget {
               title: 'Password Settings',
             ),
             SettingsItem(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => const DeleteAccountModelBottomSheet(),
+                );
+              },
               space: MediaQuery.sizeOf(context).width * 0.06712,
               width: 23.47,
               height: 34.91,

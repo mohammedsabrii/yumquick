@@ -15,7 +15,6 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
     String? confirmPassword,
   }) async {
     final supabase = Supabase.instance.client;
-
     final userEmail = supabase.auth.currentUser?.email;
 
     if (currentPassword!.isEmpty ||

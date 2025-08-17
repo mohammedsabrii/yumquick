@@ -33,6 +33,9 @@ class SignupCubit extends Cubit<SignupState> {
         'email': email,
         'id': user.user!.id,
       });
+      await Supabase.instance.client.from('deleteprofiles').insert({
+        'id': user.user!.id,
+      });
       emit(SignupSuccess());
     } on AuthApiException catch (e) {
       if (e.code == 'weak-password') {
