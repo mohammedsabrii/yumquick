@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
@@ -9,13 +10,51 @@ import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 import 'package:yumquick/core/widget/custom_text_field.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/signup_cubit/signup_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/date_of_birth_text_fild.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_facebook_and_gmail.dart';
 
 // ignore: must_be_immutable
-class SignUpViewBodyDetails extends StatelessWidget {
-  SignUpViewBodyDetails({super.key});
+class SignUpViewBodyDetails extends StatefulWidget {
+  const SignUpViewBodyDetails({super.key});
+
+  @override
+  State<SignUpViewBodyDetails> createState() => _SignUpViewBodyDetailsState();
+}
+
+class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
   bool isLoading = false;
-  String? email, password, name, confirmPassword, mobileNumber;
+
+  String? email,
+      password,
+      name,
+      confirmPassword,
+      mobileNumber,
+      country,
+      address;
+  final TextEditingController dateController = TextEditingController();
+  DateTime? selectedDate;
+
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate ?? DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        dateController.text = DateFormat('yyyy-MM-dd').format(picked);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    dateController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignupCubit, SignupState>(
@@ -27,6 +66,7 @@ class SignUpViewBodyDetails extends StatelessWidget {
           isLoading = false;
         } else if (state is SignupFailure) {
           customShowSnackBar(context, title: state.errorMassage);
+          print(state.errorMassage);
           isLoading = false;
         }
       },
@@ -84,8 +124,31 @@ class SignUpViewBodyDetails extends StatelessWidget {
                   lableText: 'Your Mobile Number',
                 ),
               ),
-
-              // const Center(child: DateOfBirthField()),
+              Center(
+                child: CustomTextField(
+                  onChanged: (data) {
+                    country = data;
+                  },
+                  textFieldTitle: 'Country',
+                  lableText: 'Enter your country',
+                ),
+              ),
+              Center(
+                child: CustomTextField(
+                  onChanged: (data) {
+                    address = data;
+                  },
+                  textFieldTitle: 'Address',
+                  lableText: 'Enter your address',
+                ),
+              ),
+              Center(
+                child: DateOfBirthField(
+                  dateController: dateController,
+                  onPressed: () => selectDate(context),
+                  onTap: () => selectDate(context),
+                ),
+              ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.042),
               CustomButton(
                 onTap: () async {
@@ -96,6 +159,9 @@ class SignUpViewBodyDetails extends StatelessWidget {
                     password: password!,
                     confirmPassword: confirmPassword!,
                     phoneNumber: mobileNumber!,
+                    dateOfBirth: selectedDate ?? DateTime.now(),
+                    address: address!,
+                    country: country!,
                   );
                 },
                 color: AppColor.kMainColor,

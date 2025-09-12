@@ -1,40 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
-class DateOfBirthField extends StatefulWidget {
-  const DateOfBirthField({super.key});
-
-  @override
-  State<DateOfBirthField> createState() => _DateOfBirthFieldState();
-}
-
-class _DateOfBirthFieldState extends State<DateOfBirthField> {
-  final TextEditingController _dateController = TextEditingController();
-  DateTime? _selectedDate;
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: _selectedDate ?? DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-    );
-    if (picked != null && picked != _selectedDate) {
-      setState(() {
-        _selectedDate = picked;
-        _dateController.text = DateFormat('yyyy-MM-dd').format(picked);
-      });
-    }
-  }
-
-  @override
-  void dispose() {
-    _dateController.dispose();
-    super.dispose();
-  }
+class DateOfBirthField extends StatelessWidget {
+  const DateOfBirthField({
+    super.key,
+    this.onTap,
+    this.onPressed,
+    this.dateController,
+  });
+  final Function()? onTap;
+  final Function()? onPressed;
+  final TextEditingController? dateController;
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +34,12 @@ class _DateOfBirthFieldState extends State<DateOfBirthField> {
             color: const Color(0xFFF3E9B5),
           ),
           child: TextFormField(
-            controller: _dateController,
+            controller: dateController,
             decoration: InputDecoration(
               hintText: 'YYYY-MM-DD',
               suffixIcon: IconButton(
                 icon: const Icon(FontAwesomeIcons.solidCalendar),
-                onPressed: () => _selectDate(context),
+                onPressed: onPressed,
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(13),
@@ -79,7 +57,7 @@ class _DateOfBirthFieldState extends State<DateOfBirthField> {
               ),
             ),
             readOnly: true,
-            onTap: () => _selectDate(context),
+            onTap: onTap,
           ),
         ),
         const SizedBox(height: 10),

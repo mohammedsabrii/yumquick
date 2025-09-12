@@ -16,6 +16,9 @@ class SignupCubit extends Cubit<SignupState> {
     required String password,
     required String confirmPassword,
     required String phoneNumber,
+    required String address,
+    required String country,
+    required DateTime dateOfBirth,
   }) async {
     emit(SignupLoading());
     try {
@@ -31,11 +34,12 @@ class SignupCubit extends Cubit<SignupState> {
         'username': name,
         'phone': phoneNumber,
         'email': email,
+        'date_of_birth': dateOfBirth.toIso8601String(),
+        'address': address,
+        'country': country,
         'id': user.user!.id,
       });
-      await Supabase.instance.client.from('deleteprofiles').insert({
-        'id': user.user!.id,
-      });
+
       emit(SignupSuccess());
     } on AuthApiException catch (e) {
       if (e.code == 'weak-password') {

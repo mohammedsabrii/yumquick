@@ -40,14 +40,14 @@ class DeleteAccountModelBottomSheet extends StatelessWidget {
                 ),
                 CustomShowModalBottomSheetBottom(
                   onTap: () async {
-                    final supabase = Supabase.instance.client;
-                    final userId = supabase.from('deleteprofiles').insert('id');
-                    await supabase.from('profiles').delete().eq('id', userId);
-                    // await Supabase.instance.client
-                    //     .from('deleteProfiles')
-                    //     .insert('id');
-                    await supabase.auth.admin.deleteUser(userId.toString());
-                    await supabase.auth.signOut();
+                    // final supabase = Supabase.instance.client;
+                    // final userId = supabase.from('deleteprofiles').insert('id');
+                    // await supabase.from('profiles').delete().eq('id', userId);
+                    // // await Supabase.instance.client
+                    // //     .from('deleteProfiles')
+                    // //     .insert('id');
+                    // await supabase.auth.admin.deleteUser(userId.toString());
+                    // await supabase.auth.signOut();
                   },
                   text: 'Delete any way',
                   color: AppColor.kMainColor,
