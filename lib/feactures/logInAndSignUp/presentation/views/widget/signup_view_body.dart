@@ -10,7 +10,7 @@ class SignupViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.09),
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.0515),
         CustomPageHeader(
           title: 'New Account',
           space: MediaQuery.sizeOf(context).width * 0.22,
@@ -21,7 +21,7 @@ class SignupViewBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.sizeOf(context).width * 0.089,
             ),
-            child: SignUpViewBodyDetails(),
+            child: const SignUpViewBodyDetails(),
           ),
         ),
       ],

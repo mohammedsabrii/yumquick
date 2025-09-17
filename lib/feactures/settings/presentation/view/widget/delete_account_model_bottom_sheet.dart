@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_show_model_botton_sheet_bottom.dart';
@@ -15,7 +14,7 @@ class DeleteAccountModelBottomSheet extends StatelessWidget {
       ),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height * 0.30,
+        height: MediaQuery.sizeOf(context).height * 0.35,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
 

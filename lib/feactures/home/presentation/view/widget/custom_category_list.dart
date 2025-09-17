@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
+import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/category_model.dart';
 
 class CustomCategoryList extends StatelessWidget {
@@ -18,7 +19,7 @@ class CustomCategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: MediaQuery.sizeOf(context).height * 0.1,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categorys.length,
@@ -49,7 +50,9 @@ class CustomCategory extends StatelessWidget {
             Text(
               model.title,
               textAlign: TextAlign.center,
-              style: AppStyles.styleLeagueSpartanregular12(context),
+              style: AppStyles.styleLeagueSpartanregular12(
+                context,
+              ).copyWith(color: AppColor.kDarkRed),
             ),
           ],
         ),

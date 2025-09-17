@@ -18,7 +18,7 @@ class CustomOrderContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
 
         height: 35,
         decoration: ShapeDecoration(
@@ -31,7 +31,7 @@ class CustomOrderContainer extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: AppStyles.styleLeagueSpartanMediem17(
+            style: AppStyles.styleLeagueSpartanMediem16(
               context,
             ).copyWith(color: textColor),
           ),

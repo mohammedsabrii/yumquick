@@ -62,7 +62,11 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
         if (state is SignupLoading) {
           isLoading = true;
         } else if (state is SignupSuccess) {
-          GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+          customShowSnackBar(
+            context,
+            title: 'Please verify your email address',
+          );
+          GoRouter.of(context).pop();
           isLoading = false;
         } else if (state is SignupFailure) {
           customShowSnackBar(context, title: state.errorMassage);

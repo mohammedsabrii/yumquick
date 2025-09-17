@@ -25,6 +25,9 @@ class LoginViewBodyDetails extends StatelessWidget {
         } else if (state is LoginSuccess) {
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
           isLoading = false;
+        } else if (state is LoginFailure) {
+          isLoading = false;
+          print(state.errorMassage);
         }
       },
       builder: (context, state) {
