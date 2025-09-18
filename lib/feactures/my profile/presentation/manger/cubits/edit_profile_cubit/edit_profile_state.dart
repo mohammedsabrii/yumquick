@@ -11,6 +11,7 @@ final class EditProfileSuccess extends EditProfileState {
   final String phone;
   final String cuntry;
   final String address;
+  final String profilePicture;
 
   EditProfileSuccess({
     required this.name,
@@ -18,6 +19,7 @@ final class EditProfileSuccess extends EditProfileState {
     required this.phone,
     required this.cuntry,
     required this.address,
+    required this.profilePicture,
   });
 }
 

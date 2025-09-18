@@ -1,22 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
 import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 import 'package:yumquick/core/widget/custom_text_field.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/date_of_birth_text_fild.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/manger/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/view/widget/profile_image.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/view/widget/update_profile_button.dart';
 
-class MyProfileViewDetailes extends StatelessWidget {
+class MyProfileViewDetailes extends StatefulWidget {
   const MyProfileViewDetailes({super.key});
 
   @override
+  State<MyProfileViewDetailes> createState() => _MyProfileViewDetailesState();
+}
+
+class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
+  XFile? pickedImage;
+
+  Future<void> pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        pickedImage = pickedFile;
+      });
+      // Update local state with new image path
+      context.read<EditProfileCubit>().updateLocalData(
+        context,
+        newProfilePicture: pickedFile.path,
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    BlocProvider.of<EditProfileCubit>(context).fetchProfile();
+    // Fetch profile only once during initialization
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<EditProfileCubit>(context).fetchProfile();
+    });
+
     return CustomContainer(
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -42,7 +68,11 @@ class MyProfileViewDetailes extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.0222,
                     ),
-                    const ProfileImage(),
+                    ProfileImage(
+                      onImagePicked: pickImage,
+                      pickedImage: pickedImage,
+                      networkImage: state.profilePicture,
+                    ),
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.0469,
                     ),
@@ -96,8 +126,8 @@ class MyProfileViewDetailes extends StatelessWidget {
                       lableText:
                           state.cuntry.isNotEmpty
                               ? state.cuntry
-                              : 'No cuntry set',
-                      textFieldTitle: 'cuntry',
+                              : 'No country set',
+                      textFieldTitle: 'Country',
                       onChanged: (value) {
                         context.read<EditProfileCubit>().updateLocalData(
                           context,
@@ -105,7 +135,6 @@ class MyProfileViewDetailes extends StatelessWidget {
                         );
                       },
                     ),
-
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.0445,
                     ),
@@ -115,18 +144,31 @@ class MyProfileViewDetailes extends StatelessWidget {
                               ? 'Loading...'
                               : 'Update Profile',
                       onTap: () async {
-                        BlocProvider.of<EditProfileCubit>(context).editPrifile(
+                        // Validate inputs before saving
+                        if (state.name.isEmpty || state.email.isEmpty) {
+                          customShowSnackBar(
+                            context,
+                            title: 'Please fill all required fields',
+                          );
+                          return;
+                        }
+                        await BlocProvider.of<EditProfileCubit>(
+                          context,
+                        ).editPrifile(
                           context,
                           name: state.name,
                           email: state.email,
                           phoneNumber: state.phone,
                           address: state.address,
                           country: state.cuntry,
+                          image: pickedImage, // Pass the actual XFile
                         );
+                        setState(() {
+                          pickedImage = null; // Clear picked image after save
+                        });
                         GoRouter.of(context).pop();
                       },
                     ),
-
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.0293,
                     ),
@@ -135,7 +177,7 @@ class MyProfileViewDetailes extends StatelessWidget {
               );
             }
             return Text(
-              'OOPS, There was an error please try again ',
+              'OOPS, There was an error please try again',
               style: AppStyles.styleLeagueSpartanBold28(
                 context,
               ).copyWith(color: AppColor.kDarkRed),

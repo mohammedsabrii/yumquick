@@ -17,10 +17,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginLoading());
     try {
       final supabase = Supabase.instance.client;
-      final AuthResponse user = await supabase.auth.signInWithPassword(
-        email: email,
-        password: password,
-      );
+      await supabase.auth.signInWithPassword(email: email, password: password);
       customShowSnackBar(context, title: 'Success');
       emit(LoginSuccess());
     } on AuthApiException catch (e) {

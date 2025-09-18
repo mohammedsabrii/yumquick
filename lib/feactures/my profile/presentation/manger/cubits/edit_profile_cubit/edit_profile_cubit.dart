@@ -1,19 +1,30 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:yumquick/core/service/uplode_image_service.dart';
 import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 
 part 'edit_profile_state.dart';
 
 class EditProfileCubit extends Cubit<EditProfileState> {
   EditProfileCubit() : super(EditProfileInitial());
+
+  final UplodeImageService uplodeImageSrevice = UplodeImageService();
+
   Future<void> fetchProfile() async {
     try {
       final supabase = Supabase.instance.client;
       final userId = supabase.auth.currentUser?.id;
+      if (userId == null) {
+        emit(EditProfileFailure(errorMassage: 'User not authenticated'));
+        return;
+      }
 
       final data =
-          await supabase.from('profiles').select().eq('id', userId!).single();
+          await supabase.from('profiles').select().eq('id', userId).single();
 
       emit(
         EditProfileSuccess(
@@ -22,6 +33,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           phone: data['phone'] ?? '',
           address: data['address'] ?? '',
           cuntry: data['country'] ?? '',
+          profilePicture: data['profile_picture'] ?? '',
         ),
       );
     } catch (e) {
@@ -36,11 +48,28 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     required String phoneNumber,
     required String address,
     required String country,
+    XFile? image,
   }) async {
     emit(EditProfileLoading());
     try {
+      String? imageUrl;
+
+      // Upload image if provided and valid
+      if (image != null && await File(image.path).exists()) {
+        imageUrl = await uplodeImageSrevice.updateImageToSupabase(
+          image,
+          'profiles',
+        );
+      }
+
       final supabase = Supabase.instance.client;
       final userId = supabase.auth.currentUser?.id;
+      if (userId == null) {
+        emit(EditProfileFailure(errorMassage: 'User not authenticated'));
+        customShowSnackBar(context, title: 'User not authenticated');
+        return;
+      }
+
       final updateProfileInfo = {
         'username': name,
         'phone': phoneNumber,
@@ -48,10 +77,15 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         'address': address,
         'country': country,
       };
+
+      if (imageUrl != null) {
+        updateProfileInfo['profile_picture'] = imageUrl;
+      }
+
       await supabase
           .from('profiles')
           .update(updateProfileInfo)
-          .eq('id', userId!);
+          .eq('id', userId);
 
       emit(
         EditProfileSuccess(
@@ -60,11 +94,19 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           email: email,
           name: name,
           phone: phoneNumber,
+          profilePicture:
+              imageUrl ??
+              (state is EditProfileSuccess
+                  ? (state as EditProfileSuccess).profilePicture
+                  : ''),
         ),
       );
     } on AuthApiException catch (e) {
       emit(EditProfileFailure(errorMassage: e.toString()));
       customShowSnackBar(context, title: e.toString());
+    } catch (e) {
+      emit(EditProfileFailure(errorMassage: 'Failed to update profile: $e'));
+      customShowSnackBar(context, title: 'Failed to update profile: $e');
     }
   }
 
@@ -75,6 +117,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     String? newPhone,
     String? newAddress,
     String? newCountry,
+    String? newProfilePicture,
   }) {
     if (state is EditProfileSuccess) {
       final currentState = state as EditProfileSuccess;
@@ -85,6 +128,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           phone: newPhone ?? currentState.phone,
           address: newAddress ?? currentState.address,
           cuntry: newCountry ?? currentState.cuntry,
+          profilePicture: newProfilePicture ?? currentState.profilePicture,
         ),
       );
     }
