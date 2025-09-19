@@ -35,6 +35,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
     if (user != null && isLoggedIn == true) {
       GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+      print('user id is : ${user.id}');
     } else {
       GoRouter.of(context).pushReplacement(AppRouter.kLogInView);
     }

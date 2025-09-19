@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
-import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 import 'package:yumquick/core/widget/custom_text_field.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/manger/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/view/widget/profile_image.dart';
@@ -28,7 +26,7 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
       setState(() {
         pickedImage = pickedFile;
       });
-      // Update local state with new image path
+
       context.read<EditProfileCubit>().updateLocalData(
         context,
         newProfilePicture: pickedFile.path,
@@ -38,10 +36,7 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
 
   @override
   Widget build(BuildContext context) {
-    // Fetch profile only once during initialization
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<EditProfileCubit>(context).fetchProfile();
-    });
+    BlocProvider.of<EditProfileCubit>(context).fetchProfile();
 
     return CustomContainer(
       child: Padding(
@@ -71,7 +66,10 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                     ProfileImage(
                       onImagePicked: pickImage,
                       pickedImage: pickedImage,
-                      networkImage: state.profilePicture,
+                      networkImage:
+                          state.profilePicture.isNotEmpty
+                              ? state.profilePicture
+                              : null,
                     ),
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.0469,
@@ -144,14 +142,6 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                               ? 'Loading...'
                               : 'Update Profile',
                       onTap: () async {
-                        // Validate inputs before saving
-                        if (state.name.isEmpty || state.email.isEmpty) {
-                          customShowSnackBar(
-                            context,
-                            title: 'Please fill all required fields',
-                          );
-                          return;
-                        }
                         await BlocProvider.of<EditProfileCubit>(
                           context,
                         ).editPrifile(
@@ -161,10 +151,10 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                           phoneNumber: state.phone,
                           address: state.address,
                           country: state.cuntry,
-                          image: pickedImage, // Pass the actual XFile
+                          image: pickedImage,
                         );
                         setState(() {
-                          pickedImage = null; // Clear picked image after save
+                          pickedImage = null;
                         });
                         GoRouter.of(context).pop();
                       },
@@ -176,11 +166,8 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                 ),
               );
             }
-            return Text(
-              'OOPS, There was an error please try again',
-              style: AppStyles.styleLeagueSpartanBold28(
-                context,
-              ).copyWith(color: AppColor.kDarkRed),
+            return const Center(
+              child: CircularProgressIndicator(color: AppColor.kMainColor),
             );
           },
         ),

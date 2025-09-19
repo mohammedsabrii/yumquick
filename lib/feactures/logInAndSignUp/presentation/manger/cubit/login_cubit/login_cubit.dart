@@ -2,6 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 
@@ -18,6 +19,8 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       final supabase = Supabase.instance.client;
       await supabase.auth.signInWithPassword(email: email, password: password);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
       customShowSnackBar(context, title: 'Success');
       emit(LoginSuccess());
     } on AuthApiException catch (e) {
