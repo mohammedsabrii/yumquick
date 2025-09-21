@@ -5,21 +5,26 @@ import 'package:yumquick/core/widget/favorite_and_rate_widget.dart';
 
 import 'package:yumquick/core/widget/grid_view_item_back_ground_image.dart';
 import 'package:yumquick/core/widget/price_item.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class GridViewItem extends StatelessWidget {
-  const GridViewItem({super.key});
-
+  const GridViewItem({super.key, required this.productsEntity});
+  final ProductsEntity productsEntity;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         GoRouter.of(context).push(AppRouter.kProdactDetailsView);
       },
-      child: const Stack(
+      child: Stack(
         children: [
-          GridViewItemBackGroundImage(),
-          Positioned(left: 13, top: 10, child: FavoriteAndRateWidget()),
-          Positioned(bottom: 30, right: 1, child: PriceItem()),
+          GridViewItemBackGroundImage(productsEntity: productsEntity),
+          const Positioned(left: 13, top: 10, child: FavoriteAndRateWidget()),
+          Positioned(
+            bottom: 30,
+            right: 1,
+            child: PriceItem(productsEntity: productsEntity),
+          ),
         ],
       ),
     );

@@ -18,7 +18,7 @@ class BestSellerItem extends StatelessWidget {
         child: const Stack(
           children: [
             BestSellerItemImage(),
-            Positioned(bottom: 30, right: 3, child: PriceItem()),
+            // Positioned(bottom: 30, right: 3, child: PriceItem()),
           ],
         ),
       ),

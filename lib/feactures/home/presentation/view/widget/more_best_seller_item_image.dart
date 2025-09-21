@@ -20,7 +20,7 @@ class MoreBestSellerItemImage extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
         ),
-        const Positioned(bottom: 25, right: 0, child: PriceItem()),
+        // const Positioned(bottom: 25, right: 0, child: PriceItem()),
       ],
     );
   }

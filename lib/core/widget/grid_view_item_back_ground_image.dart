@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'package:yumquick/core/utils/app_assets.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class GridViewItemBackGroundImage extends StatelessWidget {
-  const GridViewItemBackGroundImage({super.key});
-
+  const GridViewItemBackGroundImage({super.key, required this.productsEntity});
+  final ProductsEntity productsEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +11,10 @@ class GridViewItemBackGroundImage extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width * 0.4,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        image: const DecorationImage(image: AssetImage(AppAssets.kTestImage2)),
+        image: DecorationImage(
+          image: NetworkImage(productsEntity.image),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

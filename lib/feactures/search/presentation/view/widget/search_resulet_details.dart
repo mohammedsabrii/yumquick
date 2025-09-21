@@ -32,7 +32,7 @@ class SearchResultDetails extends StatelessWidget {
                 ],
               ),
             ),
-            const SearchSliverGride(),
+            // const SearchSliverGride(),
           ],
         ),
       ),

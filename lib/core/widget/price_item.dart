@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class PriceItem extends StatelessWidget {
-  const PriceItem({super.key});
-
+  const PriceItem({super.key, required this.productsEntity});
+  final ProductsEntity productsEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +19,7 @@ class PriceItem extends StatelessWidget {
         ),
       ),
       child: Text(
-        '\$50.0',
+        '\$${productsEntity.price}',
         textAlign: TextAlign.center,
         style: AppStyles.styleLeagueSpartanregular12(
           context,
