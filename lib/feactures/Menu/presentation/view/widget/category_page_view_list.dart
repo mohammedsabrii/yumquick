@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
-import 'package:yumquick/feactures/Menu/presentation/data/menu_data.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/widget/category_item.dart';
 
 class CategoryPageViewList extends StatelessWidget {
@@ -34,7 +33,7 @@ class CategoryPageViewList extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: List.generate(menuList.length, (index) {
+        children: List.generate(categoryIcon.length, (index) {
           return Row(
             children: [
               Padding(
@@ -49,7 +48,6 @@ class CategoryPageViewList extends StatelessWidget {
                   categoryName: categoryName[index],
                 ),
               ),
-              // if (index < categoryIcon.length - 1) const SizedBox(width: 19),
             ],
           );
         }),

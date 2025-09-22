@@ -1,5 +1,6 @@
 class ProductsEntity {
   final String id;
+  final String categoryId;
   final String name;
   final String description;
   final String image;
@@ -9,6 +10,7 @@ class ProductsEntity {
 
   ProductsEntity({
     required this.id,
+    required this.categoryId,
     required this.name,
     required this.description,
     required this.image,
@@ -20,6 +22,7 @@ class ProductsEntity {
   factory ProductsEntity.fromJson(Map<String, dynamic> json) {
     return ProductsEntity(
       id: json['id'] ?? '',
+      categoryId: json['category_id'] ?? '',
       name: json['name'] ?? '',
       description: json['subtitle'] ?? '',
       image: json['image'] ?? '',

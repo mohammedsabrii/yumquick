@@ -7,7 +7,7 @@ class GetProdactService {
     final response = await supabase
         .from('products')
         .select(
-          'id, name, subtitle, image, price, categories, price_after_discount',
+          'id, name, subtitle, image, price, categories, price_after_discount, category_id',
         );
     final prodacts =
         (response as List).map((e) => ProductsEntity.fromJson(e)).toList();

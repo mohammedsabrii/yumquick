@@ -4,11 +4,11 @@ import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/rate_widget.dart';
-import 'package:yumquick/feactures/Menu/presentation/view/manger/catgory_item_model.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class CategoryProdact extends StatelessWidget {
-  const CategoryProdact({super.key, required this.categoryItemModel});
-  final CategoryItemModel categoryItemModel;
+  const CategoryProdact({super.key, required this.prodactsEntity});
+  final ProductsEntity prodactsEntity;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,15 +25,16 @@ class CategoryProdact extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(36),
               image: DecorationImage(
-                image: AssetImage(categoryItemModel.image),
+                image: NetworkImage(prodactsEntity.image),
                 fit: BoxFit.fill,
               ),
             ),
           ),
+          const SizedBox(height: 10),
           Row(
             children: [
               Text(
-                categoryItemModel.title,
+                prodactsEntity.name,
                 style: AppStyles.styleLeagueSpartanSemiBold18(context),
               ),
               const SizedBox(width: 24),
@@ -43,7 +44,7 @@ class CategoryProdact extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '\$${categoryItemModel.price}',
+                '\$${prodactsEntity.price}',
                 style: AppStyles.styleLeagueSpartanregular18(
                   context,
                 ).copyWith(color: AppColor.kMainColor),
@@ -51,7 +52,7 @@ class CategoryProdact extends StatelessWidget {
             ],
           ),
           Text(
-            categoryItemModel.subTitle,
+            prodactsEntity.description,
             style: AppStyles.styleLeagueSpartanLight12(context),
           ),
           const Divider(thickness: 2, color: AppColor.kPinkishOrange),
