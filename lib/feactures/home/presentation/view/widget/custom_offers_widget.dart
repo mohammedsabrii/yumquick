@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/widget/custom_circle_widget.dart';
-import 'package:yumquick/feactures/home/presentation/view/manger/offers_model.dart';
+import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_offers_item.dart';
 
 class CustomOffersWidget extends StatelessWidget {
-  const CustomOffersWidget({super.key, required this.model});
-  final OffersModel model;
+  const CustomOffersWidget({super.key, required this.offerEntity});
+  final OfferEntity offerEntity;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,11 +16,7 @@ class CustomOffersWidget extends StatelessWidget {
       },
       child: Stack(
         children: [
-          CustomOffersItem(
-            image: model.image,
-            offer: model.offer,
-            title: model.title,
-          ),
+          CustomOffersItem(offerEntity: offerEntity),
           Positioned(
             top: -35,
             left: MediaQuery.sizeOf(context).width * 0.29,

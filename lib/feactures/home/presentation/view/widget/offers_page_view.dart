@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:yumquick/feactures/home/data/offers_list.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/core/widget/custom_dot_indicator.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_offers_cubit/fetch_offers_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_offers_widget.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/offers_dot_indicator_list.dart';
 
 class OffersPageView extends StatefulWidget {
   const OffersPageView({super.key});
@@ -29,17 +31,46 @@ class _OffersPageViewState extends State<OffersPageView> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.175,
-      child: PageView.builder(
-        itemCount: offersList.length,
-        controller: pageController,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              CustomOffersWidget(model: offersList[index]),
-              const SizedBox(height: 5),
-              OffersDotIndicatorList(cruntPageIndex: pageIndex),
-            ],
-          );
+      child: BlocBuilder<FetchOffersCubit, FetchOffersState>(
+        builder: (context, state) {
+          if (state is FetchOffersFailure) {
+            return Center(
+              child: Text(
+                state.errorMessage,
+                style: const TextStyle(color: Colors.red),
+              ),
+            );
+          } else if (state is FetchOffersLoading) {
+            return const Center(
+              child: CircularProgressIndicator(color: AppColor.kMainColor),
+            );
+          } else if (state is FetchOffersSuccess) {
+            return PageView.builder(
+              itemCount: state.offerEntity.length,
+              controller: pageController,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    CustomOffersWidget(offerEntity: state.offerEntity[index]),
+                    const SizedBox(height: 5),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+
+                      children: List.generate(
+                        state.offerEntity.length,
+                        (index) =>
+                            CustomDotIndicator(isActive: index == pageIndex),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(color: AppColor.kMainColor),
+            );
+          }
         },
       ),
     );

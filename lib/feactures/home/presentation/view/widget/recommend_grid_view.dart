@@ -9,7 +9,6 @@ class RecommendGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<GetProdactsCubit>(context).getProdacts();
     return BlocBuilder<GetProdactsCubit, GetProdactsState>(
       builder: (context, state) {
         if (state is GetProdactsLoading) {
@@ -29,12 +28,9 @@ class RecommendGridView extends StatelessWidget {
           );
         } else if (state is GetProdactsSuccess) {
           return SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return GridViewItem(productsEntity: state.prodacts[index]);
-              },
-              childCount: state.prodacts.length, // الأفضل تستخدم الطول الحقيقي
-            ),
+            delegate: SliverChildBuilderDelegate((context, index) {
+              return GridViewItem(productsEntity: state.prodacts[index]);
+            }, childCount: state.prodacts.length),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 10,

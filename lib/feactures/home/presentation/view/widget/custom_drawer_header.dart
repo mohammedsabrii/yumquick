@@ -11,7 +11,6 @@ class CustomDrawerHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<FetchProfileInfoCubit>(context).fetchProfileInfo();
     return BlocBuilder<FetchProfileInfoCubit, FetchProfileInfoState>(
       builder: (context, state) {
         if (state is FetchProfileInfoLoading) {
