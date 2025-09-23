@@ -5,7 +5,7 @@ import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 
 class CustomOffersItem extends StatelessWidget {
   const CustomOffersItem({super.key, required this.offerEntity});
-  final OfferEntity offerEntity;
+  final OffersEntity offerEntity;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -32,7 +32,7 @@ class CustomOffersItem extends StatelessWidget {
                 ).copyWith(color: AppColor.kCultured),
               ),
               Text(
-                '${(100 - ((offerEntity.priceAfterDiscount / offerEntity.price) * 100)).toInt()} % OFF',
+                '${(100 - ((offerEntity.priceAfterDiscount / offerEntity.price) * 100)).toStringAsFixed(0)}% OFF',
 
                 textAlign: TextAlign.center,
                 style: AppStyles.styleLeagueSpartanBold32(context),

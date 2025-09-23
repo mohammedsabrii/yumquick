@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_container.dart';
-import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/prodact_details_button.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/prodact_details_image.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/prodact_details_information.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/prodact_details_price_and_quantity.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/prodact_details_view_header.dart';
+import 'package:yumquick/feactures/home/entity/offer_entity.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/offers_details_button.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/offers_details_image.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/offers_details_information.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/offers_details_view_header.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/offers_detailsprice_and_quantity.dart';
 
-class ProdactDetailsViewBody extends StatelessWidget {
-  const ProdactDetailsViewBody({super.key, required this.productsEntity});
-  final ProductsEntity productsEntity;
+class OffersDetailsViewBody extends StatelessWidget {
+  const OffersDetailsViewBody({super.key, required this.offersEntity});
+  final OffersEntity offersEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ProdactDetailsViewHeader(productsEntity: productsEntity),
+        OffersDetailsViewHeader(offersEntity: offersEntity),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.0140),
         CustomContainer(
           child: Padding(
@@ -26,20 +26,18 @@ class ProdactDetailsViewBody extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(height: MediaQuery.sizeOf(context).height * 0.0387),
-                  ProdactDetailsImage(productsEntity: productsEntity),
+                  OffersDetailsImage(offersEntity: offersEntity),
                   const SizedBox(height: 12),
                   const Divider(thickness: 2, color: AppColor.kPinkishOrange),
                   const SizedBox(height: 7),
-                  ProdactDetailspriceAndQuantity(
-                    productsEntity: productsEntity,
-                  ),
+                  OffersDetailspriceAndQuantity(offersEntity: offersEntity),
                   const SizedBox(height: 7),
                   const Divider(thickness: 2, color: AppColor.kPinkishOrange),
                   const SizedBox(height: 10),
-                  ProdactDetailsInformation(productsEntity: productsEntity),
+                  OffersDetailsInformation(offersEntity: offersEntity),
                   const SizedBox(height: 20),
 
-                  const ProdactDetailsButton(),
+                  const OffersDetailsButton(),
                 ],
               ),
             ),

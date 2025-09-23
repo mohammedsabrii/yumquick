@@ -7,12 +7,14 @@ import 'package:yumquick/feactures/home/presentation/view/widget/custom_offers_i
 
 class CustomOffersWidget extends StatelessWidget {
   const CustomOffersWidget({super.key, required this.offerEntity});
-  final OfferEntity offerEntity;
+  final OffersEntity offerEntity;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kProdactDetailsView);
+        GoRouter.of(
+          context,
+        ).push(AppRouter.kOfferDetailsView, extra: offerEntity);
       },
       child: Stack(
         children: [

@@ -1,4 +1,4 @@
-class OfferEntity {
+class OffersEntity {
   final String id;
   final String name;
   final String offerName;
@@ -9,7 +9,7 @@ class OfferEntity {
   final String category;
   final double priceAfterDiscount;
 
-  OfferEntity({
+  OffersEntity({
     required this.id,
     required this.name,
     required this.offerName,
@@ -20,8 +20,8 @@ class OfferEntity {
     required this.priceAfterDiscount,
   });
 
-  factory OfferEntity.fromJson(Map<String, dynamic> json) {
-    return OfferEntity(
+  factory OffersEntity.fromJson(Map<String, dynamic> json) {
+    return OffersEntity(
       id: json['id'] ?? '',
       name: json['product_name'] ?? '',
       offerName: json['offer_name'] ?? '',

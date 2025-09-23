@@ -5,12 +5,15 @@ import 'package:yumquick/feactures/Delivery%20Address/presentation/view/delivery
 import 'package:yumquick/feactures/Favorites/presentation/view/favorite_view.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/menu_view.dart';
 import 'package:yumquick/feactures/Payment%20Methods/presentation/view/payment_methods_view.dart';
+import 'package:yumquick/feactures/home/entity/offer_entity.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/presentation/view/confirm_order_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/confirmed_order_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/delivery_time_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/home_view.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/my_orders_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/more_best_seller_view.dart';
+import 'package:yumquick/feactures/home/presentation/view/offers_details_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/payment_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/prodact_details_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer.dart';
@@ -34,6 +37,7 @@ class AppRouter {
   static const kHomeView = '/HomeView';
   static const kSearchView = '/SearchView';
   static const kProdactDetailsView = '/ProdactDetailsView';
+  static const kOfferDetailsView = '/OffersDetailsView';
   static const kMoreBestSellerView = '/MoreBestSellerView';
   static const kMenuView = '/MenuView';
   static const kFavoriteView = '/FavoriteView';
@@ -72,7 +76,16 @@ class AppRouter {
       ),
       GoRoute(
         path: kProdactDetailsView,
-        builder: (context, state) => const ProdactDetailsView(),
+        builder:
+            (context, state) => ProdactDetailsView(
+              productsEntity: state.extra as ProductsEntity,
+            ),
+      ),
+      GoRoute(
+        path: kOfferDetailsView,
+        builder:
+            (context, state) =>
+                OffersDetailsView(offersEntity: state.extra as OffersEntity),
       ),
       GoRoute(
         path: kMoreBestSellerView,

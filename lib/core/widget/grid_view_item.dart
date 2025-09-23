@@ -14,7 +14,9 @@ class GridViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kProdactDetailsView);
+        GoRouter.of(
+          context,
+        ).push(AppRouter.kProdactDetailsView, extra: productsEntity);
       },
       child: Stack(
         children: [

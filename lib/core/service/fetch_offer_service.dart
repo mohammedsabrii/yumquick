@@ -3,7 +3,7 @@ import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 
 class FetchOfferService {
   final supabase = Supabase.instance.client;
-  Future<List<OfferEntity>> getOffers() async {
+  Future<List<OffersEntity>> getOffers() async {
     final response = await supabase
         .from('offers')
         .select(
@@ -11,7 +11,7 @@ class FetchOfferService {
         );
 
     final offer =
-        (response as List).map((e) => OfferEntity.fromJson(e)).toList();
+        (response as List).map((e) => OffersEntity.fromJson(e)).toList();
     return offer;
   }
 }

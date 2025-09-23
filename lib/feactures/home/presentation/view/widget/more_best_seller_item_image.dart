@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
-import 'package:yumquick/core/widget/price_item.dart';
 
 class MoreBestSellerItemImage extends StatelessWidget {
   const MoreBestSellerItemImage({super.key});

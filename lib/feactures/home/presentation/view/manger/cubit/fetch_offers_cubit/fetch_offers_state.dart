@@ -14,7 +14,7 @@ final class FetchOffersFailure extends FetchOffersState {
 }
 
 final class FetchOffersSuccess extends FetchOffersState {
-  final List<OfferEntity> offerEntity;
+  final List<OffersEntity> offerEntity;
 
   FetchOffersSuccess({required this.offerEntity});
 }

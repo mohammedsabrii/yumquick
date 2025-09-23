@@ -5,11 +5,11 @@ import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/rate_widget.dart';
-import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
+import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 
-class ProdactDetailsViewHeader extends StatelessWidget {
-  const ProdactDetailsViewHeader({super.key, required this.productsEntity});
-  final ProductsEntity productsEntity;
+class OffersDetailsViewHeader extends StatelessWidget {
+  const OffersDetailsViewHeader({super.key, required this.offersEntity});
+  final OffersEntity offersEntity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +31,7 @@ class ProdactDetailsViewHeader extends StatelessWidget {
               const SizedBox(width: 5),
               Expanded(
                 child: Text(
-                  productsEntity.name,
+                  offersEntity.name,
                   maxLines: 1,
                   textAlign: TextAlign.center,
                   style: AppStyles.styleLeagueSpartanMediem20(

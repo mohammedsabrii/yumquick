@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
+import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 
-class ProdactDetailsInformation extends StatelessWidget {
-  const ProdactDetailsInformation({super.key, required this.productsEntity});
-  final ProductsEntity productsEntity;
+class OffersDetailsInformation extends StatelessWidget {
+  const OffersDetailsInformation({super.key, required this.offersEntity});
+  final OffersEntity offersEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          productsEntity.name,
+          offersEntity.name,
           style: AppStyles.styleLeagueSpartanMediem20(
             context,
           ).copyWith(color: AppColor.kDarkRed),
         ),
         Text(
-          productsEntity.description,
+          offersEntity.description,
           style: AppStyles.styleLeagueSpartanLight16(context),
         ),
       ],
