@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/Favorites/presentation/view/widget/favorite_grid_view.dart';
+import 'package:yumquick/feactures/Favorites/presentation/view/widget/favorite_bloc_builder.dart';
 
 class FavoriteViewDetails extends StatelessWidget {
   const FavoriteViewDetails({super.key});
@@ -35,7 +35,7 @@ class FavoriteViewDetails extends StatelessWidget {
                   ).copyWith(color: AppColor.kMainColor),
                 ),
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.024),
-                const FavoriteGridView(),
+                const FavoriteBlocBuilder(),
                 const SizedBox(height: 35),
               ],
             ),

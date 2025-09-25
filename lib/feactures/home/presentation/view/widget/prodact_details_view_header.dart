@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/core/widget/rate_widget.dart';
+import 'package:yumquick/core/widget/favorite_widget.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class ProdactDetailsViewHeader extends StatelessWidget {
@@ -26,7 +26,11 @@ class ProdactDetailsViewHeader extends StatelessWidget {
                 onTap: () {
                   GoRouter.of(context).pop();
                 },
-                child: SvgPicture.asset(AppAssets.kBackIcon),
+                child: SvgPicture.asset(
+                  AppAssets.kBackIcon,
+                  height: 25,
+                  width: 20,
+                ),
               ),
               const SizedBox(width: 5),
               Expanded(
@@ -40,10 +44,9 @@ class ProdactDetailsViewHeader extends StatelessWidget {
                 ),
               ),
               SizedBox(width: MediaQuery.sizeOf(context).width * 0.0356),
-              SvgPicture.asset(AppAssets.kFavoritesIconUnActive),
+              FavoriteWidget(productsEntity: productsEntity),
             ],
           ),
-          const RateWidget(),
         ],
       ),
     );

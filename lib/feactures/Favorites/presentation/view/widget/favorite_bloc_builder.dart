@@ -4,8 +4,8 @@ import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/cubit/favorite_cubit.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/widget/favorite_view_item.dart';
 
-class FavoriteGridView extends StatelessWidget {
-  const FavoriteGridView({super.key});
+class FavoriteBlocBuilder extends StatelessWidget {
+  const FavoriteBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,24 +23,24 @@ class FavoriteGridView extends StatelessWidget {
             ),
           );
         } else if (state is FavoritesSuccess) {
-          return GridView.builder(
-            shrinkWrap: true,
-            itemCount: state.favorites.length,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 7,
-              mainAxisSpacing: 35,
-              childAspectRatio: 0.7,
+          return Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.sizeOf(context).width * 0.07,
             ),
-            itemBuilder: (context, index) {
-              return FavoriteViewItem(productsEntity: state.favorites[index]);
-            },
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: state.favorites.length,
+              physics: const NeverScrollableScrollPhysics(),
+
+              itemBuilder: (context, index) {
+                return FavoriteViewItem(productsEntity: state.favorites[index]);
+              },
+            ),
           );
         } else if (state is FavoritesFailure) {
           return Center(child: Text('Error: ${state.errorMessage}'));
         }
-        return const SizedBox.shrink();
+        return const SizedBox();
       },
     );
   }

@@ -14,11 +14,6 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     emit(FavoritesLoading());
     final userId = supabase.auth.currentUser?.id;
 
-    if (userId == null) {
-      emit(FavoritesEmpty());
-      return;
-    }
-
     try {
       final response = await supabase
           .from('favorites')
@@ -34,7 +29,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
               categories
             )
           ''')
-          .eq('user_id', userId);
+          .eq('user_id', userId!);
 
       final favorites =
           (response as List)
@@ -55,36 +50,51 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     }
   }
 
-  Future<void> toggleFavorite(ProductsEntity product) async {
+  Future<void> addFavorite(ProductsEntity product) async {
     final userId = supabase.auth.currentUser?.id;
-    if (userId == null) {
-      emit(FavoritesFailure('Please log in to add favorites'));
-      return;
-    }
 
     try {
-      final response =
-          await supabase
-              .from('favorites')
-              .select()
-              .eq('user_id', userId)
-              .eq('product_id', product.id)
-              .maybeSingle();
+      await supabase.from('favorites').insert({
+        'user_id': userId,
+        'product_id': product.id,
+      });
 
-      if (response != null) {
-        await supabase
-            .from('favorites')
-            .delete()
-            .eq('user_id', userId)
-            .eq('product_id', product.id);
+      if (state is FavoritesSuccess) {
+        final current = List<ProductsEntity>.from(
+          (state as FavoritesSuccess).favorites,
+        );
+        current.add(product);
+        emit(FavoritesSuccess(current));
       } else {
-        await supabase.from('favorites').insert({
-          'user_id': userId,
-          'product_id': product.id,
-        });
+        emit(FavoritesSuccess([product]));
       }
+    } catch (e) {
+      emit(FavoritesFailure(e.toString()));
+    }
+  }
 
-      await fetchFavorites();
+  Future<void> removeFavorite(ProductsEntity product) async {
+    final userId = supabase.auth.currentUser?.id;
+
+    try {
+      await supabase
+          .from('favorites')
+          .delete()
+          .eq('user_id', userId!)
+          .eq('product_id', product.id);
+
+      if (state is FavoritesSuccess) {
+        final current = List<ProductsEntity>.from(
+          (state as FavoritesSuccess).favorites,
+        );
+        current.removeWhere((p) => p.id == product.id);
+
+        if (current.isEmpty) {
+          emit(FavoritesEmpty());
+        } else {
+          emit(FavoritesSuccess(current));
+        }
+      }
     } catch (e) {
       emit(FavoritesFailure(e.toString()));
     }

@@ -21,7 +21,6 @@ class LoginCubit extends Cubit<LoginState> {
       await supabase.auth.signInWithPassword(email: email, password: password);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool('isLoggedIn', true);
-      customShowSnackBar(context, title: 'Success');
       emit(LoginSuccess());
     } on AuthApiException catch (e) {
       if (e.code == 'user-not-found') {

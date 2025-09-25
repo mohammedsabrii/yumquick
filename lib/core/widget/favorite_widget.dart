@@ -1,31 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/cubit/favorite_cubit.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class FavoriteWidget extends StatelessWidget {
-  final ProductsEntity productsEntity;
-
   const FavoriteWidget({super.key, required this.productsEntity});
-
+  final ProductsEntity productsEntity;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.read<FavoritesCubit>().toggleFavorite(productsEntity);
-      },
-      child: BlocBuilder<FavoritesCubit, FavoritesState>(
-        builder: (context, state) {
-          bool isFavorited = false;
+    return BlocBuilder<FavoritesCubit, FavoritesState>(
+      builder: (context, state) {
+        bool isFavorited = false;
 
-          if (state is FavoritesSuccess) {
-            isFavorited = state.favorites.any(
-              (product) => product.id == productsEntity.id,
-            );
-          }
+        if (state is FavoritesSuccess) {
+          isFavorited = state.favorites.any(
+            (product) => product.id == productsEntity.id,
+          );
+        }
 
-          return Container(
+        return GestureDetector(
+          onTap: () {
+            if (isFavorited) {
+              context.read<FavoritesCubit>().removeFavorite(productsEntity);
+              customShowSnackBar(context, title: 'Removed from favorites');
+            } else {
+              context.read<FavoritesCubit>().addFavorite(productsEntity);
+              customShowSnackBar(context, title: 'Added to favorites');
+            }
+          },
+          child: Container(
             height: MediaQuery.sizeOf(context).height * 0.032,
             width: 35,
             decoration: BoxDecoration(
@@ -37,9 +41,9 @@ class FavoriteWidget extends StatelessWidget {
               color: isFavorited ? Colors.red : Colors.grey,
               size: 20,
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

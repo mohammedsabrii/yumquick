@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/best_seller_item_image.dart';
-import 'package:yumquick/core/widget/price_item.dart';
 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key});
