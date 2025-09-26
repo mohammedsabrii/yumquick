@@ -7,6 +7,7 @@ import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/cubit/favorite_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_offers_cubit/fetch_offers_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/get_prodacts_cubit/get_prodacts_cubit.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/cubit/search_cubit/search_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/login_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/signup_cubit/signup_cubit.dart';
@@ -42,6 +43,7 @@ class YumQuick extends StatelessWidget {
         BlocProvider(create: (context) => GetProdactsCubit()..getProdacts()),
         BlocProvider(create: (context) => FetchOffersCubit()..fetchOffers()),
         BlocProvider(create: (context) => FavoritesCubit()..fetchFavorites()),
+        BlocProvider(create: (context) => SearchCubit()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

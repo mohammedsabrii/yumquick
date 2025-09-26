@@ -70,7 +70,6 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
           isLoading = false;
         } else if (state is SignupFailure) {
           customShowSnackBar(context, title: state.errorMassage);
-          print(state.errorMassage);
           isLoading = false;
         }
       },
