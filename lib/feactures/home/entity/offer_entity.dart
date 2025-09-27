@@ -1,3 +1,5 @@
+import 'package:hive/hive.dart';
+
 class OffersEntity {
   final String id;
   final String name;

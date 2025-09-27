@@ -67,7 +67,7 @@ class SearchWidget extends StatelessWidget {
                     itemCount: state.searchResults.length,
                     itemBuilder: (context, index) {
                       return SearchResultsListTile(
-                        searchEntity: state.searchResults[index],
+                        productsEntity: state.searchResults[index],
                       );
                     },
                   ),

@@ -1,9 +1,9 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:yumquick/feactures/home/entity/search_entity.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class SearchService {
   final supabase = Supabase.instance.client;
-  Future<List<SearchEntity>> getProducts(String query) async {
+  Future<List<ProductsEntity>> getProducts(String query) async {
     final response = await supabase
         .from('products')
         .select(
@@ -11,7 +11,7 @@ class SearchService {
         )
         .ilike('name', '%$query%');
     final products =
-        (response as List).map((e) => SearchEntity.fromJson(e)).toList();
+        (response as List).map((e) => ProductsEntity.fromJson(e)).toList();
     return products;
   }
 }
