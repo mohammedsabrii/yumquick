@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/cubit/favorite_cubit.dart';
+import 'package:yumquick/feactures/home/entity/offer_entity.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
+import 'package:yumquick/feactures/home/entity/profile_entity.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_offers_cubit/fetch_offers_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/get_prodacts_cubit/get_prodacts_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/search_cubit/search_cubit.dart';
@@ -16,6 +20,14 @@ import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_pro
 import 'package:yumquick/feactures/settings/presentation/manger/cubits/change_password_cubit/change_password_cubit.dart';
 
 void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(OffersEntityAdapter());
+  Hive.registerAdapter(ProductsEntityAdapter());
+  Hive.registerAdapter(ProfileEntityAdapter());
+  await Hive.openBox<OffersEntity>(kOffersBox);
+  await Hive.openBox<ProductsEntity>(kProductsBox);
+  await Hive.openBox<ProfileEntity>(kProfileBox);
+  await Hive.openBox<String>(kFavoritesBox);
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(url: supbaseUrl, anonKey: supbaseAnonKey);
   runApp(

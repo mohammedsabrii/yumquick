@@ -11,3 +11,7 @@ const String veganCategoryId = '11649870-8ae5-455a-beec-874f85b5883f';
 const String mealCategoryId = '149360ca-598c-42f0-983f-4b7ffa2f3c19';
 const String dessertCategoryId = 'da2b2111-f7e5-4803-b6e6-d54bbed4e6cf';
 const String drinksCategoryId = '829e9122-1b43-42c7-9f70-3f59df1f798c';
+const String kProductsBox = 'products_box';
+const String kOffersBox = 'offers_box';
+const String kProfileBox = 'profile_box';
+const String kFavoritesBox = 'favorites_box';
