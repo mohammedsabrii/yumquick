@@ -1,14 +1,24 @@
 import 'package:hive/hive.dart';
 
-class OffersEntity {
-  final String id;
-  final String name;
-  final String offerName;
+part 'offer_entity.g.dart';
 
+@HiveType(typeId: 0)
+class OffersEntity extends HiveObject {
+  @HiveField(0)
+  final String id;
+  @HiveField(1)
+  final String name;
+  @HiveField(2)
+  final String offerName;
+  @HiveField(3)
   final String description;
+  @HiveField(4)
   final String image;
+  @HiveField(5)
   final double price;
+  @HiveField(6)
   final String category;
+  @HiveField(7)
   final double priceAfterDiscount;
 
   OffersEntity({
