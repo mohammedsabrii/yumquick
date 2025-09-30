@@ -7,7 +7,7 @@ import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/core/widget/custom_text_field.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/login_cubit.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/auth_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_facebook_and_gmail.dart';
 
@@ -18,14 +18,14 @@ class LoginViewBodyDetails extends StatelessWidget {
   String? email, password;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginCubit, LoginState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is LoginLoading) {
+        if (state is AuthLoading) {
           isLoading = true;
-        } else if (state is LoginSuccess) {
+        } else if (state is AuthSuccess) {
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
           isLoading = false;
-        } else if (state is LoginFailure) {
+        } else if (state is AuthFailure) {
           isLoading = false;
         }
       },
@@ -80,7 +80,7 @@ class LoginViewBodyDetails extends StatelessWidget {
                   SizedBox(height: MediaQuery.sizeOf(context).height * 0.073),
                   CustomButton(
                     onTap: () {
-                      BlocProvider.of<LoginCubit>(
+                      BlocProvider.of<AuthCubit>(
                         context,
                       ).logInUser(context, email: email!, password: password!);
                     },
@@ -100,7 +100,7 @@ class LoginViewBodyDetails extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 7),
-                  const SignUpWithFacebookAndGmail(),
+                  SignUpWithFacebookAndGmail(isLoding: isLoading),
                   SizedBox(height: MediaQuery.sizeOf(context).height * 0.0375),
                   CustomSignupWidget(
                     title: 'Don’t have an account?',

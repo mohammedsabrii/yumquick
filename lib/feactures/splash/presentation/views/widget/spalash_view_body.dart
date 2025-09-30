@@ -16,27 +16,30 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
-    navigateToNextScreen();
     super.initState();
+    navigateToNextScreen();
   }
 
-  void navigateToNextScreen() async {
-    await Future.delayed(const Duration(seconds: 5));
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
+  Future<void> navigateToNextScreen() async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    final prefs = await SharedPreferences.getInstance();
+    final isFirstTime = prefs.getBool('isFirstTime') ?? true;
 
     if (isFirstTime) {
       await prefs.setBool('isFirstTime', false);
+      if (!mounted) return;
       GoRouter.of(context).pushReplacement(AppRouter.kOnPordingView);
       return;
     }
-    User? user = Supabase.instance.client.auth.currentUser;
-    bool? isLoggedIn = prefs.getBool('isLoggedIn');
 
-    if (user != null && isLoggedIn == true) {
+    final user = Supabase.instance.client.auth.currentUser;
+
+    if (user != null) {
+      if (!mounted) return;
       GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
-      print('user id is : ${user.id}');
     } else {
+      if (!mounted) return;
       GoRouter.of(context).pushReplacement(AppRouter.kLogInView);
     }
   }

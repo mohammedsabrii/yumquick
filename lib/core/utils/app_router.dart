@@ -23,7 +23,6 @@ import 'package:yumquick/feactures/logInAndSignUp/presentation/views/signup_view
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/start_view.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/view/my_profile_view.dart';
 import 'package:yumquick/feactures/onPording/presentation/views/onpording_view.dart';
-import 'package:yumquick/feactures/search/presentation/view/search_view.dart';
 import 'package:yumquick/feactures/settings/presentation/view/notification_settings_view.dart';
 import 'package:yumquick/feactures/settings/presentation/view/password_settings_view.dart';
 import 'package:yumquick/feactures/settings/presentation/view/settings_view.dart';
@@ -35,7 +34,6 @@ class AppRouter {
   static const kLogInView = '/LogInView';
   static const kSignUpView = '/SignUpView';
   static const kHomeView = '/HomeView';
-  static const kSearchView = '/SearchView';
   static const kProdactDetailsView = '/ProdactDetailsView';
   static const kOfferDetailsView = '/OffersDetailsView';
   static const kMoreBestSellerView = '/MoreBestSellerView';
@@ -70,10 +68,7 @@ class AppRouter {
         builder: (context, state) => const SignUpView(),
       ),
       GoRoute(path: kHomeView, builder: (context, state) => const HomeView()),
-      GoRoute(
-        path: kSearchView,
-        builder: (context, state) => const SearchView(),
-      ),
+
       GoRoute(
         path: kProdactDetailsView,
         builder:

@@ -1,7 +1,10 @@
 const String supbaseUrl = 'https://wdwhpfwwbvketavjtcei.supabase.co';
 const String supbaseAnonKey =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indkd2hwZnd3YnZrZXRhdmp0Y2VpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MzgxMTAsImV4cCI6MjA3MDMxNDExMH0.vwPmk-QSA5QajVIgQTiLknSYP0KmoKn6dJqu64mXO3I';
-const String googleClintId = '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';
+const String googleAndroidClintId =
+    '1063288208083-urqd8nmtrcql1pckrmgd744ambhqakhn.apps.googleusercontent.com';
+const String googleWebClintSecret =
+    '1063288208083-sbqn3deaueev2nrmi56mljbfmlvri94l.apps.googleusercontent.com';
 const String googleClintSeacrt = 'mo3082003';
 const String callbackURL =
     'https://wdwhpfwwbvketavjtcei.supabase.co/auth/v1/callback';

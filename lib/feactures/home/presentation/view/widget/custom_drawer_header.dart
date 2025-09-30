@@ -22,11 +22,11 @@ class CustomDrawerHeader extends StatelessWidget {
         } else if (state is FetchProfileInfoSuccess) {
           return Row(
             children: [
-              state.profile.profileImage.isNotEmpty
+              state.profile.profileImage!.isNotEmpty
                   ? ClipRRect(
                     borderRadius: BorderRadius.circular(100),
                     child: Image.network(
-                      state.profile.profileImage,
+                      state.profile.profileImage ?? AppAssets.kBestSellerTest,
                       height: 70,
                       width: 70,
                       fit: BoxFit.fill,
@@ -43,23 +43,27 @@ class CustomDrawerHeader extends StatelessWidget {
                     ),
                   ),
               SizedBox(width: MediaQuery.sizeOf(context).width * 0.0585),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    state.profile.name,
-                    style: AppStyles.styleLeagueSpartanMediem16(
-                      context,
-                    ).copyWith(color: AppColor.kCultured),
-                  ),
-                  Text(
-                    state.profile.email,
-                    style: AppStyles.styleLeagueSpartanMediem14(
-                      context,
-                    ).copyWith(color: AppColor.kCultured),
-                  ),
-                ],
+              SizedBox(
+                width: MediaQuery.sizeOf(context).width * 0.4,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      state.profile.name ?? 'No Nmae Set',
+                      style: AppStyles.styleLeagueSpartanBold20(
+                        context,
+                      ).copyWith(color: AppColor.kCultured, fontSize: 18),
+                    ),
+                    Text(
+                      state.profile.email ?? 'No Email Set',
+                      maxLines: 2,
+                      style: AppStyles.styleLeagueSpartanMediem14(
+                        context,
+                      ).copyWith(color: AppColor.kCultured),
+                    ),
+                  ],
+                ),
               ),
             ],
           );

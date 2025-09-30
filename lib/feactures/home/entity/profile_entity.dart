@@ -7,19 +7,19 @@ class ProfileEntity extends HiveObject {
   @HiveField(0)
   final String id;
   @HiveField(1)
-  final String email;
+  final String? email;
   @HiveField(2)
-  final String name;
+  final String? name;
   @HiveField(3)
-  final String profileImage;
+  final String? profileImage;
   @HiveField(4)
-  final String cuntry;
+  final String? cuntry;
   @HiveField(5)
-  final String address;
+  final String? address;
   @HiveField(6)
-  final String phomeNumber;
+  final String? phomeNumber;
   @HiveField(7)
-  final String dateOfBirth;
+  final String? dateOfBirth;
 
   ProfileEntity({
     required this.id,

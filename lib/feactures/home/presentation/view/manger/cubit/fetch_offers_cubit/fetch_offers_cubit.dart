@@ -5,7 +5,6 @@ import 'package:yumquick/core/loacl_data_source/loacl_data_source.dart';
 import 'package:yumquick/core/service/fetch_offer_service.dart';
 import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/feactures/home/entity/offer_entity.dart';
-import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 part 'fetch_offers_state.dart';
 
@@ -23,7 +22,7 @@ class FetchOffersCubit extends Cubit<FetchOffersState> {
       }
       final offers = await fetchOfferService.getOffers();
       var box = Hive.box<OffersEntity>(kOffersBox);
-      await box.clear(); // عشان تمسح القديم
+      await box.clear();
       await box.addAll(offers);
       emit(FetchOffersSuccess(offerEntity: offers));
     } catch (e) {

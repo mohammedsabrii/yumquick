@@ -8,7 +8,8 @@ import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 import 'package:yumquick/core/widget/custom_text_field.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/signup_cubit/signup_cubit.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/auth_cubit.dart';
+// import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/signup_cubit/signup_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/date_of_birth_text_fild.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_facebook_and_gmail.dart';
@@ -57,19 +58,19 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignupCubit, SignupState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is SignupLoading) {
+        if (state is AuthLoading) {
           isLoading = true;
-        } else if (state is SignupSuccess) {
+        } else if (state is AuthSuccess) {
           customShowSnackBar(
             context,
             title: 'Please verify your email address',
           );
           GoRouter.of(context).pop();
           isLoading = false;
-        } else if (state is SignupFailure) {
-          customShowSnackBar(context, title: state.errorMassage);
+        } else if (state is AuthFailure) {
+          customShowSnackBar(context, title: state.errorMessage);
           isLoading = false;
         }
       },
@@ -155,8 +156,7 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.042),
               CustomButton(
                 onTap: () async {
-                  BlocProvider.of<SignupCubit>(context).signInUser(
-                    context,
+                  BlocProvider.of<AuthCubit>(context).signUpUser(
                     name: name!,
                     email: email!,
                     password: password!,
@@ -182,7 +182,7 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
                 ),
               ),
               const SizedBox(height: 9),
-              const SignUpWithFacebookAndGmail(),
+              SignUpWithFacebookAndGmail(isLoding: isLoading),
               const SizedBox(height: 9),
 
               CustomSignupWidget(

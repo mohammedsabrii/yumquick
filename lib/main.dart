@@ -13,9 +13,7 @@ import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_off
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/get_prodacts_cubit/get_prodacts_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/search_cubit/search_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/auth_with_goole_cubit/auth_with_goole_cubit.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/login_cubit.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/signup_cubit/signup_cubit.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/auth_cubit.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/manger/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_profile_info_cubit/fetch_profile_info_cubit.dart';
 import 'package:yumquick/feactures/settings/presentation/manger/cubits/change_password_cubit/change_password_cubit.dart';
@@ -46,8 +44,8 @@ class YumQuick extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        BlocProvider(create: (context) => SignupCubit()),
-        BlocProvider(create: (context) => LoginCubit()),
+        // BlocProvider(create: (context) => SignupCubit()),
+        BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => EditProfileCubit()),
         BlocProvider(create: (context) => ChangePasswordCubit()),
         BlocProvider(
@@ -57,7 +55,7 @@ class YumQuick extends StatelessWidget {
         BlocProvider(create: (context) => FetchOffersCubit()..fetchOffers()),
         BlocProvider(create: (context) => FavoritesCubit()..fetchFavorites()),
         BlocProvider(create: (context) => SearchCubit()),
-        BlocProvider(create: (context) => AuthWithGoogleCubit()),
+        // BlocProvider(create: (context) => AuthWithGoogleCubit()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
