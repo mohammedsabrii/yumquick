@@ -6,6 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/cubit/favorite_cubit.dart';
+import 'package:yumquick/feactures/Menu/presentation/view/manger/cubit/cubit/fetch_category_products_cubit.dart';
 import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/entity/profile_entity.dart';
@@ -26,6 +27,7 @@ void main() async {
   await Hive.openBox<OffersEntity>(kOffersBox);
   await Hive.openBox<ProductsEntity>(kProductsBox);
   await Hive.openBox<ProfileEntity>(kProfileBox);
+  await Hive.openBox<ProfileEntity>(kCategoryProductsBox);
   await Hive.openBox<String>(kFavoritesBox);
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(url: supbaseUrl, anonKey: supbaseAnonKey);
@@ -55,7 +57,7 @@ class YumQuick extends StatelessWidget {
         BlocProvider(create: (context) => FetchOffersCubit()..fetchOffers()),
         BlocProvider(create: (context) => FavoritesCubit()..fetchFavorites()),
         BlocProvider(create: (context) => SearchCubit()),
-        // BlocProvider(create: (context) => AuthWithGoogleCubit()),
+        BlocProvider(create: (context) => GetCategoryProdactsCubit()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

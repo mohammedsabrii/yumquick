@@ -1,20 +1,21 @@
 part of 'get_prodacts_cubit.dart';
 
 @immutable
-sealed class GetProdactsState {}
+abstract class GetProdactsState {}
 
-final class GetProdactsInitial extends GetProdactsState {}
+class GetProdactsInitial extends GetProdactsState {}
 
-final class GetProdactsSuccess extends GetProdactsState {
-  final List<ProductsEntity> prodacts;
-
-  GetProdactsSuccess({required this.prodacts});
+class GetProdactsLoading extends GetProdactsState {
+  final bool isFirstFetch;
+  GetProdactsLoading({required this.isFirstFetch});
 }
 
-final class GetProdactsLoading extends GetProdactsState {}
+class GetProdactsSuccess extends GetProdactsState {
+  final List<ProductsEntity> products;
+  GetProdactsSuccess({required this.products});
+}
 
-final class GetProdactsFaliure extends GetProdactsState {
+class GetProdactsFailure extends GetProdactsState {
   final String errorMessage;
-
-  GetProdactsFaliure({required this.errorMessage});
+  GetProdactsFailure({required this.errorMessage});
 }

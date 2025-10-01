@@ -17,3 +17,4 @@ const String kProductsBox = 'products_box';
 const String kOffersBox = 'offers_box';
 const String kProfileBox = 'profile_box';
 const String kFavoritesBox = 'favorites_box';
+const String kCategoryProductsBox = 'category_products_box';

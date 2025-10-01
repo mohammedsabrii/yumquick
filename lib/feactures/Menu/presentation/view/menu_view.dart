@@ -5,6 +5,7 @@ import 'package:yumquick/core/widget/custom_boutton_navigation_bar.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_details.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_empty_cart.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/notifications_drawer_details.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/search_widget.dart';
 
 class MenuView extends StatefulWidget {
   const MenuView({super.key});
@@ -31,11 +32,20 @@ class _MenuViewState extends State<MenuView> {
         endDrawer: currentDrawer,
         backgroundColor: AppColor.kYellowBase,
         bottomNavigationBar: const CustomBouttonNavigationBar(),
-        body: MenuViewBody(
-          onOpenCartDrawer: () => openDrawer(const DrawerEmptyCart()),
-          onOpenNotificationDrawer:
-              () => openDrawer(const NotificationDrawerDetails()),
-          onOpenUserDrawer: () => openDrawer(const DrawerDetails()),
+        body: Stack(
+          children: [
+            MenuViewBody(
+              onOpenCartDrawer: () => openDrawer(const DrawerEmptyCart()),
+              onOpenNotificationDrawer:
+                  () => openDrawer(const NotificationDrawerDetails()),
+              onOpenUserDrawer: () => openDrawer(const DrawerDetails()),
+            ),
+            Positioned(
+              top: MediaQuery.sizeOf(context).width * 0.06,
+              left: MediaQuery.sizeOf(context).width * 0.089,
+              child: const SearchWidget(),
+            ),
+          ],
         ),
       ),
     );

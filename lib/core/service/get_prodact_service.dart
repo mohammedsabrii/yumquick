@@ -3,14 +3,20 @@ import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class GetProdactService {
   final supabase = Supabase.instance.client;
-  Future<List<ProductsEntity>> getProdacts() async {
+
+  Future<List<ProductsEntity>> getProdacts({
+    required int page,
+    required int pageSize,
+  }) async {
     final response = await supabase
         .from('products')
         .select(
           'id, name, subtitle, image, price, categories, price_after_discount, category_id',
-        );
-    final prodacts =
+        )
+        .range((page - 1) * pageSize, page * pageSize - 1);
+
+    final products =
         (response as List).map((e) => ProductsEntity.fromJson(e)).toList();
-    return prodacts;
+    return products;
   }
 }

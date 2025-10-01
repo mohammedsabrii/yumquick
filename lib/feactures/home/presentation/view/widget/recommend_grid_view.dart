@@ -4,20 +4,61 @@ import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/grid_view_item.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/get_prodacts_cubit/get_prodacts_cubit.dart';
 
-class RecommendGridView extends StatelessWidget {
+class RecommendGridView extends StatefulWidget {
   const RecommendGridView({super.key});
 
   @override
+  RecommendGridViewState createState() => RecommendGridViewState();
+}
+
+class RecommendGridViewState extends State<RecommendGridView> {
+  final ScrollController scrollController = ScrollController();
+  bool isLoadingMore = false;
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(onScroll);
+    context.read<GetProdactsCubit>().getProdacts(page: 1);
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  void onScroll() {
+    if (scrollController.position.pixels >=
+            scrollController.position.maxScrollExtent - 200 &&
+        !isLoadingMore) {
+      setState(() {
+        isLoadingMore = true;
+      });
+      context.read<GetProdactsCubit>().getProdacts(
+        page: null,
+      ); // Fetch next page
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetProdactsCubit, GetProdactsState>(
+    return BlocConsumer<GetProdactsCubit, GetProdactsState>(
+      listener: (context, state) {
+        if (state is GetProdactsSuccess) {
+          setState(() {
+            isLoadingMore = false;
+          });
+        }
+      },
       builder: (context, state) {
-        if (state is GetProdactsLoading) {
+        if (state is GetProdactsLoading && state.isFirstFetch) {
           return const SliverToBoxAdapter(
             child: Center(
               child: CircularProgressIndicator(color: AppColor.kMainColor),
             ),
           );
-        } else if (state is GetProdactsFaliure) {
+        } else if (state is GetProdactsFailure) {
           return SliverToBoxAdapter(
             child: Center(
               child: Text(
@@ -29,8 +70,14 @@ class RecommendGridView extends StatelessWidget {
         } else if (state is GetProdactsSuccess) {
           return SliverGrid(
             delegate: SliverChildBuilderDelegate((context, index) {
-              return GridViewItem(productsEntity: state.prodacts[index]);
-            }, childCount: state.prodacts.length),
+              if (index < state.products.length) {
+                return GridViewItem(productsEntity: state.products[index]);
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(color: AppColor.kMainColor),
+                );
+              }
+            }, childCount: state.products.length + (isLoadingMore ? 1 : 0)),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 10,
