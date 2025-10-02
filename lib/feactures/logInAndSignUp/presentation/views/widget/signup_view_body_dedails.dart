@@ -12,7 +12,7 @@ import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/logi
 // import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/signup_cubit/signup_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/date_of_birth_text_fild.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_facebook_and_gmail.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_gmail.dart';
 
 // ignore: must_be_immutable
 class SignUpViewBodyDetails extends StatefulWidget {
@@ -182,7 +182,7 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
                 ),
               ),
               const SizedBox(height: 9),
-              SignUpWithFacebookAndGmail(isLoding: isLoading),
+              SignUpWithGmail(isLoding: isLoading),
               const SizedBox(height: 9),
 
               CustomSignupWidget(

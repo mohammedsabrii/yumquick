@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/manger/cubit/cubit/fetch_category_products_cubit.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/widget/menu_page_view_list_view.dart';
 
@@ -12,26 +11,26 @@ class MenuPageViewDetails extends StatelessWidget {
     super.key,
     required this.categoryIds,
     required this.scrollControllers,
-    required this.isLoading,
     required this.pageIndex,
   });
 
   final List<String> categoryIds;
   final Map<String, ScrollController> scrollControllers;
-  final Map<String, bool> isLoading;
   final int pageIndex;
 
   @override
   Widget build(BuildContext context) {
+    final categoryId = categoryIds[pageIndex];
+
     return Container(
       width: double.infinity,
       height: MediaQuery.sizeOf(context).height * 0.82,
       decoration: BoxDecoration(
         color: AppColor.kCultured,
         borderRadius:
-            categoryIds[pageIndex] == snacksCategoryId
+            categoryId == snacksCategoryId
                 ? const BorderRadius.only(topRight: Radius.circular(30))
-                : categoryIds[pageIndex] == drinksCategoryId
+                : categoryId == drinksCategoryId
                 ? const BorderRadius.only(topLeft: Radius.circular(30))
                 : const BorderRadius.only(
                   topLeft: Radius.circular(30),
@@ -47,55 +46,62 @@ class MenuPageViewDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 24),
+            const SizedBox(height: 10),
             Text(
-              categoryIds[pageIndex] == snacksCategoryId
-                  ? "Snacks"
-                  : categoryIds[pageIndex] == mealCategoryId
-                  ? "Meals"
-                  : categoryIds[pageIndex] == veganCategoryId
-                  ? "Vegan"
-                  : categoryIds[pageIndex] == dessertCategoryId
-                  ? "Desserts"
-                  : "Drinks",
+              getCategoryTitle(categoryId),
               style: AppStyles.styleLeagueSpartanBold24(
                 context,
               ).copyWith(color: AppColor.kDarkRed),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 10),
             Expanded(
               child: BlocBuilder<
                 GetCategoryProdactsCubit,
                 GetCategoryProdactsState
               >(
+                buildWhen:
+                    (previous, current) =>
+                        current is GetCategoryProdactsSuccess ||
+                        current is GetCategoryProdactsFailure ||
+                        current is GetCategoryProdactsLoading,
                 builder: (context, state) {
-                  if (state is GetCategoryProdactsSuccess) {
-                    final products =
-                        state.categoryProducts[categoryIds[pageIndex]] ?? [];
+                  final cubit = context.read<GetCategoryProdactsCubit>();
 
-                    if (products.isEmpty) {
-                      return const Center(
-                        child: Text(
-                          "No products found",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      );
-                    }
-
-                    return MenuPageViewListView(
-                      scrollControllers: scrollControllers,
-                      categoryIds: categoryIds,
-                      products: products,
-                      isLoading: isLoading,
-                      pageIndex: pageIndex,
+                  if (state is GetCategoryProdactsLoading &&
+                      (cubit.cachedProducts[categoryId]?.isEmpty ?? true)) {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColor.kMainColor,
+                      ),
                     );
-                  } else if (state is GetCategoryProdactsFailure) {
-                    customShowSnackBar(context, title: state.errorMessage);
                   }
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColor.kMainColor,
-                    ),
+
+                  if (state is GetCategoryProdactsFailure) {
+                    return Center(
+                      child: Text(
+                        state.errorMessage,
+                        style: AppStyles.styleLeagueSpartanMediem17(
+                          context,
+                        ).copyWith(color: Colors.red),
+                      ),
+                    );
+                  }
+
+                  final products = cubit.cachedProducts[categoryId] ?? [];
+                  if (products.isEmpty) {
+                    return const Center(
+                      child: Text(
+                        "No products found",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    );
+                  }
+
+                  return MenuPageViewListView(
+                    scrollControllers: scrollControllers,
+                    categoryIds: categoryIds,
+                    products: products,
+                    pageIndex: pageIndex,
                   );
                 },
               ),
@@ -104,5 +110,22 @@ class MenuPageViewDetails extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String getCategoryTitle(String id) {
+    switch (id) {
+      case snacksCategoryId:
+        return "Snacks";
+      case mealCategoryId:
+        return "Meals";
+      case veganCategoryId:
+        return "Vegan";
+      case dessertCategoryId:
+        return "Desserts";
+      case drinksCategoryId:
+        return "Drinks";
+      default:
+        return "Unknown";
+    }
   }
 }

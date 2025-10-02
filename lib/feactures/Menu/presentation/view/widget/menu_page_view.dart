@@ -15,7 +15,7 @@ class MenuPageView extends StatefulWidget {
 class _MenuPageViewState extends State<MenuPageView> {
   int currentPageIndex = 0;
 
-  List<String> categoryIds = [
+  final List<String> categoryIds = [
     snacksCategoryId,
     mealCategoryId,
     veganCategoryId,
@@ -23,61 +23,32 @@ class _MenuPageViewState extends State<MenuPageView> {
     drinksCategoryId,
   ];
 
-  final Map<String, int> pageNumbers = {};
-  final Map<String, bool> isLoading = {};
-  final Map<String, bool> hasMore = {};
   final Map<String, ScrollController> scrollControllers = {};
 
   @override
   void initState() {
     super.initState();
     for (var id in categoryIds) {
-      pageNumbers[id] = 1;
-      isLoading[id] = false;
-      hasMore[id] = true;
-
       scrollControllers[id] = ScrollController();
       scrollControllers[id]!.addListener(() => onScroll(id));
-
-      BlocProvider.of<GetCategoryProdactsCubit>(
-        context,
-      ).getCategoryProducts(categoryId: id, pageNumber: 1);
     }
+    // Initialize categories in the Cubit
+    BlocProvider.of<GetCategoryProdactsCubit>(
+      context,
+    ).initializeCategories(categoryIds);
   }
 
   void onScroll(String categoryId) {
     if (!scrollControllers.containsKey(categoryId)) return;
     final controller = scrollControllers[categoryId]!;
+    final cubit = context.read<GetCategoryProdactsCubit>();
 
     if (controller.position.pixels >=
-        controller.position.maxScrollExtent * 0.8) {
-      loadMore(categoryId);
+            controller.position.maxScrollExtent * 0.8 &&
+        cubit.isLoading[categoryId] != true &&
+        cubit.hasMore[categoryId] != false) {
+      cubit.loadMore(categoryId);
     }
-  }
-
-  Future<void> loadMore(String categoryId) async {
-    if (isLoading[categoryId] == true || hasMore[categoryId] == false) return;
-
-    setState(() => isLoading[categoryId] = true);
-
-    pageNumbers[categoryId] = (pageNumbers[categoryId] ?? 1) + 1;
-
-    await BlocProvider.of<GetCategoryProdactsCubit>(
-      context,
-    ).getCategoryProducts(
-      categoryId: categoryId,
-      pageNumber: pageNumbers[categoryId]!,
-    );
-
-    final state = context.read<GetCategoryProdactsCubit>().state;
-    if (state is GetCategoryProdactsSuccess) {
-      final products = state.categoryProducts[categoryId] ?? [];
-      if (products.length < 10) {
-        hasMore[categoryId] = false;
-      }
-    }
-
-    setState(() => isLoading[categoryId] = false);
   }
 
   @override
@@ -98,7 +69,6 @@ class _MenuPageViewState extends State<MenuPageView> {
         return MenuPageViewDetails(
           categoryIds: categoryIds,
           scrollControllers: scrollControllers,
-          isLoading: isLoading,
           pageIndex: index,
         );
       },

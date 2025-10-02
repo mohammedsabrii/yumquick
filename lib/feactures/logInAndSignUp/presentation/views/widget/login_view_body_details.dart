@@ -9,7 +9,7 @@ import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/core/widget/custom_text_field.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/auth_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
-import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_facebook_and_gmail.dart';
+import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_gmail.dart';
 
 // ignore: must_be_immutable
 class LoginViewBodyDetails extends StatelessWidget {
@@ -100,7 +100,7 @@ class LoginViewBodyDetails extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 7),
-                  SignUpWithFacebookAndGmail(isLoding: isLoading),
+                  SignUpWithGmail(isLoding: isLoading),
                   SizedBox(height: MediaQuery.sizeOf(context).height * 0.0375),
                   CustomSignupWidget(
                     title: 'Don’t have an account?',

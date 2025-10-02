@@ -12,23 +12,42 @@ class GetCategoryProdactsCubit extends Cubit<GetCategoryProdactsState> {
 
   final GetCategoryProdactService service = GetCategoryProdactService();
   final Map<String, List<ProductsEntity>> cachedProducts = {};
+  final Map<String, int> pageNumbers = {};
+  final Map<String, bool> isLoading = {};
+  final Map<String, bool> hasMore = {};
+
+  void initializeCategories(List<String> categoryIds) {
+    for (var id in categoryIds) {
+      if (!cachedProducts.containsKey(id)) {
+        pageNumbers[id] = 1;
+        isLoading[id] = false;
+        hasMore[id] = true;
+        getCategoryProducts(categoryId: id, pageNumber: 1);
+      }
+    }
+  }
 
   Future<void> getCategoryProducts({
     required String categoryId,
     required int pageNumber,
     int limit = 10,
   }) async {
+    if (isLoading[categoryId] == true || hasMore[categoryId] == false) return;
+
     try {
-      emit(GetCategoryProdactsLoading());
+      isLoading[categoryId] = true;
+      if (pageNumber == 1) {
+        emit(GetCategoryProdactsLoading());
+      }
       final box = Hive.box<ProductsEntity>(kCategoryProductsBox);
       final localProducts =
           box.values
               .where((product) => product.categoryId == categoryId)
               .toList();
-
       if (localProducts.isNotEmpty && pageNumber == 1) {
         cachedProducts[categoryId] = localProducts;
         emit(GetCategoryProdactsSuccess(categoryProducts: cachedProducts));
+        isLoading[categoryId] = false;
         return;
       }
       final newProducts = await service.getCategoryProducts(
@@ -48,9 +67,22 @@ class GetCategoryProdactsCubit extends Cubit<GetCategoryProdactsState> {
         await box.clear();
         await box.addAll(newProducts.take(10).toList());
       }
+
+      if (newProducts.length < limit) {
+        hasMore[categoryId] = false;
+      }
+      pageNumbers[categoryId] = pageNumber;
+
       emit(GetCategoryProdactsSuccess(categoryProducts: cachedProducts));
     } catch (e) {
       emit(GetCategoryProdactsFailure(errorMessage: e.toString()));
+    } finally {
+      isLoading[categoryId] = false;
     }
+  }
+
+  Future<void> loadMore(String categoryId) async {
+    final nextPage = (pageNumbers[categoryId] ?? 1) + 1;
+    await getCategoryProducts(categoryId: categoryId, pageNumber: nextPage);
   }
 }

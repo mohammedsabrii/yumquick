@@ -27,7 +27,7 @@ void main() async {
   await Hive.openBox<OffersEntity>(kOffersBox);
   await Hive.openBox<ProductsEntity>(kProductsBox);
   await Hive.openBox<ProfileEntity>(kProfileBox);
-  await Hive.openBox<ProfileEntity>(kCategoryProductsBox);
+  await Hive.openBox<ProductsEntity>(kCategoryProductsBox);
   await Hive.openBox<String>(kFavoritesBox);
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(url: supbaseUrl, anonKey: supbaseAnonKey);
