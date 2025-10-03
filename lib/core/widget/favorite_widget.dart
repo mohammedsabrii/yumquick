@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yumquick/core/widget/custom_show_snackbar.dart';
-import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/cubit/favorite_cubit.dart';
+import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class FavoriteWidget extends StatelessWidget {
@@ -22,10 +22,14 @@ class FavoriteWidget extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             if (isFavorited) {
-              context.read<FavoritesCubit>().removeFavorite(productsEntity);
+              BlocProvider.of<FavoritesCubit>(
+                context,
+              ).removeFavorite(productsEntity);
               customShowSnackBar(context, title: 'Removed from favorites');
             } else {
-              context.read<FavoritesCubit>().addFavorite(productsEntity);
+              BlocProvider.of<FavoritesCubit>(
+                context,
+              ).addFavorite(productsEntity);
               customShowSnackBar(context, title: 'Added to favorites');
             }
           },

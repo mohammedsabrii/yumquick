@@ -11,6 +11,7 @@ import 'package:yumquick/feactures/home/presentation/view/widget/prodact_details
 class ProdactDetailsViewBody extends StatelessWidget {
   const ProdactDetailsViewBody({super.key, required this.productsEntity});
   final ProductsEntity productsEntity;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,7 +40,7 @@ class ProdactDetailsViewBody extends StatelessWidget {
                   ProdactDetailsInformation(productsEntity: productsEntity),
                   const SizedBox(height: 20),
 
-                  const ProdactDetailsButton(),
+                  ProdactDetailsButton(productsEntity: productsEntity),
                 ],
               ),
             ),

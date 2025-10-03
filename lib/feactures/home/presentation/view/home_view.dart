@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_boutton_navigation_bar.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/search_cubit/search_cubit.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/drawer_cart.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_details.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/drawer_empty_cart.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/home_view_body.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/notifications_drawer_details.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/search_widget.dart';
@@ -44,7 +44,7 @@ class HomeViewState extends State<HomeView> {
           child: Stack(
             children: [
               HomeViewBody(
-                onOpenCartDrawer: () => openDrawer(const DrawerEmptyCart()),
+                onOpenCartDrawer: () => openDrawer(const DrawerCart()),
                 onOpenNotificationDrawer:
                     () => openDrawer(const NotificationDrawerDetails()),
                 onOpenUserDrawer: () => openDrawer(const DrawerDetails()),

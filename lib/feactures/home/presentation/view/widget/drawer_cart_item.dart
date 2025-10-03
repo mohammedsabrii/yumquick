@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/cart_date_and_time_and_total_item.dart';
+import 'package:yumquick/feactures/home/entity/cart_entity.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/cart_item_title_and_price.dart';
 
 class DrawerCartItem extends StatelessWidget {
-  final CartItem cartItem;
-
-  const DrawerCartItem({super.key, required this.cartItem});
-
+  const DrawerCartItem({super.key, required this.cartEntity});
+  final CartEntity cartEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,11 +13,20 @@ class DrawerCartItem extends StatelessWidget {
         const SizedBox(height: 10),
         Row(
           children: [
-            Image.asset(cartItem.imagePath),
+            Container(
+              height: MediaQuery.sizeOf(context).height * 0.097,
+              width: MediaQuery.sizeOf(context).width * 0.2,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                image: DecorationImage(
+                  image: NetworkImage(cartEntity.product.image),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
             const SizedBox(width: 9),
-            CartItemTitleAndPrice(cartItem: cartItem),
+            CartItemTitleAndPrice(cartEntity: cartEntity),
             const Spacer(),
-            CartDateAndTimeAndTotalItem(cartItem: cartItem),
           ],
         ),
         const SizedBox(height: 10),

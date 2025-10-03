@@ -5,15 +5,15 @@ import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/core/utils/app_router.dart';
-import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/cubit/favorite_cubit.dart';
+import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/manger/cubit/cubit/fetch_category_products_cubit.dart';
 import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/entity/profile_entity.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/cubit/cart_cubit/cart_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_offers_cubit/fetch_offers_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/get_prodacts_cubit/get_prodacts_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/search_cubit/search_cubit.dart';
-import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/auth_cubit.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/manger/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_profile_info_cubit/fetch_profile_info_cubit.dart';
@@ -31,12 +31,7 @@ void main() async {
   await Hive.openBox<String>(kFavoritesBox);
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(url: supbaseUrl, anonKey: supbaseAnonKey);
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => CartModel(),
-      child: const YumQuick(),
-    ),
-  );
+  runApp(const YumQuick());
 }
 
 class YumQuick extends StatelessWidget {
@@ -46,7 +41,6 @@ class YumQuick extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        // BlocProvider(create: (context) => SignupCubit()),
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => EditProfileCubit()),
         BlocProvider(create: (context) => ChangePasswordCubit()),
@@ -56,6 +50,8 @@ class YumQuick extends StatelessWidget {
         BlocProvider(create: (context) => GetProdactsCubit()..getProdacts()),
         BlocProvider(create: (context) => FetchOffersCubit()..fetchOffers()),
         BlocProvider(create: (context) => FavoritesCubit()..fetchFavorites()),
+        BlocProvider(create: (context) => CartsCubit()..fetchFromCarts()),
+
         BlocProvider(create: (context) => SearchCubit()),
         BlocProvider(create: (context) => GetCategoryProdactsCubit()),
       ],

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
-import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/cubit/cart_cubit/cart_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/calculate_total_price.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/custom_drawer.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_cart_item.dart';
 
 class DrawerHaveItemCart extends StatelessWidget {
@@ -17,9 +16,9 @@ class DrawerHaveItemCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomDrawer(
-      child: Consumer<CartModel>(
-        builder: (context, cart, child) {
+    return BlocBuilder<CartsCubit, CartsState>(
+      builder: (context, state) {
+        if (state is CartsSuccess) {
           return Column(
             children: [
               Row(
@@ -39,7 +38,7 @@ class DrawerHaveItemCart extends StatelessWidget {
               const Divider(thickness: 2, color: AppColor.kYellowBase),
               const SizedBox(height: 15),
               Text(
-                'You have ${cart.itemCount} items in the cart',
+                'You have ${state.cartProducts.length} items in the cart',
                 style: AppStyles.styleLeagueSpartanregular20(
                   context,
                 ).copyWith(color: AppColor.kCultured),
@@ -48,9 +47,11 @@ class DrawerHaveItemCart extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.3434,
                 child: ListView.builder(
-                  itemCount: cart.items.length,
+                  itemCount: state.cartProducts.length,
                   itemBuilder: (context, index) {
-                    return DrawerCartItem(cartItem: cart.items[index]);
+                    return DrawerCartItem(
+                      cartEntity: state.cartProducts[index],
+                    );
                   },
                 ),
               ),
@@ -70,8 +71,19 @@ class DrawerHaveItemCart extends StatelessWidget {
               ),
             ],
           );
-        },
-      ),
+        } else if (state is CartsFailure) {
+          return Text(
+            state.errorMessage,
+            style: AppStyles.styleLeagueSpartanMediem16(
+              context,
+            ).copyWith(color: AppColor.kCultured),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(color: AppColor.kCultured),
+          );
+        }
+      },
     );
   }
 }

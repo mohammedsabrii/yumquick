@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/cubit/favorite_cubit.dart';
+import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/widget/favorite_view_item.dart';
 
 class FavoriteBlocBuilder extends StatelessWidget {

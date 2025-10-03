@@ -29,7 +29,7 @@ class DeliveryTimeDetails extends StatelessWidget {
             const SizedBox(height: 30),
             Image.asset(AppAssets.kMapTest),
             const SizedBox(height: 25),
-            const PaymentDeliveryTime(),
+            // const PaymentDeliveryTime(),
             const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

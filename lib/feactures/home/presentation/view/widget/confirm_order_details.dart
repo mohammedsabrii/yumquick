@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
-import 'package:yumquick/core/utils/app_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
 import 'package:yumquick/core/widget/custom_button.dart';
-import 'package:yumquick/feactures/home/presentation/view/manger/get_price_model.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/cubit/cart_cubit/cart_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/address_container.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/calculate_total_price.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/confirm_order_item.dart';
@@ -39,45 +37,58 @@ class ConfirmOrderDetails extends StatelessWidget {
             const Divider(color: AppColor.kPinkishOrange, thickness: 2),
             const SizedBox(height: 20),
             Expanded(
-              child: Consumer<CartModel>(
-                builder: (context, cart, child) {
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: cart.items.length,
-                          itemBuilder: (context, index) {
-                            return ConfirmOrderItem(
-                              cartItem: cart.items[index],
-                            );
-                          },
-                        ),
-                        const CalculateTotalPrice(
-                          color: AppColor.kDarkRed,
-                          dividerColor: AppColor.kPinkishOrange,
-                        ),
-                        const SizedBox(height: 30),
-                        CustomButton(
-                          onTap: () {
-                            GoRouter.of(context).push(AppRouter.kPaymentView);
-                          },
-                          width: 150,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 7,
-                            vertical: 5,
+              child: BlocBuilder<CartsCubit, CartsState>(
+                builder: (context, state) {
+                  if (state is CartsSuccess) {
+                    return SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: state.cartProducts.length,
+                            itemBuilder: (context, index) {
+                              return ConfirmOrderItem(
+                                cartEntity: state.cartProducts[index],
+                              );
+                            },
                           ),
-                          color: AppColor.kPinkishOrange,
-                          title: 'Place Order',
-                          textStyle: AppStyles.styleLeagueSpartanregular23(
-                            context,
+                          const CalculateTotalPrice(
+                            color: AppColor.kDarkRed,
+                            dividerColor: AppColor.kPinkishOrange,
                           ),
-                        ),
-                        const SizedBox(height: 30),
-                      ],
-                    ),
-                  );
+                          const SizedBox(height: 30),
+                          CustomButton(
+                            onTap: () {},
+                            width: 150,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 7,
+                              vertical: 5,
+                            ),
+                            color: AppColor.kPinkishOrange,
+                            title: 'Place Order',
+                            textStyle: AppStyles.styleLeagueSpartanregular23(
+                              context,
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                        ],
+                      ),
+                    );
+                  } else if (state is CartsFailure) {
+                    return Text(
+                      state.errorMessage,
+                      style: AppStyles.styleLeagueSpartanMediem16(
+                        context,
+                      ).copyWith(color: Colors.red),
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColor.kMainColor,
+                      ),
+                    );
+                  }
                 },
               ),
             ),
