@@ -25,7 +25,10 @@ class DrawerCartItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 9),
-            CartItemTitleAndPrice(cartEntity: cartEntity),
+            SizedBox(
+              width: MediaQuery.sizeOf(context).width * 0.445,
+              child: CartItemTitleAndPrice(cartEntity: cartEntity),
+            ),
             const Spacer(),
           ],
         ),

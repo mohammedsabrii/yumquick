@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:yumquick/core/service/carts_service.dart';
 import 'package:yumquick/feactures/home/entity/cart_entity.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
@@ -8,33 +9,13 @@ part 'cart_state.dart';
 
 class CartsCubit extends Cubit<CartsState> {
   CartsCubit() : super(CartsInitial());
-
   final supabase = Supabase.instance.client;
-
+  String? get userId => supabase.auth.currentUser?.id;
+  final cartsService = CartsService();
   Future<void> fetchFromCarts() async {
     emit(CartsLoading());
-    final userId = supabase.auth.currentUser?.id;
-
     try {
-      final response = await supabase
-          .from('carts')
-          .select('''
-          quantity,
-          products!inner (
-            id,
-            name,
-            image,
-            subtitle,
-            price,
-            price_after_discount,
-            categories,
-            created_at
-          )
-        ''')
-          .eq('user_id', userId!);
-
-      final cartItems =
-          (response as List).map((cart) => CartEntity.fromJson(cart)).toList();
+      final cartItems = await cartsService.fetchFromCarts(userId!);
 
       if (cartItems.isEmpty) {
         emit(CartsEmpty());
@@ -47,8 +28,6 @@ class CartsCubit extends Cubit<CartsState> {
   }
 
   Future<void> addToCart(ProductsEntity product) async {
-    final userId = supabase.auth.currentUser?.id;
-
     try {
       if (state is CartsSuccess) {
         final current = List<CartEntity>.from(
@@ -58,11 +37,7 @@ class CartsCubit extends Cubit<CartsState> {
 
         if (index != -1) {
           final newQuantity = current[index].quantity + 1;
-          await supabase
-              .from('carts')
-              .update({"quantity": newQuantity})
-              .eq('user_id', userId!)
-              .eq('product_id', product.id);
+          await cartsService.updateQuantity(userId!, product, newQuantity);
 
           current[index] = CartEntity(product: product, quantity: newQuantity);
           emit(CartsSuccess(current));
@@ -70,11 +45,7 @@ class CartsCubit extends Cubit<CartsState> {
         }
       }
 
-      await supabase.from('carts').insert({
-        'user_id': userId,
-        'product_id': product.id,
-        'quantity': 1,
-      });
+      await cartsService.addToCart(userId!, product, 1);
 
       if (state is CartsSuccess) {
         final current = List<CartEntity>.from(
@@ -91,16 +62,10 @@ class CartsCubit extends Cubit<CartsState> {
   }
 
   Future<void> updateQuantity(ProductsEntity product, int newQuantity) async {
-    final userId = supabase.auth.currentUser?.id;
-
     try {
       if (newQuantity < 1) newQuantity = 1;
 
-      await supabase
-          .from('carts')
-          .update({"quantity": newQuantity})
-          .eq('user_id', userId!)
-          .eq('product_id', product.id);
+      await cartsService.updateQuantity(userId!, product, newQuantity);
 
       if (state is CartsSuccess) {
         final current = List<CartEntity>.from(
@@ -118,14 +83,8 @@ class CartsCubit extends Cubit<CartsState> {
   }
 
   Future<void> removeFromCart(CartEntity product) async {
-    final userId = supabase.auth.currentUser?.id;
-
     try {
-      await supabase
-          .from('carts')
-          .delete()
-          .eq('user_id', userId!)
-          .eq('product_id', product.product.id);
+      await cartsService.removeFromCart(userId!, product.product.id);
 
       if (state is CartsSuccess) {
         final current = List<CartEntity>.from(

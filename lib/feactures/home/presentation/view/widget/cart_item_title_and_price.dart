@@ -18,6 +18,7 @@ class CartItemTitleAndPrice extends StatelessWidget {
       children: [
         Text(
           cartEntity.product.name,
+          maxLines: 2,
           style: AppStyles.styleLeagueSpartanMediem16(
             context,
           ).copyWith(color: AppColor.kCultured),

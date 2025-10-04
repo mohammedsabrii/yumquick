@@ -9,7 +9,6 @@ import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/presentation/view/confirm_order_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/confirmed_order_view.dart';
-import 'package:yumquick/feactures/home/presentation/view/delivery_time_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/home_view.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/my_orders_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/more_best_seller_view.dart';
@@ -51,7 +50,7 @@ class AppRouter {
   static const kNotificationSettings = '/NotificationSettings';
   static const kConfirmOrderView = '/ConfirmOrderView';
   static const kConfirmedOrderView = '/ConfirmedOrderView';
-  static const kDeliverytimeView = '/DeliverytimeView';
+
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SpalshView()),
@@ -139,10 +138,6 @@ class AppRouter {
       GoRoute(
         path: kConfirmedOrderView,
         builder: (context, state) => const ConfirmedOrderView(),
-      ),
-      GoRoute(
-        path: kDeliverytimeView,
-        builder: (context, state) => const DeliveryTimeView(),
       ),
     ],
   );
