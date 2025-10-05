@@ -23,7 +23,11 @@ class CancelOrderViewBody extends StatelessWidget {
               onTap: () {
                 GoRouter.of(context).pop();
               },
-              child: SvgPicture.asset(AppAssets.kBackIcon),
+              child: SvgPicture.asset(
+                AppAssets.kBackIcon,
+                height: 25,
+                width: 20,
+              ),
             ),
           ),
           SizedBox(height: MediaQuery.sizeOf(context).height * 0.105),

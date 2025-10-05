@@ -17,7 +17,7 @@ class CustomPageHeader extends StatelessWidget {
           onTap: () {
             GoRouter.of(context).pop();
           },
-          child: SvgPicture.asset(AppAssets.kBackIcon),
+          child: SvgPicture.asset(AppAssets.kBackIcon, height: 25, width: 20),
         ),
         SizedBox(width: space),
         Align(

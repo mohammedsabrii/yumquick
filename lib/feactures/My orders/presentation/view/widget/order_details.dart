@@ -14,8 +14,8 @@ class CompletedOrderDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 5),
-        OrderTitleAndPrice(),
-        OrderMetaData(),
+        // OrderTitleAndPrice(),
+        // OrderMetaData(),
         OrderStatus(),
         CompletedOrderActions(),
         SizedBox(height: 5),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
+import 'package:yumquick/feactures/home/entity/active_order_entity.dart';
 
 class OrderTitleAndPrice extends StatelessWidget {
-  const OrderTitleAndPrice({super.key});
-
+  const OrderTitleAndPrice({super.key, required this.activeOrderEntity});
+  final ActiveOrderEntity activeOrderEntity;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -12,7 +13,7 @@ class OrderTitleAndPrice extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            'Bean and Vegetable Burger',
+            activeOrderEntity.product.name,
             maxLines: 3,
             style: AppStyles.styleLeagueSpartanMediem20(
               context,
@@ -21,7 +22,7 @@ class OrderTitleAndPrice extends StatelessWidget {
         ),
 
         Text(
-          '\$20.00',
+          '\$${activeOrderEntity.totalAmount}',
           textAlign: TextAlign.right,
           style: AppStyles.styleLeagueSpartanMediem20(
             context,

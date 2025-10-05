@@ -19,8 +19,8 @@ class CustomOrderContainer extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
-
-        height: 35,
+        width: MediaQuery.sizeOf(context).width * 0.3,
+        height: MediaQuery.sizeOf(context).height * 0.0426,
         decoration: ShapeDecoration(
           color: color,
           shape: RoundedRectangleBorder(

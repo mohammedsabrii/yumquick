@@ -4,8 +4,8 @@ import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
-class ActivePageView extends StatelessWidget {
-  const ActivePageView({super.key});
+class NoActiveOrderView extends StatelessWidget {
+  const NoActiveOrderView({super.key});
 
   @override
   Widget build(BuildContext context) {

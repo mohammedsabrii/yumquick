@@ -37,6 +37,8 @@ class _MyOrdersPageViewWithIndexState extends State<MyOrdersPageViewWithIndex> {
       child: Column(
         children: [
           CustomMyOrdersPageViewList(cruntPageIndex: pageIndex),
+          const SizedBox(height: 20),
+
           Expanded(child: MyOrdersPageView(controller: pageController)),
         ],
       ),

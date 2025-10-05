@@ -22,12 +22,6 @@ class CancelOrderActions extends StatelessWidget {
           color: AppColor.kMainColor,
           textColor: AppColor.kCultured,
         ),
-
-        const CustomOrderContainer(
-          title: 'Track Driver',
-          color: AppColor.kPinkishOrange,
-          textColor: AppColor.kMainColor,
-        ),
       ],
     );
   }

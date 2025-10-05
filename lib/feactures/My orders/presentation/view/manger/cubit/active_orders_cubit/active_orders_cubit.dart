@@ -36,10 +36,13 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
           (response as List)
               .map((json) => ActiveOrderEntity.fromJson(json))
               .toList();
-
-      emit(ActiveOrdersLoaded(orders));
+      if (orders.isEmpty) {
+        emit(ActiveOrdersEmpty());
+      } else {
+        emit(ActiveOrdersSuccess(orders));
+      }
     } catch (e) {
-      emit(ActiveOrdersError(e.toString()));
+      emit(ActiveOrdersFailure(e.toString()));
     }
   }
 
@@ -61,7 +64,7 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
 
       await fetchActiveOrders();
     } catch (e) {
-      emit(ActiveOrdersError("Bulk insert failed: ${e.toString()}"));
+      emit(ActiveOrdersFailure("Bulk insert failed: ${e.toString()}"));
     }
   }
 
@@ -72,7 +75,7 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
 
       await fetchActiveOrders();
     } catch (e) {
-      emit(ActiveOrdersError("Delete failed: ${e.toString()}"));
+      emit(ActiveOrdersFailure("Delete failed: ${e.toString()}"));
     }
   }
 }

@@ -47,7 +47,11 @@ class SettingsItem extends StatelessWidget {
             ),
             RotatedBox(
               quarterTurns: 3,
-              child: SvgPicture.asset(AppAssets.kBackIcon),
+              child: SvgPicture.asset(
+                AppAssets.kBackIcon,
+                height: 25,
+                width: 20,
+              ),
             ),
           ],
         ),

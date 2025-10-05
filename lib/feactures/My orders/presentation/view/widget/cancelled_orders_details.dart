@@ -13,8 +13,8 @@ class CancelledOrdersDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 5),
-        OrderTitleAndPrice(),
-        OrderMetaData(),
+        // OrderTitleAndPrice(),
+        // OrderMetaData(),
         OrderStatus(),
         SizedBox(height: 5),
       ],

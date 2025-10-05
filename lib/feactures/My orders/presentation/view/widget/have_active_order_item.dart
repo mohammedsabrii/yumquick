@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/My%20orders/presentation/view/widget/cancel_order_details.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/active_order_item_detiles.dart';
+import 'package:yumquick/feactures/home/entity/active_order_entity.dart';
 
 class HaveActiveOrderItem extends StatelessWidget {
-  const HaveActiveOrderItem({super.key});
-
+  const HaveActiveOrderItem({super.key, required this.activeOrderEntity});
+  final ActiveOrderEntity activeOrderEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,9 +13,23 @@ class HaveActiveOrderItem extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(AppAssets.korderTestImage),
+            Container(
+              height: MediaQuery.sizeOf(context).height * 0.13,
+              width: MediaQuery.sizeOf(context).width * 0.2,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(activeOrderEntity.product.image),
+                ),
+              ),
+            ),
             SizedBox(width: MediaQuery.sizeOf(context).width * 0.033),
-            const Expanded(child: CancelOrderDetails()),
+            Expanded(
+              child: HaveActiveOrderItemDetiles(
+                activeOrderEntity: activeOrderEntity,
+              ),
+            ),
           ],
         ),
         const Divider(thickness: 1, color: AppColor.kMainColor),
