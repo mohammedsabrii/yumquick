@@ -19,7 +19,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       final supabase = Supabase.instance.client;
       final userId = supabase.auth.currentUser?.id;
       if (userId == null) {
-        emit(EditProfileFailure(errorMassage: 'User not authenticated'));
+        emit(EditProfileFailure(errorMessage: 'User not authenticated'));
         return;
       }
 
@@ -37,7 +37,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         ),
       );
     } catch (e) {
-      emit(EditProfileFailure(errorMassage: e.toString()));
+      emit(EditProfileFailure(errorMessage: e.toString()));
     }
   }
 
@@ -65,7 +65,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       final supabase = Supabase.instance.client;
       final userId = supabase.auth.currentUser?.id;
       if (userId == null) {
-        emit(EditProfileFailure(errorMassage: 'User not authenticated'));
+        emit(EditProfileFailure(errorMessage: 'User not authenticated'));
         customShowSnackBar(context, title: 'User not authenticated');
         return;
       }
@@ -102,10 +102,10 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         ),
       );
     } on AuthApiException catch (e) {
-      emit(EditProfileFailure(errorMassage: e.toString()));
+      emit(EditProfileFailure(errorMessage: e.toString()));
       customShowSnackBar(context, title: e.toString());
     } catch (e) {
-      emit(EditProfileFailure(errorMassage: 'Failed to update profile: $e'));
+      emit(EditProfileFailure(errorMessage: 'Failed to update profile: $e'));
       customShowSnackBar(context, title: 'Failed to update profile: $e');
     }
   }

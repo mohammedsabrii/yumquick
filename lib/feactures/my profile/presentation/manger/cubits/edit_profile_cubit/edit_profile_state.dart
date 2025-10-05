@@ -26,7 +26,7 @@ final class EditProfileSuccess extends EditProfileState {
 final class EditProfileLoading extends EditProfileState {}
 
 final class EditProfileFailure extends EditProfileState {
-  final String errorMassage;
+  final String errorMessage;
 
-  EditProfileFailure({required this.errorMassage});
+  EditProfileFailure({required this.errorMessage});
 }

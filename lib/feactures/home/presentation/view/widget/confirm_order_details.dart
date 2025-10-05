@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
-import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/cart_cubit/cart_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/address_container.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/calculate_total_price.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/confirm_order_item.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/confirmed_order_button.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/shipping_and_edit_address.dart';
 
 class ConfirmOrderDetails extends StatelessWidget {
@@ -58,19 +60,8 @@ class ConfirmOrderDetails extends StatelessWidget {
                             dividerColor: AppColor.kPinkishOrange,
                           ),
                           const SizedBox(height: 30),
-                          CustomButton(
-                            onTap: () {},
-                            width: 150,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 7,
-                              vertical: 5,
-                            ),
-                            color: AppColor.kPinkishOrange,
-                            title: 'Place Order',
-                            textStyle: AppStyles.styleLeagueSpartanregular23(
-                              context,
-                            ),
-                          ),
+                          const ConfirmedOrderButton(),
+
                           const SizedBox(height: 30),
                         ],
                       ),
@@ -82,13 +73,32 @@ class ConfirmOrderDetails extends StatelessWidget {
                         context,
                       ).copyWith(color: Colors.red),
                     );
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColor.kMainColor,
-                      ),
+                  } else if (state is CartsEmpty) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.kAddToCartIcon,
+                          colorFilter: const ColorFilter.mode(
+                            AppColor.kMainColor,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          'Add something to your cart',
+                          style: AppStyles.styleLeagueSpartanBold24(
+                            context,
+                          ).copyWith(color: AppColor.kMainColor),
+                        ),
+                      ],
                     );
                   }
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColor.kMainColor,
+                    ),
+                  );
                 },
               ),
             ),

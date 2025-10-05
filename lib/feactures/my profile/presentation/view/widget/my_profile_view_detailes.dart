@@ -36,8 +36,6 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<EditProfileCubit>(context).fetchProfile();
-
     return CustomContainer(
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -52,7 +50,7 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
             } else if (state is EditProfileFailure) {
               return Center(
                 child: Text(
-                  state.errorMassage,
+                  state.errorMessage,
                   style: const TextStyle(color: Colors.red),
                 ),
               );
