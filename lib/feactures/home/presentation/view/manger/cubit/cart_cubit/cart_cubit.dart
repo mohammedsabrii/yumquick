@@ -33,7 +33,9 @@ class CartsCubit extends Cubit<CartsState> {
         final current = List<CartEntity>.from(
           (state as CartsSuccess).cartProducts,
         );
-        final index = current.indexWhere((c) => c.product.id == product.id);
+        final index = current.indexWhere(
+          (cartEntity) => cartEntity.product.id == product.id,
+        );
 
         if (index != -1) {
           final newQuantity = current[index].quantity + 1;
@@ -55,6 +57,43 @@ class CartsCubit extends Cubit<CartsState> {
         emit(CartsSuccess(current));
       } else {
         emit(CartsSuccess([CartEntity(product: product, quantity: 1)]));
+      }
+    } catch (e) {
+      emit(CartsFailure(e.toString()));
+    }
+  }
+
+  Future<void> addToCartWithQuantity(
+    ProductsEntity product,
+    int quantity,
+  ) async {
+    try {
+      if (quantity < 1) quantity = 1;
+
+      if (state is CartsSuccess) {
+        final current = List<CartEntity>.from(
+          (state as CartsSuccess).cartProducts,
+        );
+        final index = current.indexWhere((c) => c.product.id == product.id);
+        if (index != -1) {
+          final newQuantity = current[index].quantity + quantity;
+          await cartsService.updateQuantity(userId!, product, newQuantity);
+          current[index] = CartEntity(product: product, quantity: newQuantity);
+          emit(CartsSuccess(current));
+          return;
+        }
+      }
+
+      await cartsService.addToCart(userId!, product, quantity);
+
+      if (state is CartsSuccess) {
+        final current = List<CartEntity>.from(
+          (state as CartsSuccess).cartProducts,
+        );
+        current.add(CartEntity(product: product, quantity: quantity));
+        emit(CartsSuccess(current));
+      } else {
+        emit(CartsSuccess([CartEntity(product: product, quantity: quantity)]));
       }
     } catch (e) {
       emit(CartsFailure(e.toString()));

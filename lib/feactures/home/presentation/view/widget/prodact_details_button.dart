@@ -9,14 +9,22 @@ import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/cart_cubit/cart_cubit.dart';
 
 class ProdactDetailsButton extends StatelessWidget {
-  const ProdactDetailsButton({super.key, required this.productsEntity});
+  const ProdactDetailsButton({
+    super.key,
+    required this.productsEntity,
+    required this.quantity,
+    this.onAdded,
+  });
   final ProductsEntity productsEntity;
+  final int quantity;
+  final VoidCallback? onAdded;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CartsCubit, CartsState>(
       listener: (context, state) {
         if (state is CartsSuccess) {
           customShowSnackBar(context, title: 'Product added to your cart');
+          if (onAdded != null) onAdded!();
         } else if (state is CartsFailure) {
           customShowSnackBar(context, title: state.errorMessage);
         }
@@ -33,7 +41,9 @@ class ProdactDetailsButton extends StatelessWidget {
 
           child: GestureDetector(
             onTap: () {
-              BlocProvider.of<CartsCubit>(context).addToCart(productsEntity);
+              BlocProvider.of<CartsCubit>(
+                context,
+              ).addToCartWithQuantity(productsEntity, quantity);
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
