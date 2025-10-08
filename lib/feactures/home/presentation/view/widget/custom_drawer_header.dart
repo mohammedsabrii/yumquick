@@ -26,7 +26,7 @@ class CustomDrawerHeader extends StatelessWidget {
                   ? ClipRRect(
                     borderRadius: BorderRadius.circular(100),
                     child: Image.network(
-                      state.profile.profileImage ?? AppAssets.kBestSellerTest,
+                      state.profile.profileImage ?? AppAssets.kNullProfileImage,
                       height: 70,
                       width: 70,
                       fit: BoxFit.fill,
@@ -36,7 +36,7 @@ class CustomDrawerHeader extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100),
 
                     child: Image.asset(
-                      AppAssets.kBestSellerTest,
+                      AppAssets.kNullProfileImage,
                       height: 70,
                       width: 70,
                       fit: BoxFit.fill,

@@ -79,7 +79,6 @@ class AppAssets {
   static const kAddIconOrang = 'assets/images/Add Icon orang.svg';
   static const kLessIconOrang = 'assets/images/Less Icon orang.svg';
   static const kMapTest = 'assets/images/map test.jpg';
-  static const kBestSellerTest = 'assets/images/best seller test.jpg';
   static const kVeganCatgoryIcon = 'assets/images/Vegan catgory icon.svg';
   static const kSnacksCatgoryIcon = 'assets/images/Snacks catgory icon.svg';
   static const kMealsCatgoryIcon = 'assets/images/Meals catgory icon.svg';
@@ -106,4 +105,5 @@ class AppAssets {
   static const kActiveSnacksIcon =
       'assets/images/Active Snacks catgory icon.svg';
   static const kActiveVeganIcon = 'assets/images/Active Vegan catgory icon.svg';
+  static const kNullProfileImage = 'assets/images/null_profile_image.png';
 }

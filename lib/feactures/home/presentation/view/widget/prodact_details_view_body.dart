@@ -17,20 +17,20 @@ class ProdactDetailsViewBody extends StatefulWidget {
 }
 
 class _ProdactDetailsViewBodyState extends State<ProdactDetailsViewBody> {
-  int _quantity = 1;
+  int quantity = 1;
 
-  void _inc() {
-    setState(() => _quantity += 1);
+  void inc() {
+    setState(() => quantity += 1);
   }
 
-  void _dec() {
-    if (_quantity > 1) {
-      setState(() => _quantity -= 1);
+  void dec() {
+    if (quantity > 1) {
+      setState(() => quantity -= 1);
     }
   }
 
-  void _resetQuantity() {
-    setState(() => _quantity = 1);
+  void resetQuantity() {
+    setState(() => quantity = 1);
   }
 
   @override
@@ -55,9 +55,9 @@ class _ProdactDetailsViewBodyState extends State<ProdactDetailsViewBody> {
                   const SizedBox(height: 7),
                   ProdactDetailspriceAndQuantity(
                     productsEntity: productsEntity,
-                    quantity: _quantity,
-                    onIncrement: _inc,
-                    onDecrement: _dec,
+                    quantity: quantity,
+                    onIncrement: inc,
+                    onDecrement: dec,
                   ),
                   const SizedBox(height: 7),
                   const Divider(thickness: 2, color: AppColor.kPinkishOrange),
@@ -66,8 +66,8 @@ class _ProdactDetailsViewBodyState extends State<ProdactDetailsViewBody> {
                   const SizedBox(height: 20),
                   ProdactDetailsButton(
                     productsEntity: productsEntity,
-                    quantity: _quantity,
-                    onAdded: _resetQuantity,
+                    quantity: quantity,
+                    onAdded: resetQuantity,
                   ),
                 ],
               ),

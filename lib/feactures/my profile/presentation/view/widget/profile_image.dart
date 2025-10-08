@@ -36,7 +36,7 @@ class ProfileImage extends StatelessWidget {
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) {
           return Image.asset(
-            AppAssets.kBestSellerTest,
+            AppAssets.kNullProfileImage,
             height: MediaQuery.sizeOf(context).height * 0.148,
             width: MediaQuery.sizeOf(context).width * 0.323,
             fit: BoxFit.fill,
@@ -45,7 +45,7 @@ class ProfileImage extends StatelessWidget {
       );
     } else {
       imageWidget = Image.asset(
-        AppAssets.kBestSellerTest,
+        AppAssets.kNullProfileImage,
         height: MediaQuery.sizeOf(context).height * 0.148,
         width: MediaQuery.sizeOf(context).width * 0.323,
         fit: BoxFit.cover,

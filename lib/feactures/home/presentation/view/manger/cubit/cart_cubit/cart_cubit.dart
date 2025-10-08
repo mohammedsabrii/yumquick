@@ -74,7 +74,9 @@ class CartsCubit extends Cubit<CartsState> {
         final current = List<CartEntity>.from(
           (state as CartsSuccess).cartProducts,
         );
-        final index = current.indexWhere((c) => c.product.id == product.id);
+        final index = current.indexWhere(
+          (cartEntity) => cartEntity.product.id == product.id,
+        );
         if (index != -1) {
           final newQuantity = current[index].quantity + quantity;
           await cartsService.updateQuantity(userId!, product, newQuantity);
@@ -110,7 +112,9 @@ class CartsCubit extends Cubit<CartsState> {
         final current = List<CartEntity>.from(
           (state as CartsSuccess).cartProducts,
         );
-        final index = current.indexWhere((c) => c.product.id == product.id);
+        final index = current.indexWhere(
+          (cartEntity) => cartEntity.product.id == product.id,
+        );
         if (index != -1) {
           current[index] = CartEntity(product: product, quantity: newQuantity);
           emit(CartsSuccess(current));
@@ -129,7 +133,9 @@ class CartsCubit extends Cubit<CartsState> {
         final current = List<CartEntity>.from(
           (state as CartsSuccess).cartProducts,
         );
-        current.removeWhere((p) => p.product.id == product.product.id);
+        current.removeWhere(
+          (cartEntity) => cartEntity.product.id == product.product.id,
+        );
 
         if (current.isEmpty) {
           emit(CartsEmpty());
@@ -146,7 +152,8 @@ class CartsCubit extends Cubit<CartsState> {
     if (state is! CartsSuccess) return 0;
     return (state as CartsSuccess).cartProducts.fold(
       0,
-      (sum, c) => sum + (c.product.price * c.quantity),
+      (sum, cartEntity) =>
+          sum + (cartEntity.product.price * cartEntity.quantity),
     );
   }
 

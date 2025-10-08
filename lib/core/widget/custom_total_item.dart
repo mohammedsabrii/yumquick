@@ -41,7 +41,7 @@ class CustomTotalItem extends StatelessWidget {
       final state = cartsCubit!.state;
       if (state is CartsSuccess) {
         final index = state.cartProducts.indexWhere(
-          (c) => c.product.id == product.product.id,
+          (cartEntity) => cartEntity.product.id == product.product.id,
         );
         if (index != -1) {
           productIndex = index;
