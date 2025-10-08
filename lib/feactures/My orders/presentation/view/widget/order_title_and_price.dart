@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/home/entity/active_order_entity.dart';
+import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
 
 class OrderTitleAndPrice extends StatelessWidget {
   const OrderTitleAndPrice({super.key, required this.activeOrderEntity});

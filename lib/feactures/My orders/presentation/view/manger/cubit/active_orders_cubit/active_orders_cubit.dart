@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:yumquick/feactures/home/entity/active_order_entity.dart';
+import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
 
 part 'active_orders_state.dart';
 

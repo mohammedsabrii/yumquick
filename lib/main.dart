@@ -7,6 +7,7 @@ import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/manger/cubit/cubit/fetch_category_products_cubit.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/cancelled_orders_cubit/cancelled_orders_cubit.dart';
 import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/entity/profile_entity.dart';
@@ -52,6 +53,10 @@ class YumQuick extends StatelessWidget {
         BlocProvider(create: (context) => FetchOffersCubit()..fetchOffers()),
         BlocProvider(create: (context) => FavoritesCubit()..fetchFavorites()),
         BlocProvider(create: (context) => CartsCubit()..fetchFromCarts()),
+        BlocProvider(
+          create: (context) => CanclledOrdersCubit()..fetchCancelledOrders(),
+        ),
+
         BlocProvider(
           create: (context) => ActiveOrdersCubit()..fetchActiveOrders(),
         ),
