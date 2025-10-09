@@ -28,7 +28,7 @@ class CustomCancelOrderButton extends StatelessWidget {
         if (state is FetchProfileInfoSuccess) {
           return CustomShowModalBottomSheetBottom(
             onTap: () {
-              context.read<CanclledOrdersCubit>().addToCancelledOrders(
+              context.read<CancelledOrdersCubit>().addToCancelledOrders(
                 cancelledOrderEntity,
                 state.profile.name ?? '',
                 state.profile.address ?? '',

@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
 class OrderStatus extends StatelessWidget {
-  const OrderStatus({super.key});
-
+  const OrderStatus({super.key, required this.title, required this.icon});
+  final String title, icon;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SvgPicture.asset(AppAssets.kCompletedIcon),
+        SvgPicture.asset(icon),
         const SizedBox(width: 5),
         Text(
-          'Order delivered',
+          title,
           style: AppStyles.styleLeagueSpartanMediem14(
             context,
           ).copyWith(fontWeight: FontWeight.w300, color: AppColor.kMainColor),

@@ -106,4 +106,5 @@ class AppAssets {
       'assets/images/Active Snacks catgory icon.svg';
   static const kActiveVeganIcon = 'assets/images/Active Vegan catgory icon.svg';
   static const kNullProfileImage = 'assets/images/null_profile_image.png';
+  static const kCancelledOrderIcon = 'assets/images/cancelled_order_icon.svg';
 }

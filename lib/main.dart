@@ -54,7 +54,7 @@ class YumQuick extends StatelessWidget {
         BlocProvider(create: (context) => FavoritesCubit()..fetchFavorites()),
         BlocProvider(create: (context) => CartsCubit()..fetchFromCarts()),
         BlocProvider(
-          create: (context) => CanclledOrdersCubit()..fetchCancelledOrders(),
+          create: (context) => CancelledOrdersCubit()..fetchCancelledOrders(),
         ),
 
         BlocProvider(

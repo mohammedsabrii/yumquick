@@ -5,8 +5,8 @@ import 'package:yumquick/feactures/My%20orders/entity/cancelled_orders_entity.da
 
 part 'cancelled_orders_state.dart';
 
-class CanclledOrdersCubit extends Cubit<CancelledOrdersState> {
-  CanclledOrdersCubit() : super(CanclledOrdersInitial());
+class CancelledOrdersCubit extends Cubit<CancelledOrdersState> {
+  CancelledOrdersCubit() : super(CanclledOrdersInitial());
   final cancelledOrdersService = CancelledOrdersService();
   Future<void> fetchCancelledOrders() async {
     emit(CanclledOrdersLoading());

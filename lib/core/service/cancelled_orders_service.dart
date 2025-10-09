@@ -4,15 +4,13 @@ import 'package:yumquick/feactures/My%20orders/entity/cancelled_orders_entity.da
 class CancelledOrdersService {
   final supabase = Supabase.instance.client;
   Future<List<CancelledOrdersEntity>> fetchCancelledOrders() async {
-    String? userId = supabase.auth.currentUser?.id;
+    final userId = supabase.auth.currentUser?.id;
+
     final response = await supabase
         .from('cancelled_orders')
-        .select(''' active_orders (
+        .select('''
             quantity,
-            total_amount, 
-            customer_name,
-            customer_address,
-             ) ,
+            total_amount,
             products (
               id,
               category_id,
@@ -25,9 +23,11 @@ class CancelledOrdersService {
             )
           ''')
         .eq('user_id', userId!);
-    return (response as List)
-        .map((e) => CancelledOrdersEntity.fromJson(e))
-        .toList();
+    final orders =
+        (response as List)
+            .map((json) => CancelledOrdersEntity.fromJson(json))
+            .toList();
+    return orders;
   }
 
   Future<void> addToCancelledOrders(
@@ -39,9 +39,9 @@ class CancelledOrdersService {
 
     await supabase.from('cancelled_orders').insert({
       'user_id': userId,
-      'product_id': product.product.product.id,
-      'quantity': product.product.quantity,
-      'total_amount': product.product.totalAmount,
+      'product_id': product.product.id,
+      'quantity': product.quantity,
+      'total_amount': product.totalAmount,
       'customer_name': customerName,
       'customer_address': customerAddress,
     });

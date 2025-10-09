@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
 import 'package:yumquick/feactures/My%20orders/entity/cancelled_orders_entity.dart';
@@ -21,13 +22,19 @@ class CancelOrderActions extends StatelessWidget {
               builder:
                   (context) => CustomShowModalBottomSheetForCancelOrder(
                     cancelledOrderEntity: CancelledOrdersEntity(
-                      product: activeOrderEntity,
+                      quantity: activeOrderEntity.quantity,
+                      totalAmount: activeOrderEntity.totalAmount,
+                      product: activeOrderEntity.product,
                     ),
                     activeOrderEntity: activeOrderEntity,
                   ),
             );
           },
-          title: 'Cancel Order',
+          width: MediaQuery.sizeOf(context).width * 0.2,
+          style: AppStyles.styleLeagueSpartanMediem14(
+            context,
+          ).copyWith(color: AppColor.kCultured),
+          title: 'Cancel',
           color: AppColor.kMainColor,
           textColor: AppColor.kCultured,
         ),

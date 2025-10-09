@@ -8,19 +8,22 @@ class CustomOrderContainer extends StatelessWidget {
     required this.color,
     required this.textColor,
     this.onTap,
+    this.width,
+    this.style,
   });
   final String title;
   final Color color, textColor;
   final Function()? onTap;
-
+  final double? width;
+  final TextStyle? style;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
-        width: MediaQuery.sizeOf(context).width * 0.3,
-        height: MediaQuery.sizeOf(context).height * 0.0426,
+        width: width ?? MediaQuery.sizeOf(context).width * 0.3,
+
         decoration: ShapeDecoration(
           color: color,
           shape: RoundedRectangleBorder(
@@ -31,9 +34,11 @@ class CustomOrderContainer extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: AppStyles.styleLeagueSpartanMediem16(
-              context,
-            ).copyWith(color: textColor),
+            style:
+                style ??
+                AppStyles.styleLeagueSpartanMediem16(
+                  context,
+                ).copyWith(color: textColor),
           ),
         ),
       ),
