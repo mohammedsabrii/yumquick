@@ -18,10 +18,18 @@ class CanclledOrdersCubit extends Cubit<CancelledOrdersState> {
     }
   }
 
-  Future<void> addToCancelledOrders(CancelledOrdersEntity product) async {
+  Future<void> addToCancelledOrders(
+    CancelledOrdersEntity product,
+    String customerName,
+    String customerAddress,
+  ) async {
     emit(CanclledOrdersLoading());
     try {
-      await cancelledOrdersService.addToCancelledOrders(product);
+      await cancelledOrdersService.addToCancelledOrders(
+        product,
+        customerName,
+        customerAddress,
+      );
       final cancelledOrders =
           await cancelledOrdersService.fetchCancelledOrders();
       emit(CanclledOrdersSuccess(cancelledOrders));

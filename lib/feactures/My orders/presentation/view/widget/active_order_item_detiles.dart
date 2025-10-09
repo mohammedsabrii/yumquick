@@ -28,7 +28,7 @@ class HaveActiveOrderItemDetiles extends StatelessWidget {
                 context,
               ).copyWith(color: AppColor.kDarkRed),
             ),
-            const CancelOrderActions(),
+            CancelOrderActions(activeOrderEntity: activeOrderEntity),
           ],
         ),
         const SizedBox(height: 5),

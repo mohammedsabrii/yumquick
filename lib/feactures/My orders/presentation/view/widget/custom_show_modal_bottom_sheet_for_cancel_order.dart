@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_show_model_botton_sheet_bottom.dart';
+import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
+import 'package:yumquick/feactures/My%20orders/entity/cancelled_orders_entity.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/custom_cancel_order_button.dart';
 
 class CustomShowModalBottomSheetForCancelOrder extends StatelessWidget {
-  const CustomShowModalBottomSheetForCancelOrder({super.key});
-
+  const CustomShowModalBottomSheetForCancelOrder({
+    super.key,
+    required this.cancelledOrderEntity,
+    required this.activeOrderEntity,
+  });
+  final CancelledOrdersEntity cancelledOrderEntity;
+  final ActiveOrderEntity activeOrderEntity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,17 +41,14 @@ class CustomShowModalBottomSheetForCancelOrder extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                CustomCancelOrderButton(
+                  cancelledOrderEntity: cancelledOrderEntity,
+                  activeOrderEntity: activeOrderEntity,
+                ),
                 CustomShowModalBottomSheetBottom(
                   onTap: () {
                     GoRouter.of(context).pop();
-                    GoRouter.of(context).push(AppRouter.kCancelOrderView);
                   },
-
-                  color: AppColor.kMainColor,
-                  text: 'Cancel Order',
-                  textColor: AppColor.kCultured,
-                ),
-                const CustomShowModalBottomSheetBottom(
                   text: 'Keep order',
                   color: AppColor.kPinkishOrange,
                   textColor: AppColor.kMainColor,

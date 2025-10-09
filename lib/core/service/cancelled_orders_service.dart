@@ -30,12 +30,20 @@ class CancelledOrdersService {
         .toList();
   }
 
-  Future<void> addToCancelledOrders(CancelledOrdersEntity product) async {
-    String? userId = supabase.auth.currentUser?.id;
+  Future<void> addToCancelledOrders(
+    CancelledOrdersEntity product,
+    String customerName,
+    String customerAddress,
+  ) async {
+    final userId = supabase.auth.currentUser?.id;
+
     await supabase.from('cancelled_orders').insert({
       'user_id': userId,
       'product_id': product.product.product.id,
       'quantity': product.product.quantity,
+      'total_amount': product.product.totalAmount,
+      'customer_name': customerName,
+      'customer_address': customerAddress,
     });
   }
 }
