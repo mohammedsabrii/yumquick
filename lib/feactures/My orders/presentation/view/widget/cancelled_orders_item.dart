@@ -29,7 +29,7 @@ class CancelledOrdersItem extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              height: MediaQuery.sizeOf(context).height * 0.13,
+                              height: MediaQuery.sizeOf(context).height * 0.1,
                               width: MediaQuery.sizeOf(context).width * 0.2,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
