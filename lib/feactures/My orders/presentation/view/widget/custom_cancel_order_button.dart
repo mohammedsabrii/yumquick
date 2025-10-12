@@ -34,7 +34,8 @@ class CustomCancelOrderButton extends StatelessWidget {
                 state.profile.address ?? '',
               );
               context.read<ActiveOrdersCubit>().deleteActiveOrder(
-                activeOrderEntity.product.id,
+                activeOrderEntity.orderId,
+                activeOrderEntity,
               );
               GoRouter.of(context).pop();
               GoRouter.of(context).push(AppRouter.kCancelOrderView);

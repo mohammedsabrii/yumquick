@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:yumquick/core/service/stripe_service.dart';
 import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/favorite_cubit/favorite_cubit.dart';
@@ -16,12 +18,14 @@ import 'package:yumquick/feactures/home/presentation/view/manger/cubit/cart_cubi
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_offers_cubit/fetch_offers_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/get_prodacts_cubit/get_prodacts_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/search_cubit/search_cubit.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/cubit/stripe_cubit/stripe_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/auth_cubit.dart';
 import 'package:yumquick/feactures/my%20profile/presentation/manger/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_profile_info_cubit/fetch_profile_info_cubit.dart';
 import 'package:yumquick/feactures/settings/presentation/manger/cubits/change_password_cubit/change_password_cubit.dart';
 
 void main() async {
+  Stripe.publishableKey = kStripePublishablekey;
   await Hive.initFlutter();
   Hive.registerAdapter(OffersEntityAdapter());
   Hive.registerAdapter(ProductsEntityAdapter());
@@ -62,6 +66,8 @@ class YumQuick extends StatelessWidget {
         ),
 
         BlocProvider(create: (context) => SearchCubit()),
+        BlocProvider(create: (context) => StripeCubit(StripeService())),
+
         BlocProvider(create: (context) => GetCategoryProdactsCubit()),
       ],
       child: MaterialApp.router(

@@ -5,7 +5,10 @@ sealed class StripeState {}
 
 final class StripeInitial extends StripeState {}
 
-final class StripeSuccess extends StripeState {}
+final class StripeSuccess extends StripeState {
+  final PaymentIntentModel paymentIntentModel;
+  StripeSuccess(this.paymentIntentModel);
+}
 
 final class StripeLoading extends StripeState {}
 

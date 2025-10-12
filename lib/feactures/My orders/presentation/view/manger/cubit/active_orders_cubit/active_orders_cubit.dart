@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:yumquick/core/service/stripe_service.dart';
 import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
 
 part 'active_orders_state.dart';
@@ -19,6 +20,8 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
           .select('''
             quantity,
             total_amount,
+            payment_intent_id,
+            id,
             products (
               id,
               category_id,
@@ -52,11 +55,12 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
           cartItems.map((item) {
             return {
               'user_id': supabase.auth.currentUser?.id,
-              'product_id': item.product.id,
+              'product_id': item.orderId,
               'quantity': item.quantity,
               'total_amount': item.totalAmount,
               'customer_name': item.customerName,
               'customer_address': item.customerAddress,
+              'payment_intent_id': item.paymentIntentId,
             };
           }).toList();
 
@@ -68,9 +72,14 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
     }
   }
 
-  Future<void> deleteActiveOrder(String orderId) async {
+  Future<void> deleteActiveOrder(
+    String orderId,
+    ActiveOrderEntity order,
+  ) async {
     emit(ActiveOrdersLoading());
     try {
+      final stripeService = StripeService();
+      await stripeService.refundPayment(order.paymentIntentId);
       await supabase.from('active_orders').delete().eq('id', orderId);
 
       await fetchActiveOrders();
