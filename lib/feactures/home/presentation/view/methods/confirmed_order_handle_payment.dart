@@ -28,7 +28,6 @@ Future<void> handlePaymentSuccess(
           quantity: cart.quantity,
           totalAmount: cart.product.price * cart.quantity,
           paymentIntentId: paymentIntentModel.id!,
-          orderId: 
         );
       }).toList();
 

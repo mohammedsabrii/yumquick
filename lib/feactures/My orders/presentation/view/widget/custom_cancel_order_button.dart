@@ -28,19 +28,18 @@ class CustomCancelOrderButton extends StatelessWidget {
         if (state is FetchProfileInfoSuccess) {
           return CustomShowModalBottomSheetBottom(
             onTap: () {
-              context.read<CancelledOrdersCubit>().addToCancelledOrders(
-                cancelledOrderEntity,
-                state.profile.name ?? '',
-                state.profile.address ?? '',
-              );
-              context.read<ActiveOrdersCubit>().deleteActiveOrder(
-                activeOrderEntity.orderId,
-                activeOrderEntity,
-              );
-              GoRouter.of(context).pop();
-              GoRouter.of(context).push(AppRouter.kCancelOrderView);
-            },
+              final userState = context.read<FetchProfileInfoCubit>().state;
+              if (userState is FetchProfileInfoSuccess) {
+                context.read<ActiveOrdersCubit>().deleteAndCancelOrder(
+                  activeOrderEntity.product.id, // Or actual order ID field
+                  activeOrderEntity,
+                  userState,
+                );
 
+                GoRouter.of(context).pop();
+                GoRouter.of(context).push(AppRouter.kCancelOrderView);
+              }
+            },
             color: AppColor.kMainColor,
             text: 'Cancel Order',
             textColor: AppColor.kCultured,

@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:yumquick/core/service/cancelled_orders_service.dart';
 import 'package:yumquick/core/service/stripe_service.dart';
 import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_profile_info_cubit/fetch_profile_info_cubit.dart';
 
 part 'active_orders_state.dart';
 
@@ -21,7 +23,6 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
             quantity,
             total_amount,
             payment_intent_id,
-            id,
             products (
               id,
               category_id,
@@ -55,7 +56,7 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
           cartItems.map((item) {
             return {
               'user_id': supabase.auth.currentUser?.id,
-              'product_id': item.orderId,
+              'product_id': item.product.id,
               'quantity': item.quantity,
               'total_amount': item.totalAmount,
               'customer_name': item.customerName,
@@ -72,19 +73,55 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
     }
   }
 
-  Future<void> deleteActiveOrder(
-    String orderId,
-    ActiveOrderEntity order,
+  Future<void> deleteAndCancelOrder(
+    String activeOrderId,
+    ActiveOrderEntity activeOrder,
+    FetchProfileInfoSuccess userProfileState,
   ) async {
     emit(ActiveOrdersLoading());
-    try {
-      final stripeService = StripeService();
-      await stripeService.refundPayment(order.paymentIntentId);
-      await supabase.from('active_orders').delete().eq('id', orderId);
 
+    final stripeService = StripeService();
+    final cancelledOrdersService = CancelledOrdersService();
+    final supabase = Supabase.instance.client;
+    final userId = supabase.auth.currentUser?.id;
+
+    try {
+      // 1️⃣ Refund payment
+      await stripeService.refundPayment(activeOrder.paymentIntentId);
+
+      // 2️⃣ Add to cancelled_orders table
+      await supabase.from('cancelled_orders').insert({
+        'user_id': userId,
+        'product_id': activeOrder.product.id,
+        'quantity': activeOrder.quantity,
+        'total_amount': activeOrder.totalAmount,
+        'customer_name': userProfileState.profile.name ?? '',
+        'customer_address': userProfileState.profile.address ?? '',
+      });
+
+      // 3️⃣ Delete from active_orders only after successful insert
+      await supabase.from('active_orders').delete().eq('id', activeOrderId);
+
+      // 4️⃣ Refresh orders
       await fetchActiveOrders();
     } catch (e) {
-      emit(ActiveOrdersFailure("Delete failed: ${e.toString()}"));
+      emit(ActiveOrdersFailure("Cancel order failed: ${e.toString()}"));
     }
   }
+
+  // Future<void> deleteActiveOrder(
+  //   String orderId,
+  //   ActiveOrderEntity order,
+  // ) async {
+  //   emit(ActiveOrdersLoading());
+  //   try {
+  //     final stripeService = StripeService();
+  //     await stripeService.refundPayment(order.paymentIntentId);
+  //     await supabase.from('active_orders').delete().eq('id', orderId);
+
+  //     await fetchActiveOrders();
+  //   } catch (e) {
+  //     emit(ActiveOrdersFailure("Delete failed: ${e.toString()}"));
+  //   }
+  // }
 }
