@@ -1,9 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:yumquick/core/loacl_data_source/loacl_data_source.dart';
 import 'package:yumquick/core/service/get_prodact_service.dart';
-import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 part 'get_prodacts_state.dart';
@@ -11,7 +8,6 @@ part 'get_prodacts_state.dart';
 class GetProdactsCubit extends Cubit<GetProdactsState> {
   GetProdactsCubit() : super(GetProdactsInitial());
   final GetProdactService getProdactsService = GetProdactService();
-  final LocalDataSourceImpl localDataSource = LocalDataSourceImpl();
   int currentPage = 0;
   final int pageSize = 10;
   List<ProductsEntity> allProducts = [];
@@ -30,12 +26,12 @@ class GetProdactsCubit extends Cubit<GetProdactsState> {
     }
 
     try {
-      final productsFromLocal = localDataSource.fetchProducts();
-      if (productsFromLocal.isNotEmpty && page != null) {
-        allProducts = productsFromLocal;
-        emit(GetProdactsSuccess(products: allProducts));
-        return;
-      }
+      // final productsFromLocal = localDataSource.fetchProducts();
+      // if (productsFromLocal.isNotEmpty && page != null) {
+      //   allProducts = productsFromLocal;
+      //   emit(GetProdactsSuccess(products: allProducts));
+      //   return;
+      // }
 
       final products = await getProdactsService.getProdacts(
         page: fetchPage,
@@ -52,11 +48,11 @@ class GetProdactsCubit extends Cubit<GetProdactsState> {
         allProducts.addAll(products);
       }
 
-      var box = Hive.box<ProductsEntity>(kProductsBox);
-      if (page != null) {
-        await box.clear();
-      }
-      await box.addAll(products.take(10).toList());
+      // var box = Hive.box<ProductsEntity>(kProductsBox);
+      // if (page != null) {
+      //   await box.clear();
+      // }
+      // await box.addAll(products.take(10).toList());
       currentPage = fetchPage;
       emit(GetProdactsSuccess(products: allProducts));
     } catch (e) {

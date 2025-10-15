@@ -20,7 +20,7 @@ class ProdactDetailspriceAndQuantity extends StatelessWidget {
   final VoidCallback onDecrement;
   @override
   Widget build(BuildContext context) {
-    return productsEntity.priceAfterDiscount != 0.0
+    return productsEntity.priceAfterDiscount != null
         ? Row(
           children: [
             Text(

@@ -10,7 +10,6 @@ import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/manger/cubit/cubit/fetch_category_products_cubit.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/cancelled_orders_cubit/cancelled_orders_cubit.dart';
-import 'package:yumquick/feactures/home/entity/offer_entity.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/entity/profile_entity.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/active_orders_cubit/active_orders_cubit.dart';
@@ -27,11 +26,7 @@ import 'package:yumquick/feactures/settings/presentation/manger/cubits/change_pa
 void main() async {
   Stripe.publishableKey = kStripePublishablekey;
   await Hive.initFlutter();
-  Hive.registerAdapter(OffersEntityAdapter());
-  Hive.registerAdapter(ProductsEntityAdapter());
   Hive.registerAdapter(ProfileEntityAdapter());
-  await Hive.openBox<OffersEntity>(kOffersBox);
-  await Hive.openBox<ProductsEntity>(kProductsBox);
   await Hive.openBox<ProfileEntity>(kProfileBox);
   await Hive.openBox<ProductsEntity>(kCategoryProductsBox);
   await Hive.openBox<String>(kFavoritesBox);
@@ -54,7 +49,7 @@ class YumQuick extends StatelessWidget {
           create: (context) => FetchProfileInfoCubit()..fetchProfileInfo(),
         ),
         BlocProvider(create: (context) => GetProdactsCubit()..getProdacts()),
-        BlocProvider(create: (context) => FetchOffersCubit()..fetchOffers()),
+        BlocProvider(create: (context) => FetchOffersCubit()..getOffers()),
         BlocProvider(create: (context) => FavoritesCubit()..fetchFavorites()),
         BlocProvider(create: (context) => CartsCubit()..fetchFromCarts()),
         BlocProvider(

@@ -13,6 +13,8 @@ class CartItemTitleAndPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final price =
+        cartEntity.product.priceAfterDiscount ?? cartEntity.product.price;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,7 +26,7 @@ class CartItemTitleAndPrice extends StatelessWidget {
           ).copyWith(color: AppColor.kCultured),
         ),
         Text(
-          '\$${cartEntity.product.price}',
+          '\$$price',
           style: AppStyles.styleLeagueSpartanMediem14(
             context,
           ).copyWith(color: AppColor.kCultured, fontWeight: FontWeight.w300),

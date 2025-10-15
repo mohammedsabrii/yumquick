@@ -4,11 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/home/entity/offer_entity.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class OffersDetailsViewHeader extends StatelessWidget {
-  const OffersDetailsViewHeader({super.key, required this.offersEntity});
-  final OffersEntity offersEntity;
+  const OffersDetailsViewHeader({super.key, required this.productEntity});
+  final ProductsEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,7 +34,7 @@ class OffersDetailsViewHeader extends StatelessWidget {
               const SizedBox(width: 5),
               Expanded(
                 child: Text(
-                  offersEntity.name,
+                  productEntity.name,
                   maxLines: 1,
                   textAlign: TextAlign.center,
                   style: AppStyles.styleLeagueSpartanMediem20(

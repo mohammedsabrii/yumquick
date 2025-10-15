@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/home/entity/offer_entity.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class CustomOffersItem extends StatelessWidget {
-  const CustomOffersItem({super.key, required this.offerEntity});
-  final OffersEntity offerEntity;
+  const CustomOffersItem({super.key, required this.productEntity});
+  final ProductsEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,14 +25,14 @@ class CustomOffersItem extends StatelessWidget {
 
             children: [
               Text(
-                offerEntity.offerName,
+                productEntity.name,
                 textAlign: TextAlign.center,
                 style: AppStyles.styleLeagueSpartanregular16(
                   context,
                 ).copyWith(color: AppColor.kCultured),
               ),
               Text(
-                '${(100 - ((offerEntity.priceAfterDiscount / offerEntity.price) * 100)).toStringAsFixed(0)}% OFF',
+                '${(100 - ((productEntity.priceAfterDiscount! / productEntity.price) * 100)).toStringAsFixed(0)}% OFF',
 
                 textAlign: TextAlign.center,
                 style: AppStyles.styleLeagueSpartanBold32(context),
@@ -49,7 +49,7 @@ class CustomOffersItem extends StatelessWidget {
               bottomRight: Radius.circular(20),
             ),
             image: DecorationImage(
-              image: NetworkImage(offerEntity.image),
+              image: NetworkImage(productEntity.image),
               fit: BoxFit.cover,
             ),
           ),

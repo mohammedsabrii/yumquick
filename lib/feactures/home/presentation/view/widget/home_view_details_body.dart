@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/best_seller.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/custom_category_list.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/offers_page_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/recommend_grid_view.dart';
@@ -20,7 +19,6 @@ class HomeViewDetilesBody extends StatelessWidget {
               SizedBox(height: 12),
               Divider(color: AppColor.kMainColor, thickness: 1),
               SizedBox(height: 10),
-              BestSeller(),
               OffersPageView(),
               CustomRecommendTitle(),
             ],

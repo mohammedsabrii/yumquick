@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_dot_indicator.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_offers_cubit/fetch_offers_cubit.dart';
@@ -45,27 +46,41 @@ class _OffersPageViewState extends State<OffersPageView> {
               child: CircularProgressIndicator(color: AppColor.kMainColor),
             );
           } else if (state is FetchOffersSuccess) {
-            return PageView.builder(
-              itemCount: state.offerEntity.length,
-              controller: pageController,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    CustomOffersWidget(offerEntity: state.offerEntity[index]),
-                    const SizedBox(height: 5),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+            final products =
+                state.products.where((product) {
+                  return product.priceAfterDiscount != null &&
+                      product.priceAfterDiscount! < product.price;
+                }).toList();
+            if (products.isNotEmpty) {
+              return PageView.builder(
+                itemCount: products.length,
+                controller: pageController,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      CustomOffersWidget(productEntity: products[index]),
+                      const SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
 
-                      children: List.generate(
-                        state.offerEntity.length,
-                        (index) =>
-                            CustomDotIndicator(isActive: index == pageIndex),
+                        children: List.generate(
+                          products.length,
+                          (index) =>
+                              CustomDotIndicator(isActive: index == pageIndex),
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
-            );
+                    ],
+                  );
+                },
+              );
+            } else {
+              return Text(
+                'No Offers Now',
+                style: AppStyles.styleLeagueSpartanMediem16(
+                  context,
+                ).copyWith(color: AppColor.kDarkRed),
+              );
+            }
           } else {
             return const Center(
               child: CircularProgressIndicator(color: AppColor.kMainColor),

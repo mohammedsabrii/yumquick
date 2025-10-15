@@ -1,17 +1,17 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:yumquick/feactures/home/entity/offer_entity.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class FetchOfferService {
   final supabase = Supabase.instance.client;
-  Future<List<OffersEntity>> getOffers() async {
+  Future<List<ProductsEntity>> getOffers() async {
     final response = await supabase
-        .from('offers')
+        .from('products')
         .select(
-          'id, offer_name, product_name, subtitle, image, category, price, price_after_discount',
+          'id, name, subtitle, image, price, categories, price_after_discount, category_id',
         );
 
     final offer =
-        (response as List).map((e) => OffersEntity.fromJson(e)).toList();
+        (response as List).map((e) => ProductsEntity.fromJson(e)).toList();
     return offer;
   }
 }

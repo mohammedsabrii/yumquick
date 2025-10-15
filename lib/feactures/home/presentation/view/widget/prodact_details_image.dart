@@ -24,7 +24,7 @@ class ProdactDetailsImage extends StatelessWidget {
           ),
         ),
 
-        productsEntity.priceAfterDiscount != 0.0
+        productsEntity.priceAfterDiscount != null
             ? Stack(
               children: [
                 Positioned(
@@ -36,7 +36,7 @@ class ProdactDetailsImage extends StatelessWidget {
                   top: 0,
                   right: -9,
                   child: Text(
-                    '${(productsEntity.priceAfterDiscount / productsEntity.price) * 100 - 100}%',
+                    '${(productsEntity.priceAfterDiscount! / productsEntity.price) * 100 - 100}%',
                     textAlign: TextAlign.center,
                     style: AppStyles.styleLeagueSpartanBold20(
                       context,

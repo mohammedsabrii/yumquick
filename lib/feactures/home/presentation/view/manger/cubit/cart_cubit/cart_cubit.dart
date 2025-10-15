@@ -150,11 +150,12 @@ class CartsCubit extends Cubit<CartsState> {
 
   double get subtotal {
     if (state is! CartsSuccess) return 0;
-    return (state as CartsSuccess).cartProducts.fold(
-      0,
-      (sum, cartEntity) =>
-          sum + (cartEntity.product.price * cartEntity.quantity),
-    );
+
+    return (state as CartsSuccess).cartProducts.fold(0, (sum, cartEntity) {
+      final product = cartEntity.product;
+      final effectivePrice = product.priceAfterDiscount ?? product.price;
+      return sum + (effectivePrice * cartEntity.quantity);
+    });
   }
 
   double get taxAndFees => subtotal * 0.02;

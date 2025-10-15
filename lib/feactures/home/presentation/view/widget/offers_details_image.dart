@@ -3,11 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/home/entity/offer_entity.dart';
+import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 class OffersDetailsImage extends StatelessWidget {
-  const OffersDetailsImage({super.key, required this.offersEntity});
-  final OffersEntity offersEntity;
+  const OffersDetailsImage({super.key, required this.productEntity});
+  final ProductsEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -18,13 +18,13 @@ class OffersDetailsImage extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
-              image: NetworkImage(offersEntity.image),
+              image: NetworkImage(productEntity.image),
               fit: BoxFit.fill,
             ),
           ),
         ),
 
-        offersEntity.priceAfterDiscount != 0.0
+        productEntity.priceAfterDiscount != null
             ? Positioned(
               top: MediaQuery.sizeOf(context).height * -0.02699,
               right: MediaQuery.sizeOf(context).width * -0.0585,
@@ -36,7 +36,7 @@ class OffersDetailsImage extends StatelessWidget {
                     top: 20,
                     right: 12,
                     child: Text(
-                      '${((offersEntity.priceAfterDiscount / offersEntity.price) * 100 - 100).toStringAsFixed(0)}%',
+                      '${((productEntity.priceAfterDiscount! / productEntity.price) * 100 - 100).toStringAsFixed(0)}%',
                       textAlign: TextAlign.center,
                       style: AppStyles.styleLeagueSpartanBold20(
                         context,
