@@ -15,7 +15,9 @@ class ConfirmedOrderButton extends StatelessWidget {
     return BlocBuilder<FetchProfileInfoCubit, FetchProfileInfoState>(
       builder: (context, profileState) {
         if (profileState is! FetchProfileInfoSuccess) {
-          return const CircularProgressIndicator(color: AppColor.kMainColor);
+          return const Center(
+            child: CircularProgressIndicator(color: AppColor.kMainColor),
+          );
         }
 
         return BlocConsumer<StripeCubit, StripeState>(

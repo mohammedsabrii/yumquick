@@ -8,55 +8,49 @@ part 'get_prodacts_state.dart';
 class GetProdactsCubit extends Cubit<GetProdactsState> {
   GetProdactsCubit() : super(GetProdactsInitial());
   final GetProdactService getProdactsService = GetProdactService();
+
   int currentPage = 0;
   final int pageSize = 10;
-  List<ProductsEntity> allProducts = [];
   bool hasMore = true;
+  bool isLoading = false;
+  final List<ProductsEntity> allProducts = [];
 
-  Future<void> getProdacts({int? page}) async {
-    if (!hasMore && page == null) return;
+  Future<void> getProdacts({int page = 1, bool isRefresh = false}) async {
+    if (isLoading) return;
+    isLoading = true;
 
-    final fetchPage = page ?? (currentPage + 1);
-    if (page != null) {
+    if (isRefresh) {
       allProducts.clear();
+      currentPage = 0;
       hasMore = true;
+      emit(GetProdactsLoading(isFirstFetch: true));
+    } else if (page == 1 && allProducts.isEmpty) {
       emit(GetProdactsLoading(isFirstFetch: true));
     } else {
       emit(GetProdactsLoading(isFirstFetch: false));
     }
 
     try {
-      // final productsFromLocal = localDataSource.fetchProducts();
-      // if (productsFromLocal.isNotEmpty && page != null) {
-      //   allProducts = productsFromLocal;
-      //   emit(GetProdactsSuccess(products: allProducts));
-      //   return;
-      // }
-
       final products = await getProdactsService.getProdacts(
-        page: fetchPage,
+        page: page,
         pageSize: pageSize,
       );
 
-      if (products.length < pageSize) {
+      if (products.isEmpty || products.length < pageSize) {
         hasMore = false;
       }
 
-      if (page != null) {
-        allProducts = products;
-      } else {
-        allProducts.addAll(products);
-      }
+      final newProducts = products.where(
+        (p) => !allProducts.any((existing) => existing.id == p.id),
+      );
 
-      // var box = Hive.box<ProductsEntity>(kProductsBox);
-      // if (page != null) {
-      //   await box.clear();
-      // }
-      // await box.addAll(products.take(10).toList());
-      currentPage = fetchPage;
-      emit(GetProdactsSuccess(products: allProducts));
+      allProducts.addAll(newProducts);
+      currentPage = page;
+      emit(GetProdactsSuccess(products: List.from(allProducts)));
     } catch (e) {
       emit(GetProdactsFailure(errorMessage: e.toString()));
+    } finally {
+      isLoading = false;
     }
   }
 }
