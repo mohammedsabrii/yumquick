@@ -14,6 +14,7 @@ class CustomDrawerItem extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Padding(
       padding: const EdgeInsets.only(top: 5),
       child: GestureDetector(
@@ -23,7 +24,7 @@ class CustomDrawerItem extends StatelessWidget {
             Row(
               children: [
                 SvgPicture.asset(icon),
-                SizedBox(width: MediaQuery.sizeOf(context).width * 0.0585),
+                SizedBox(width: mediaQuery.width * 0.0585),
                 Text(
                   title,
                   style: AppStyles.styleLeagueSpartanBold24(context).copyWith(
@@ -33,7 +34,7 @@ class CustomDrawerItem extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: mediaQuery.height * 0.01219),
             const Divider(thickness: 1, color: AppColor.kCultured),
           ],
         ),

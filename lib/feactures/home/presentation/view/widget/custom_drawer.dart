@@ -6,6 +6,7 @@ class CustomDrawer extends StatelessWidget {
   final Widget? child;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return ClipRRect(
       borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(100),
@@ -13,12 +14,12 @@ class CustomDrawer extends StatelessWidget {
       ),
       child: Drawer(
         backgroundColor: AppColor.kMainColor,
-        width: MediaQuery.sizeOf(context).width * 0.839,
+        width: mediaQuery.width * 0.839,
         child: Padding(
           padding: EdgeInsets.only(
-            top: MediaQuery.sizeOf(context).height * 0.0766,
-            left: MediaQuery.sizeOf(context).width * 0.0839,
-            right: MediaQuery.sizeOf(context).width * 0.0839,
+            top: mediaQuery.height * 0.0766,
+            left: mediaQuery.width * 0.0839,
+            right: mediaQuery.width * 0.0839,
           ),
           child: child,
         ),

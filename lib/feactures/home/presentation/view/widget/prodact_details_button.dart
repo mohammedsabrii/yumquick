@@ -30,10 +30,12 @@ class ProdactDetailsButton extends StatelessWidget {
         }
       },
       builder: (context, state) {
+        final mediaQuery = MediaQuery.sizeOf(context);
+
         return Container(
           padding: const EdgeInsets.only(left: 10),
-          width: 180.32,
-          height: 33,
+          width: mediaQuery.width * 0.0458,
+          height: mediaQuery.height * 0.04024,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(44.79),
             color: AppColor.kMainColor,

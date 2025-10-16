@@ -20,6 +20,7 @@ class ProdactDetailspriceAndQuantity extends StatelessWidget {
   final VoidCallback onDecrement;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return productsEntity.priceAfterDiscount != null
         ? Row(
           children: [
@@ -42,7 +43,7 @@ class ProdactDetailspriceAndQuantity extends StatelessWidget {
                 Positioned(
                   top: 8.5,
                   child: Container(
-                    width: 50,
+                    width: mediaQuery.width * 0.127,
                     height: 2,
                     decoration: BoxDecoration(
                       color: AppColor.kMainColor,
@@ -58,8 +59,8 @@ class ProdactDetailspriceAndQuantity extends StatelessWidget {
               quantity: quantity,
               onIncrement: onIncrement,
               onDecrement: onDecrement,
-              width: 26.31,
-              height: 26.31,
+              width: mediaQuery.width * 0.0687,
+              height: mediaQuery.height * 0.03292,
               addIcon: AppAssets.kAddIconOrang,
               lessIcon: AppAssets.kLessIconOrang,
               style: AppStyles.styleLeagueSpartanregular23(
@@ -82,8 +83,8 @@ class ProdactDetailspriceAndQuantity extends StatelessWidget {
               quantity: quantity,
               onIncrement: onIncrement,
               onDecrement: onDecrement,
-              width: 26.31,
-              height: 26.31,
+              width: mediaQuery.width * 0.0687,
+              height: mediaQuery.height * 0.03292,
               addIcon: AppAssets.kAddIconOrang,
               lessIcon: AppAssets.kLessIconOrang,
               style: AppStyles.styleLeagueSpartanregular23(

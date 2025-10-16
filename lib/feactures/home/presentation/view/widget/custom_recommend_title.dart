@@ -7,20 +7,20 @@ class CustomRecommendTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Column(
       children: [
-        const SizedBox(height: 15),
+        SizedBox(height: mediaQuery.height * 0.01829),
         Align(
           alignment: Alignment.topLeft,
           child: Text(
             'Recommend',
-
             style: AppStyles.styleLeagueSpartanMediem20(
               context,
             ).copyWith(color: AppColor.kDarkRed),
           ),
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: mediaQuery.height * 0.0146),
       ],
     );
   }

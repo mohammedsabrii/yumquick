@@ -9,12 +9,13 @@ class NotificationDrawerDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return CustomDrawer(
       child: Column(
         children: [
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
+          SizedBox(height: mediaQuery.height * 0.05),
           const NotificationDrawerHeader(),
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.024),
+          SizedBox(height: mediaQuery.height * 0.024),
           const NotificationsDrawerItem(
             icon: AppAssets.kProdactYoyMightBeLike,
             title: 'We have added a product you might like.',

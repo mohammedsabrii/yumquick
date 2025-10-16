@@ -12,11 +12,12 @@ class DrawerDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return CustomDrawer(
       child: Column(
         children: [
           const CustomDrawerHeader(),
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.0550),
+          SizedBox(height: mediaQuery.height * 0.0550),
           CustomDrawerItem(
             onTap: () {
               GoRouter.of(context).push(AppRouter.kMyOrders);
@@ -55,7 +56,7 @@ class DrawerDetails extends StatelessWidget {
             title: 'Settings',
             icon: AppAssets.kSettingsIcon,
           ),
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.0585),
+          SizedBox(height: mediaQuery.height * 0.0585),
           const CustomLogoutWidget(),
         ],
       ),

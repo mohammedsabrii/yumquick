@@ -8,11 +8,12 @@ class CustomOffersItem extends StatelessWidget {
   final ProductsEntity productEntity;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Row(
       children: [
         Container(
-          width: MediaQuery.sizeOf(context).width * 0.4,
-          height: MediaQuery.sizeOf(context).height * 0.152,
+          width: mediaQuery.width * 0.4,
+          height: mediaQuery.height * 0.152,
           decoration: const BoxDecoration(
             color: AppColor.kMainColor,
             borderRadius: BorderRadius.only(
@@ -41,8 +42,8 @@ class CustomOffersItem extends StatelessWidget {
           ),
         ),
         Container(
-          width: MediaQuery.sizeOf(context).width * 0.4,
-          height: MediaQuery.sizeOf(context).height * 0.152,
+          width: mediaQuery.width * 0.4,
+          height: mediaQuery.height * 0.152,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
               topRight: Radius.circular(20),

@@ -10,13 +10,13 @@ class ConfirmedOrderViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
+
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: MediaQuery.sizeOf(context).width * 0.089,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: mediaQuery.width * 0.089),
       child: Column(
         children: [
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.0586),
+          SizedBox(height: mediaQuery.height * 0.0586),
           Align(
             alignment: Alignment.topLeft,
             child: GestureDetector(
@@ -25,14 +25,14 @@ class ConfirmedOrderViewBody extends StatelessWidget {
               },
               child: SvgPicture.asset(
                 AppAssets.kBackIcon,
-                height: 25,
-                width: 20,
+                height: mediaQuery.height * 0.030487,
+                width: mediaQuery.width * 0.05089,
               ),
             ),
           ),
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.105),
+          SizedBox(height: mediaQuery.height * 0.105),
           Center(child: SvgPicture.asset(AppAssets.kCancelcon)),
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.0586),
+          SizedBox(height: mediaQuery.height * 0.0586),
           Text(
             '¡Order Confirmed!',
             textAlign: TextAlign.center,
@@ -40,7 +40,7 @@ class ConfirmedOrderViewBody extends StatelessWidget {
               context,
             ).copyWith(color: AppColor.kDarkRed),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: mediaQuery.height * 0.01219),
           Text(
             'Your order has been placed succesfully',
             textAlign: TextAlign.center,
@@ -48,7 +48,7 @@ class ConfirmedOrderViewBody extends StatelessWidget {
               context,
             ).copyWith(color: AppColor.kDarkRed),
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: mediaQuery.height * 0.02439),
           Text(
             'Delivery by Thu, 29th, 4:00 PM',
             textAlign: TextAlign.center,
@@ -64,7 +64,7 @@ class ConfirmedOrderViewBody extends StatelessWidget {
               context,
             ).copyWith(color: AppColor.kDarkRed),
           ),
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.0586),
+          SizedBox(height: mediaQuery.height * 0.0586),
         ],
       ),
     );

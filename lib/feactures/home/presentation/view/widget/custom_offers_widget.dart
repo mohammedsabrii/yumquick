@@ -10,6 +10,7 @@ class CustomOffersWidget extends StatelessWidget {
   final ProductsEntity productEntity;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return GestureDetector(
       onTap: () {
         GoRouter.of(
@@ -20,14 +21,14 @@ class CustomOffersWidget extends StatelessWidget {
         children: [
           CustomOffersItem(productEntity: productEntity),
           Positioned(
-            top: -35,
-            left: MediaQuery.sizeOf(context).width * 0.29,
+            top: -mediaQuery.height * 0.04268,
+            left: mediaQuery.width * 0.29,
             child: const CustomCircleWidget(),
           ),
-          const Positioned(
-            left: -27.5,
-            bottom: -27.5,
-            child: CustomCircleWidget(),
+          Positioned(
+            left: -mediaQuery.height * 0.0335,
+            bottom: -mediaQuery.height * 0.0335,
+            child: const CustomCircleWidget(),
           ),
         ],
       ),

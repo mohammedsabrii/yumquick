@@ -13,6 +13,7 @@ class CartItemTitleAndPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     final price =
         cartEntity.product.priceAfterDiscount ?? cartEntity.product.price;
     return Column(
@@ -38,7 +39,7 @@ class CartItemTitleAndPrice extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 2),
               color: AppColor.kPinkishOrange,
               title: 'Remove',
-              width: MediaQuery.sizeOf(context).width * 0.178,
+              width: mediaQuery.width * 0.178,
               textColor: AppColor.kCultured,
               textStyle: AppStyles.styleLeagueSpartanMediem14(context).copyWith(
                 fontSize: 12,
@@ -49,11 +50,11 @@ class CartItemTitleAndPrice extends StatelessWidget {
                 BlocProvider.of<CartsCubit>(context).removeFromCart(cartEntity);
               },
             ),
-            SizedBox(width: MediaQuery.sizeOf(context).width * 0.089),
+            SizedBox(width: mediaQuery.width * 0.089),
             CustomTotalItem(
               product: cartEntity,
-              width: MediaQuery.sizeOf(context).width * 0.05,
-              height: MediaQuery.sizeOf(context).height * 0.024,
+              width: mediaQuery.width * 0.05,
+              height: mediaQuery.height * 0.024,
               style: AppStyles.styleLeagueSpartanMediem16(
                 context,
               ).copyWith(color: AppColor.kCultured),

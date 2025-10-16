@@ -10,11 +10,13 @@ class OffersDetailsImage extends StatelessWidget {
   final ProductsEntity productEntity;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
+
     return Stack(
       clipBehavior: Clip.none,
       children: [
         Container(
-          height: MediaQuery.sizeOf(context).height * 0.27,
+          height: mediaQuery.height * 0.27,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
@@ -26,15 +28,15 @@ class OffersDetailsImage extends StatelessWidget {
 
         productEntity.priceAfterDiscount != null
             ? Positioned(
-              top: MediaQuery.sizeOf(context).height * -0.02699,
-              right: MediaQuery.sizeOf(context).width * -0.0585,
+              top: mediaQuery.height * -0.02699,
+              right: mediaQuery.width * -0.0585,
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
                   SvgPicture.asset(AppAssets.kOffarStar),
                   Positioned(
-                    top: 20,
-                    right: 12,
+                    top: mediaQuery.height * 0.0243,
+                    right: mediaQuery.width * 0.0305,
                     child: Text(
                       '${((productEntity.priceAfterDiscount! / productEntity.price) * 100 - 100).toStringAsFixed(0)}%',
                       textAlign: TextAlign.center,

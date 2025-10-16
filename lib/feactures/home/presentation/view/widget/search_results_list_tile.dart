@@ -10,6 +10,7 @@ class SearchResultsListTile extends StatelessWidget {
   final ProductsEntity productsEntity;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return ListTile(
       onTap: () {
         GoRouter.of(
@@ -17,8 +18,8 @@ class SearchResultsListTile extends StatelessWidget {
         ).push(AppRouter.kProdactDetailsView, extra: productsEntity);
       },
       leading: Container(
-        width: MediaQuery.sizeOf(context).width * 0.096,
-        height: MediaQuery.sizeOf(context).height * 0.048,
+        width: mediaQuery.width * 0.096,
+        height: mediaQuery.height * 0.048,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(

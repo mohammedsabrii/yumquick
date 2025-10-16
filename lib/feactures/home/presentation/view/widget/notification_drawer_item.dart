@@ -12,13 +12,14 @@ class NotificationsDrawerItem extends StatelessWidget {
   final String icon, title;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Column(
       children: [
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.024),
+        SizedBox(height: mediaQuery.height * 0.024),
         Row(
           children: [
             SvgPicture.asset(icon),
-            const SizedBox(width: 20),
+            SizedBox(width: mediaQuery.width * 0.0508),
             Flexible(
               child: Text(
                 title,
@@ -29,7 +30,7 @@ class NotificationsDrawerItem extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.024),
+        SizedBox(height: mediaQuery.height * 0.024),
         const Divider(thickness: 1, color: AppColor.kCultured),
       ],
     );

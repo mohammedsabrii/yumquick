@@ -9,6 +9,7 @@ class NotificationDrawerHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Column(
       children: [
         Row(
@@ -16,10 +17,10 @@ class NotificationDrawerHeader extends StatelessWidget {
           children: [
             SvgPicture.asset(
               AppAssets.kNotificationDrawerIcon,
-              width: 22,
-              height: 31,
+              width: mediaQuery.width * 0.05597,
+              height: mediaQuery.height * 0.0378,
             ),
-            const SizedBox(width: 20),
+            SizedBox(width: mediaQuery.width * 0.0508),
             Text(
               'Notifications',
               style: AppStyles.styleLeagueSpartanBold24(
@@ -28,7 +29,7 @@ class NotificationDrawerHeader extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.048),
+        SizedBox(height: mediaQuery.height * 0.048),
 
         const Divider(thickness: 1, color: AppColor.kCultured),
       ],

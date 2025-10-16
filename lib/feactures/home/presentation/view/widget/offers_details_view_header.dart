@@ -11,14 +11,15 @@ class OffersDetailsViewHeader extends StatelessWidget {
   final ProductsEntity productEntity;
   @override
   Widget build(BuildContext context) {
+        final mediaQuery = MediaQuery.sizeOf(context);
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: MediaQuery.sizeOf(context).width * 0.089,
+        horizontal: mediaQuery.width * 0.089,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.0551),
+          SizedBox(height: mediaQuery.height * 0.0551),
           Row(
             children: [
               GestureDetector(
@@ -27,8 +28,8 @@ class OffersDetailsViewHeader extends StatelessWidget {
                 },
                 child: SvgPicture.asset(
                   AppAssets.kBackIcon,
-                  height: 25,
-                  width: 20,
+                  height: mediaQuery.height*0.0304,
+                  width: mediaQuery.width*0.0508,
                 ),
               ),
               const SizedBox(width: 5),

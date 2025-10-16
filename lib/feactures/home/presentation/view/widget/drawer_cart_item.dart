@@ -8,14 +8,15 @@ class DrawerCartItem extends StatelessWidget {
   final CartEntity cartEntity;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Column(
       children: [
-        const SizedBox(height: 10),
+        SizedBox(height: mediaQuery.height * 0.01219),
         Row(
           children: [
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.097,
-              width: MediaQuery.sizeOf(context).width * 0.2,
+              height: mediaQuery.height * 0.097,
+              width: mediaQuery.width * 0.2,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
@@ -24,14 +25,14 @@ class DrawerCartItem extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 9),
+            SizedBox(width: mediaQuery.width * 0.0229),
             SizedBox(
-              width: MediaQuery.sizeOf(context).width * 0.445,
+              width: mediaQuery.width * 0.445,
               child: CartItemTitleAndPrice(cartEntity: cartEntity),
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: mediaQuery.height * 0.01219),
         const Divider(thickness: 2, color: AppColor.kCultured),
       ],
     );

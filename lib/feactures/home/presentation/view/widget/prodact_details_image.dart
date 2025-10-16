@@ -10,11 +10,12 @@ class ProdactDetailsImage extends StatelessWidget {
   final ProductsEntity productsEntity;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Stack(
       clipBehavior: Clip.none,
       children: [
         Container(
-          height: MediaQuery.sizeOf(context).height * 0.27,
+          height: mediaQuery.height * 0.27,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
@@ -28,8 +29,8 @@ class ProdactDetailsImage extends StatelessWidget {
             ? Stack(
               children: [
                 Positioned(
-                  top: MediaQuery.sizeOf(context).height * -0.02699,
-                  right: MediaQuery.sizeOf(context).width * -0.0585,
+                  top: mediaQuery.height * -0.02699,
+                  right: mediaQuery.width * -0.0585,
                   child: SvgPicture.asset(AppAssets.kOffarStar),
                 ),
                 Positioned(

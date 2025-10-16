@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_Container.dart';
-import 'package:yumquick/feactures/home/presentation/view/manger/cubit/cart_cubit/cart_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/address_container.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/calculate_total_price.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/confirm_order_item.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/confirmed_order_button.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/confirm_order_bloc_builder.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/shipping_and_edit_address.dart';
 
 class ConfirmOrderDetails extends StatelessWidget {
@@ -38,70 +32,7 @@ class ConfirmOrderDetails extends StatelessWidget {
             ),
             const Divider(color: AppColor.kPinkishOrange, thickness: 2),
             const SizedBox(height: 20),
-            Expanded(
-              child: BlocBuilder<CartsCubit, CartsState>(
-                builder: (context, state) {
-                  if (state is CartsSuccess) {
-                    return SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: state.cartProducts.length,
-                            itemBuilder: (context, index) {
-                              return ConfirmOrderItem(
-                                cartEntity: state.cartProducts[index],
-                              );
-                            },
-                          ),
-                          const CalculateTotalPrice(
-                            color: AppColor.kDarkRed,
-                            dividerColor: AppColor.kPinkishOrange,
-                          ),
-                          const SizedBox(height: 30),
-                          const ConfirmedOrderButton(),
-
-                          const SizedBox(height: 30),
-                        ],
-                      ),
-                    );
-                  } else if (state is CartsFailure) {
-                    return Text(
-                      state.errorMessage,
-                      style: AppStyles.styleLeagueSpartanMediem16(
-                        context,
-                      ).copyWith(color: Colors.red),
-                    );
-                  } else if (state is CartsEmpty) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          AppAssets.kAddToCartIcon,
-                          colorFilter: const ColorFilter.mode(
-                            AppColor.kMainColor,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          'Add something to your cart',
-                          style: AppStyles.styleLeagueSpartanBold24(
-                            context,
-                          ).copyWith(color: AppColor.kMainColor),
-                        ),
-                      ],
-                    );
-                  }
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColor.kMainColor,
-                    ),
-                  );
-                },
-              ),
-            ),
+            const ConfirmOrderBlocBuilder(),
           ],
         ),
       ),

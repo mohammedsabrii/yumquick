@@ -13,13 +13,15 @@ class ConfirmOrderItem extends StatelessWidget {
   final CartEntity cartEntity;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
+
     return Column(
       children: [
         Row(
           children: [
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.1,
-              width: MediaQuery.sizeOf(context).width * 0.2,
+              height: mediaQuery.height * 0.1,
+              width: mediaQuery.width * 0.2,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
@@ -28,7 +30,7 @@ class ConfirmOrderItem extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: MediaQuery.sizeOf(context).width * 0.0381),
+            SizedBox(width: mediaQuery.width * 0.0381),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -38,14 +40,14 @@ class ConfirmOrderItem extends StatelessWidget {
                     context,
                   ).copyWith(color: AppColor.kDarkRed),
                 ),
-                SizedBox(height: MediaQuery.sizeOf(context).height * 0.005),
+                SizedBox(height: mediaQuery.height * 0.005),
                 Text(
                   '\$${cartEntity.product.price}',
                   style: AppStyles.styleLeagueSpartanMediem17(
                     context,
                   ).copyWith(color: AppColor.kDarkRed),
                 ),
-                SizedBox(height: MediaQuery.sizeOf(context).height * 0.005),
+                SizedBox(height: mediaQuery.height * 0.005),
 
                 Row(
                   children: [
@@ -68,7 +70,7 @@ class ConfirmOrderItem extends StatelessWidget {
                         ).removeFromCart(cartEntity);
                       },
                     ),
-                    SizedBox(width: MediaQuery.sizeOf(context).width * 0.189),
+                    SizedBox(width: mediaQuery.width * 0.189),
                     CustomTotalItem(
                       product: cartEntity,
                       addIcon: AppAssets.kAddIconOrang,
@@ -83,7 +85,7 @@ class ConfirmOrderItem extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: mediaQuery.height * 0.01219),
         const Divider(thickness: 2, color: AppColor.kPinkishOrange),
       ],
     );

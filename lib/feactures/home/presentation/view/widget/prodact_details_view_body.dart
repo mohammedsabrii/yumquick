@@ -35,20 +35,19 @@ class _ProdactDetailsViewBodyState extends State<ProdactDetailsViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     final productsEntity = widget.productsEntity;
     return Column(
       children: [
         ProdactDetailsViewHeader(productsEntity: productsEntity),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.0140),
+        SizedBox(height: mediaQuery.height * 0.0140),
         CustomContainer(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.sizeOf(context).width * 0.089,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: mediaQuery.width * 0.089),
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.0387),
+                  SizedBox(height: mediaQuery.height * 0.0387),
                   ProdactDetailsImage(productsEntity: productsEntity),
                   const SizedBox(height: 12),
                   const Divider(thickness: 2, color: AppColor.kPinkishOrange),
@@ -63,7 +62,7 @@ class _ProdactDetailsViewBodyState extends State<ProdactDetailsViewBody> {
                   const Divider(thickness: 2, color: AppColor.kPinkishOrange),
                   const SizedBox(height: 10),
                   ProdactDetailsInformation(productsEntity: productsEntity),
-                  const SizedBox(height: 20),
+                  SizedBox(height: mediaQuery.height * 0.024),
                   ProdactDetailsButton(
                     productsEntity: productsEntity,
                     quantity: quantity,

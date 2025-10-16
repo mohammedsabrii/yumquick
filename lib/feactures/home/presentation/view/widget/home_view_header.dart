@@ -14,25 +14,26 @@ class HomeViewHeader extends StatelessWidget {
   final VoidCallback onOpenUserDrawer;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        SizedBox(width: MediaQuery.sizeOf(context).width * 0.074),
+        SizedBox(width: mediaQuery.width * 0.074),
         GestureDetector(
           onTap: onOpenCartDrawer,
           child: SvgPicture.asset(AppAssets.kCartIcon),
         ),
-        const SizedBox(width: 7),
+        SizedBox(width: mediaQuery.width * 0.01781),
         GestureDetector(
           onTap: onOpenNotificationDrawer,
           child: SvgPicture.asset(AppAssets.kNotiFicationIcon),
         ),
-        const SizedBox(width: 7),
+        SizedBox(width: mediaQuery.width * 0.01781),
         GestureDetector(
           onTap: onOpenUserDrawer,
           child: SvgPicture.asset(AppAssets.kUserIcon),
         ),
-        SizedBox(width: MediaQuery.sizeOf(context).width * 0.089),
+        SizedBox(width: mediaQuery.width * 0.089),
       ],
     );
   }

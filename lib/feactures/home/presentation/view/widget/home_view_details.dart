@@ -7,12 +7,13 @@ class HomeViewDetiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return CustomContainer(
       child: Padding(
         padding: EdgeInsets.only(
-          top: MediaQuery.sizeOf(context).height * 0.0234,
-          left: MediaQuery.sizeOf(context).width * 0.091,
-          right: MediaQuery.sizeOf(context).width * 0.091,
+          top: mediaQuery.height * 0.0234,
+          left: mediaQuery.width * 0.091,
+          right: mediaQuery.width * 0.091,
         ),
         child: const HomeViewDetilesBody(),
       ),

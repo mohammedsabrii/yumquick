@@ -9,13 +9,15 @@ class DrawerEmptyCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
+
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(AppAssets.kDrawerCartIcon),
-            const SizedBox(width: 10),
+            SizedBox(width: mediaQuery.width * 0.02544),
             Text(
               'Cart',
               style: AppStyles.styleLeagueSpartanBold24(
@@ -24,16 +26,16 @@ class DrawerEmptyCart extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.048),
+        SizedBox(height: mediaQuery.height * 0.048),
         const Divider(thickness: 1, color: AppColor.kYellowBase),
-        const SizedBox(height: 15),
+        SizedBox(height: mediaQuery.height * 0.01829),
         Text(
           'Your cart is empty',
           style: AppStyles.styleLeagueSpartanregular20(
             context,
           ).copyWith(color: AppColor.kCultured),
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.146),
+        SizedBox(height: mediaQuery.height * 0.0146),
         SvgPicture.asset(AppAssets.kAddToCartIcon),
         Text(
           'Add something to your cart',

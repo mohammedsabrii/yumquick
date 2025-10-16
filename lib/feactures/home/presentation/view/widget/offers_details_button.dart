@@ -9,10 +9,11 @@ class OffersDetailsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Container(
-      padding: const EdgeInsets.only(left: 10),
-      width: 180.32,
-      height: 33,
+      padding: EdgeInsets.only(left: mediaQuery.width * 0.02544),
+      width: mediaQuery.width * 0.4605,
+      height: mediaQuery.height * 0.0402,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(44.79),
         color: AppColor.kMainColor,
@@ -22,7 +23,7 @@ class OffersDetailsButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(AppAssets.kAddProdactToCart),
-          const SizedBox(width: 7),
+          SizedBox(width: mediaQuery.width * 0.0178),
           Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Text(

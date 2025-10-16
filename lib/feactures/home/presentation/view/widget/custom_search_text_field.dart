@@ -20,9 +20,11 @@ class CustomSaerchTextField extends StatelessWidget {
   final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
+
     return Container(
-      width: MediaQuery.sizeOf(context).width * 0.5089,
-      height: 40,
+      width: mediaQuery.width * 0.5089,
+      height: mediaQuery.height * 0.487,
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -31,7 +33,6 @@ class CustomSaerchTextField extends StatelessWidget {
         controller: controller,
         autocorrect: false,
         textInputAction: TextInputAction.next,
-        // focusNode: FocusNode(),
         cursorColor: Colors.black,
         onChanged: onChanged,
         onFieldSubmitted: onFieldSubmitted,

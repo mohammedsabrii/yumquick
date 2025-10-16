@@ -15,26 +15,26 @@ class HomeViewBody extends StatelessWidget {
   final VoidCallback onOpenUserDrawer;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.037),
+        SizedBox(height: mediaQuery.height * 0.037),
         HomeViewHeader(
           onOpenCartDrawer: onOpenCartDrawer,
           onOpenNotificationDrawer: onOpenNotificationDrawer,
           onOpenUserDrawer: onOpenUserDrawer,
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.018),
+        SizedBox(height: mediaQuery.height * 0.018),
         Padding(
-          padding: EdgeInsets.only(
-            left: MediaQuery.sizeOf(context).width * 0.089,
-          ),
+          padding: EdgeInsets.only(left: mediaQuery.width * 0.089),
           child: Text(
             'Good Morning',
             style: AppStyles.styleLeagueSpartanBold30(context),
           ),
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.034),
+        SizedBox(height: mediaQuery.height * 0.034),
         const HomeViewDetiles(),
       ],
     );

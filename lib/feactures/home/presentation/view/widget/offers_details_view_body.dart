@@ -35,6 +35,7 @@ class _OffersDetailsViewBodyState extends State<OffersDetailsViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return Column(
       children: [
         OffersDetailsViewHeader(productEntity: widget.productEntity),
@@ -49,9 +50,9 @@ class _OffersDetailsViewBodyState extends State<OffersDetailsViewBody> {
                 children: [
                   SizedBox(height: MediaQuery.sizeOf(context).height * 0.0387),
                   OffersDetailsImage(productEntity: widget.productEntity),
-                  const SizedBox(height: 12),
+                  SizedBox(height: mediaQuery.height * 0.0146),
                   const Divider(thickness: 2, color: AppColor.kPinkishOrange),
-                  const SizedBox(height: 7),
+                  SizedBox(height: mediaQuery.height * 0.00853),
                   OffersDetailspriceAndQuantity(
                     productEntity: widget.productEntity,
                     quantity: quantity,
@@ -60,9 +61,9 @@ class _OffersDetailsViewBodyState extends State<OffersDetailsViewBody> {
                   ),
                   const SizedBox(height: 7),
                   const Divider(thickness: 2, color: AppColor.kPinkishOrange),
-                  const SizedBox(height: 10),
+                  SizedBox(height: mediaQuery.height * 0.01219),
                   OffersDetailsInformation(productEntity: widget.productEntity),
-                  const SizedBox(height: 20),
+                  SizedBox(height: mediaQuery.height * 0.0243),
 
                   ProdactDetailsButton(
                     productsEntity: widget.productEntity,

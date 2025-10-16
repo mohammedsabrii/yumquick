@@ -11,17 +11,21 @@ class AddressContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return GestureDetector(
       onTap: () => GoRouter.of(context).push(AppRouter.kDeliveryAddress),
       child: Container(
         width: double.infinity,
-        height: 35,
+        height: mediaQuery.height * 0.042,
         decoration: BoxDecoration(
           color: AppColor.kYellow,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 15, bottom: 5),
+          padding: EdgeInsets.only(
+            left: mediaQuery.height * 0.0182,
+            bottom: mediaQuery.width * 0.0127,
+          ),
           child: Align(
             alignment: Alignment.bottomLeft,
             child: BlocBuilder<FetchProfileInfoCubit, FetchProfileInfoState>(

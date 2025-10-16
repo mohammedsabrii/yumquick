@@ -7,14 +7,16 @@ class ConfirmOrderViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
+
     return Column(
       children: [
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.035),
+        SizedBox(height: mediaQuery.height * 0.035),
         CustomPageHeader(
           title: 'Confirm Order',
-          space: MediaQuery.sizeOf(context).width * 0.17,
+          space: mediaQuery.width * 0.17,
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.018),
+        SizedBox(height: mediaQuery.height * 0.018),
         const ConfirmOrderDetails(),
       ],
     );

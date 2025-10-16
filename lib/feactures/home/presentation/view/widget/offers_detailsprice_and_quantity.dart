@@ -20,6 +20,7 @@ class OffersDetailspriceAndQuantity extends StatelessWidget {
   final VoidCallback onDecrement;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
     return productEntity.priceAfterDiscount != null
         ? Row(
           children: [
@@ -40,9 +41,9 @@ class OffersDetailspriceAndQuantity extends StatelessWidget {
                   ).copyWith(color: AppColor.kYellowBase),
                 ),
                 Positioned(
-                  top: 8.5,
+                  top: mediaQuery.height * 0.0103,
                   child: Container(
-                    width: 50,
+                    width: mediaQuery.width * 0.1272,
                     height: 2,
                     decoration: BoxDecoration(
                       color: AppColor.kMainColor,
@@ -58,8 +59,8 @@ class OffersDetailspriceAndQuantity extends StatelessWidget {
               quantity: quantity,
               onIncrement: onIncrement,
               onDecrement: onDecrement,
-              width: 26.31,
-              height: 26.31,
+              width: mediaQuery.width * 0.0687,
+              height: mediaQuery.height * 0.03292,
               addIcon: AppAssets.kAddIconOrang,
               lessIcon: AppAssets.kLessIconOrang,
               style: AppStyles.styleLeagueSpartanregular23(
@@ -82,8 +83,8 @@ class OffersDetailspriceAndQuantity extends StatelessWidget {
               quantity: quantity,
               onIncrement: onIncrement,
               onDecrement: onDecrement,
-              width: 26.31,
-              height: 26.31,
+              width: mediaQuery.width * 0.0687,
+              height: mediaQuery.height * 0.03292,
               addIcon: AppAssets.kAddIconOrang,
               lessIcon: AppAssets.kLessIconOrang,
               style: AppStyles.styleLeagueSpartanregular23(
