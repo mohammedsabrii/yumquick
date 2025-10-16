@@ -13,9 +13,11 @@ class MyOrdersPageViewContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.sizeOf(context);
+
     return Container(
-      width: MediaQuery.sizeOf(context).width * 0.264,
-      height: 28,
+      width: mediaQuery.width * 0.264,
+      height: mediaQuery.height * 0.03685,
       decoration: ShapeDecoration(
         color: isActive ? AppColor.kMainColor : AppColor.kPinkishOrange,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(38)),

@@ -36,7 +36,10 @@ class _MyOrdersPageViewWithIndexState extends State<MyOrdersPageViewWithIndex> {
     return Flexible(
       child: Column(
         children: [
-          CustomMyOrdersPageViewList(cruntPageIndex: pageIndex),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: CustomMyOrdersPageViewList(cruntPageIndex: pageIndex),
+          ),
           const SizedBox(height: 20),
 
           Expanded(child: MyOrdersPageView(controller: pageController)),

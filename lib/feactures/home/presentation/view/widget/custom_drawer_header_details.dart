@@ -18,7 +18,7 @@ class CustomDrawerHeaderDetails extends StatelessWidget {
               child: Image.network(
                 profileEntity.profileImage ?? AppAssets.kNullProfileImage,
                 height: mediaQuery.height * 0.0853,
-                width: mediaQuery.width * 0.0178,
+                width: mediaQuery.width * 0.178,
                 fit: BoxFit.fill,
               ),
             )

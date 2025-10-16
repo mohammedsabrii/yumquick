@@ -10,7 +10,6 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.sizeOf(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,8 +61,8 @@ class SearchWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: SizedBox(
-                  height: mediaQuery.height * 0.3,
-                  width: mediaQuery.width * 0.76,
+                  height: MediaQuery.sizeOf(context).height * 0.3,
+                  width: MediaQuery.sizeOf(context).width * 0.76,
                   child: ListView.builder(
                     itemCount: state.searchResults.length,
                     itemBuilder: (context, index) {

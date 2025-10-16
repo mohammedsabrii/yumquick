@@ -6,5 +6,6 @@ import 'package:yumquick/feactures/My%20orders/presentation/view/widget/have_act
 final List<Widget> myOrdersList = [
   const HaveActiveOrder(),
   const CompletedOrders(),
+  const CompletedOrders(),
   const CancelledOrders(),
 ];

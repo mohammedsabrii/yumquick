@@ -21,10 +21,9 @@ class CustomSaerchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.sizeOf(context);
-
     return Container(
       width: mediaQuery.width * 0.5089,
-      height: mediaQuery.height * 0.487,
+      height: mediaQuery.height * 0.0487,
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
