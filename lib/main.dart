@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,8 @@ import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_pro
 import 'package:yumquick/feactures/settings/presentation/manger/cubits/change_password_cubit/change_password_cubit.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await InAppWebViewController.setWebContentsDebuggingEnabled(true);
   Stripe.publishableKey = kStripePublishablekey;
   await Hive.initFlutter();
   Hive.registerAdapter(ProfileEntityAdapter());
