@@ -20,6 +20,7 @@ class ContactUsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.sizeOf(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -30,16 +31,14 @@ class ContactUsItem extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.sizeOf(context).height * 0.0244,
-        ),
+        padding: EdgeInsets.only(bottom: mq.height * 0.0244),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
                 SvgPicture.asset(icon, height: height, width: width),
-                SizedBox(width: MediaQuery.sizeOf(context).width * 0.0382),
+                SizedBox(width: mq.width * 0.0382),
                 Text(
                   title,
                   style: AppStyles.styleLeagueSpartanregular20(

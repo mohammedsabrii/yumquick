@@ -54,7 +54,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     try {
       String? imageUrl;
 
-      // Upload image if provided and valid
       if (image != null && await File(image.path).exists()) {
         imageUrl = await uplodeImageSrevice.updateImageToSupabase(
           image,

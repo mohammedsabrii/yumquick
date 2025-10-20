@@ -9,14 +9,13 @@ class ContactUsDetailes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.sizeOf(context);
     return CustomContainer(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.sizeOf(context).width * 0.089,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: mq.width * 0.089),
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.0656),
+            SizedBox(height: mq.height * 0.0656),
             const ContactUsItem(
               url: kCustomerServiceUrl,
               height: 28,

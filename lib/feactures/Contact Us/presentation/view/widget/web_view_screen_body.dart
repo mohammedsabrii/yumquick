@@ -14,12 +14,13 @@ class WebViewScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.sizeOf(context);
     return Column(
       children: [
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
+        SizedBox(height: mq.height * 0.01),
         Row(
           children: [
-            SizedBox(width: MediaQuery.sizeOf(context).width * 0.109),
+            SizedBox(width: mq.width * 0.109),
             GestureDetector(
               onTap: () {
                 GoRouter.of(context).pop();
@@ -43,7 +44,7 @@ class WebViewScreenBody extends StatelessWidget {
           ],
         ),
 
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
+        SizedBox(height: mq.height * 0.01),
         Expanded(
           child: InAppWebView(initialUrlRequest: URLRequest(url: WebUri(url))),
         ),

@@ -9,13 +9,11 @@ class ContactUsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.sizeOf(context);
     return Column(
       children: [
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.048),
-        CustomPageHeader(
-          title: 'Contact Us',
-          space: MediaQuery.sizeOf(context).width * 0.221,
-        ),
+        SizedBox(height: mq.height * 0.048),
+        CustomPageHeader(title: 'Contact Us', space: mq.width * 0.221),
         Text(
           'how can we help you?',
           textAlign: TextAlign.center,
