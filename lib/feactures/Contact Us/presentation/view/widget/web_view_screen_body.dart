@@ -34,7 +34,7 @@ class WebViewScreenBody extends StatelessWidget {
               child: Center(
                 child: Text(
                   title,
-                  style: AppStyles.styleLeagueSpartanBold28(
+                  style: AppStyles.styleLeagueSpartanBold24(
                     context,
                   ).copyWith(color: AppColor.kDarkRed),
                 ),

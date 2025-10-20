@@ -12,31 +12,31 @@ class AddNewAddressViewDetiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.sizeOf(context);
+
     return CustomContainer(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.sizeOf(context).width * 0.089,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: mq.width * 0.089),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.041),
+              SizedBox(height: mq.height * 0.041),
               SvgPicture.asset(
                 AppAssets.kdeliveryHomeIcon,
-                width: MediaQuery.sizeOf(context).width * 0.193,
-                height: MediaQuery.sizeOf(context).height * 0.0784,
+                width: mq.width * 0.193,
+                height: mq.height * 0.0784,
               ),
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.0627),
+              SizedBox(height: mq.height * 0.0627),
               const CustomTextField(
                 lableText: 'New Address Name',
                 textFieldTitle: 'Name',
               ),
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.0257),
+              SizedBox(height: mq.height * 0.0257),
               const CustomTextField(
                 lableText: 'New Address',
                 textFieldTitle: 'Address',
               ),
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.1277),
+              SizedBox(height: mq.height * 0.1277),
               CustomButton(
                 color: AppColor.kMainColor,
                 title: 'Add New Address',

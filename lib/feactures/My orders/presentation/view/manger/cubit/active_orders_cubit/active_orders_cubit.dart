@@ -82,10 +82,8 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
     final stripeService = StripeService();
 
     try {
-      // Refund the payment
       await stripeService.refundPayment(activeOrder.paymentIntentId);
 
-      // Add to cancelled_orders
       await supabase.from('cancelled_orders').insert({
         'user_id': userId,
         'product_id': activeOrder.product.id,
@@ -95,7 +93,6 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
         'customer_address': userProfileState.profile.address ?? '',
       });
 
-      // Delete from active_orders using row id
       await supabase.from('active_orders').delete().eq('id', activeOrder.id!);
 
       await fetchActiveOrders();
@@ -103,20 +100,4 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
       emit(ActiveOrdersFailure("Cancel order failed: ${e.toString()}"));
     }
   }
-
-  // Future<void> deleteActiveOrder(
-  //   String orderId,
-  //   ActiveOrderEntity order,
-  // ) async {
-  //   emit(ActiveOrdersLoading());
-  //   try {
-  //     final stripeService = StripeService();
-  //     await stripeService.refundPayment(order.paymentIntentId);
-  //     await supabase.from('active_orders').delete().eq('id', orderId);
-
-  //     await fetchActiveOrders();
-  //   } catch (e) {
-  //     emit(ActiveOrdersFailure("Delete failed: ${e.toString()}"));
-  //   }
-  // }
 }
