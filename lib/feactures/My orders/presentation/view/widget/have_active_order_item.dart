@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/active_order_item_detiles.dart';
-import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
+import 'package:yumquick/feactures/My%20orders/entity/order_entity.dart';
 
 class HaveActiveOrderItem extends StatelessWidget {
   const HaveActiveOrderItem({super.key, required this.activeOrderEntity});
-  final ActiveOrderEntity activeOrderEntity;
+  final OrdersEntity activeOrderEntity;
   @override
   Widget build(BuildContext context) {
     return Column(

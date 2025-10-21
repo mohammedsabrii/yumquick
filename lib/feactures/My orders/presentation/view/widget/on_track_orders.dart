@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
-import 'package:yumquick/feactures/My%20orders/presentation/view/widget/have_active_order_item.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/on_track_orders_cubit/on_track_orders_cubit.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/completed_orders_item.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/no_active_orders_view.dart';
-import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/active_orders_cubit/active_orders_cubit.dart';
 
-class HaveActiveOrder extends StatelessWidget {
-  const HaveActiveOrder({super.key});
+class OnTrackOrders extends StatelessWidget {
+  const OnTrackOrders({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,13 @@ class HaveActiveOrder extends StatelessWidget {
       padding: EdgeInsets.symmetric(
         horizontal: MediaQuery.sizeOf(context).width * 0.087,
       ),
-      child: BlocBuilder<ActiveOrdersCubit, ActiveOrdersState>(
+      child: BlocBuilder<OnTrackOrdersCubit, OnTrackOrdersState>(
         builder: (context, state) {
-          if (state is ActiveOrdersEmpty) {
+          if (state is OnTrackOrdersEmpty) {
             return const NoActiveOrderView(
-              title: 'You don`t have any active orders at this time',
+              title: 'You don`t have any on track orders at this time',
             );
-          } else if (state is ActiveOrdersFailure) {
+          } else if (state is OnTrackOrdersFailure) {
             return Center(
               child: Text(
                 state.errorMessage,
@@ -30,7 +30,7 @@ class HaveActiveOrder extends StatelessWidget {
                 ).copyWith(color: Colors.red),
               ),
             );
-          } else if (state is ActiveOrdersSuccess) {
+          } else if (state is OnTrackOrdersSuccess) {
             return SingleChildScrollView(
               child: Column(
                 children: [
@@ -38,10 +38,10 @@ class HaveActiveOrder extends StatelessWidget {
                   ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: state.orders.length,
+                    itemCount: state.onTrakOrders.length,
                     itemBuilder: (context, index) {
-                      return HaveActiveOrderItem(
-                        activeOrderEntity: state.orders[index],
+                      return CompletedOrdersItem(
+                        ordersEntity: state.onTrakOrders[index],
                       );
                     },
                   ),

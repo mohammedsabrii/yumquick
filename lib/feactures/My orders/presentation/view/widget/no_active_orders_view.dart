@@ -5,8 +5,8 @@ import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 
 class NoActiveOrderView extends StatelessWidget {
-  const NoActiveOrderView({super.key});
-
+  const NoActiveOrderView({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,7 +15,7 @@ class NoActiveOrderView extends StatelessWidget {
         SvgPicture.asset(AppAssets.ktransferDocumentIcon),
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.048),
         Text(
-          'You don`t have any active orders at this time',
+          title,
           textAlign: TextAlign.center,
           style: AppStyles.styleLeagueSpartanBold30(
             context,

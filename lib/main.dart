@@ -11,6 +11,8 @@ import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/manger/cubit/cubit/fetch_category_products_cubit.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/cancelled_orders_cubit/cancelled_orders_cubit.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/completed_orders_cubit/completed_orders_cubit.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/on_track_orders_cubit/on_track_orders_cubit.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/entity/profile_entity.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/active_orders_cubit/active_orders_cubit.dart';
@@ -62,7 +64,12 @@ class YumQuick extends StatelessWidget {
         BlocProvider(
           create: (context) => ActiveOrdersCubit()..fetchActiveOrders(),
         ),
-
+        BlocProvider(
+          create: (context) => CompletedOrdersCubit()..fetchCompletedOrders(),
+        ),
+        BlocProvider(
+          create: (context) => OnTrackOrdersCubit()..fetchOnTrackOrders(),
+        ),
         BlocProvider(create: (context) => SearchCubit()),
         BlocProvider(create: (context) => StripeCubit(StripeService())),
 

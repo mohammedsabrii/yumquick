@@ -13,8 +13,9 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.padding,
     this.isLodaing = false,
+    this.circularProgressIndicatorColor,
   });
-  final Color color, textColor;
+  final Color? color, textColor, circularProgressIndicatorColor;
   final String title;
   final void Function()? onTap;
   final TextStyle? textStyle;
@@ -40,10 +41,12 @@ class CustomButton extends StatelessWidget {
           child: Center(
             child:
                 isLodaing!
-                    ? const SizedBox(
+                    ? SizedBox(
                       height: 25,
                       width: 25,
-                      child: CircularProgressIndicator(color: Colors.white),
+                      child: CircularProgressIndicator(
+                        color: circularProgressIndicatorColor ?? Colors.white,
+                      ),
                     )
                     : Text(
                       title,

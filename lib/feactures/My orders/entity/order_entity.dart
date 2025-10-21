@@ -1,6 +1,6 @@
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
-class ActiveOrderEntity {
+class OrdersEntity {
   final String? id;
   final ProductsEntity product;
   final int quantity;
@@ -9,7 +9,7 @@ class ActiveOrderEntity {
   final String customerAddress;
   final String paymentIntentId;
 
-  ActiveOrderEntity({
+  OrdersEntity({
     this.id,
     required this.product,
     required this.quantity,
@@ -19,8 +19,8 @@ class ActiveOrderEntity {
     required this.paymentIntentId,
   });
 
-  factory ActiveOrderEntity.fromJson(Map<String, dynamic> json) {
-    return ActiveOrderEntity(
+  factory OrdersEntity.fromJson(Map<String, dynamic> json) {
+    return OrdersEntity(
       id: json['id'],
       product: ProductsEntity.fromJson(json['products']),
       quantity: json['quantity'] ?? 1,

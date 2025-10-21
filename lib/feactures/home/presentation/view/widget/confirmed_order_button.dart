@@ -39,7 +39,8 @@ class ConfirmedOrderButton extends StatelessWidget {
               onTap: isLoading ? null : () => onConfirmPressed(context),
               padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
               isLodaing: isLoading,
-              color: AppColor.kDarkRed,
+              color: AppColor.kPinkishOrange,
+              circularProgressIndicatorColor: AppColor.kDarkRed,
               title: 'Confirm Order',
               textStyle: AppStyles.styleLeagueSpartanregular18(
                 context,

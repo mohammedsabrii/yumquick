@@ -3,16 +3,16 @@ import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/My%20orders/entity/order_entity.dart';
 
-class OrderMetaData extends StatelessWidget {
-  const OrderMetaData({super.key, required this.activeOrderEntity});
-  final OrdersEntity activeOrderEntity;
+class CancelledOrderMetaData extends StatelessWidget {
+  const CancelledOrderMetaData({super.key, required this.orderEntity});
+  final OrdersEntity orderEntity;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          '${activeOrderEntity.quantity} items',
+          '${orderEntity.quantity} items',
           style: AppStyles.styleLeagueSpartanMediem14(
             context,
           ).copyWith(fontWeight: FontWeight.w300, color: AppColor.kDarkRed),

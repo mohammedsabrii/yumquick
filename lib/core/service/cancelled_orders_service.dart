@@ -1,16 +1,20 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:yumquick/feactures/My%20orders/entity/cancelled_orders_entity.dart';
+import 'package:yumquick/feactures/My%20orders/entity/order_entity.dart';
 
 class CancelledOrdersService {
   final supabase = Supabase.instance.client;
-  Future<List<CancelledOrdersEntity>> fetchCancelledOrders() async {
+  Future<List<OrdersEntity>> fetchCancelledOrders() async {
     final userId = supabase.auth.currentUser?.id;
 
     final response = await supabase
         .from('cancelled_orders')
         .select('''
-            quantity,
-            total_amount,
+             id,
+      user_id,               
+      quantity,
+      total_amount,
+      customer_name,
+      customer_address,
             products (
               id,
               category_id,
@@ -24,14 +28,12 @@ class CancelledOrdersService {
           ''')
         .eq('user_id', userId!);
     final orders =
-        (response as List)
-            .map((json) => CancelledOrdersEntity.fromJson(json))
-            .toList();
+        (response as List).map((json) => OrdersEntity.fromJson(json)).toList();
     return orders;
   }
 
   Future<void> addToCancelledOrders(
-    CancelledOrdersEntity product,
+    OrdersEntity product,
     String customerName,
     String customerAddress,
   ) async {

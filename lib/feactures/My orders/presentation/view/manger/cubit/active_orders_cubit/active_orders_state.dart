@@ -10,7 +10,7 @@ class ActiveOrdersLoading extends ActiveOrdersState {}
 class ActiveOrdersEmpty extends ActiveOrdersState {}
 
 class ActiveOrdersSuccess extends ActiveOrdersState {
-  final List<ActiveOrderEntity> orders;
+  final List<OrdersEntity> orders;
 
   ActiveOrdersSuccess(this.orders);
 }

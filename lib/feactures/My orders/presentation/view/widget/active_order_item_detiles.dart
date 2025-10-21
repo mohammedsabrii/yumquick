@@ -3,14 +3,14 @@ import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/cancel_order_actions.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/order_title_and_price.dart';
-import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
+import 'package:yumquick/feactures/My%20orders/entity/order_entity.dart';
 
 class HaveActiveOrderItemDetiles extends StatelessWidget {
   const HaveActiveOrderItemDetiles({
     super.key,
     required this.activeOrderEntity,
   });
-  final ActiveOrderEntity activeOrderEntity;
+  final OrdersEntity activeOrderEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,7 +28,7 @@ class HaveActiveOrderItemDetiles extends StatelessWidget {
                 context,
               ).copyWith(color: AppColor.kDarkRed),
             ),
-            CancelOrderActions(activeOrderEntity: activeOrderEntity),
+            CancelOrderActions(orderEntity: activeOrderEntity),
           ],
         ),
         const SizedBox(height: 5),

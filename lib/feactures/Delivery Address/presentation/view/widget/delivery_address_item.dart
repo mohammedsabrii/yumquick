@@ -21,8 +21,8 @@ class DeliveryAddressItem extends StatelessWidget {
     final mq = MediaQuery.sizeOf(context);
     return Column(
       children: [
+        const Divider(thickness: 1, color: AppColor.kMainColor),
         SizedBox(height: mq.height * 0.0293),
-
         CustomTextField(
           onChanged: (newAdress) {
             context.read<EditProfileCubit>().updateLocalData(
@@ -54,7 +54,7 @@ class DeliveryAddressItem extends StatelessWidget {
           textStyle: AppStyles.styleLeagueSpartanMediem17(
             context,
           ).copyWith(color: AppColor.kMainColor),
-          width: mq.width * 0.4,
+          width: mq.width * 0.47,
         ),
       ],
     );

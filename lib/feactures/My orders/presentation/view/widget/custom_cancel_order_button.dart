@@ -5,20 +5,14 @@ import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_show_model_botton_sheet_bottom.dart';
-import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
-import 'package:yumquick/feactures/My%20orders/entity/cancelled_orders_entity.dart';
+import 'package:yumquick/feactures/My%20orders/entity/order_entity.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/active_orders_cubit/active_orders_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_profile_info_cubit/fetch_profile_info_cubit.dart';
 
 class CustomCancelOrderButton extends StatelessWidget {
-  const CustomCancelOrderButton({
-    super.key,
-    required this.cancelledOrderEntity,
-    required this.activeOrderEntity,
-  });
+  const CustomCancelOrderButton({super.key, required this.orderEntity});
 
-  final CancelledOrdersEntity cancelledOrderEntity;
-  final ActiveOrderEntity activeOrderEntity;
+  final OrdersEntity orderEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +24,7 @@ class CustomCancelOrderButton extends StatelessWidget {
               final userState = context.read<FetchProfileInfoCubit>().state;
               if (userState is FetchProfileInfoSuccess) {
                 context.read<ActiveOrdersCubit>().deleteAndCancelOrder(
-                  activeOrderEntity,
+                  orderEntity,
                   userState,
                 );
                 GoRouter.of(context).pop();

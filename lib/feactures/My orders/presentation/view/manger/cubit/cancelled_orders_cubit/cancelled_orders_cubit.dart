@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yumquick/core/service/cancelled_orders_service.dart';
-import 'package:yumquick/feactures/My%20orders/entity/cancelled_orders_entity.dart';
+import 'package:yumquick/feactures/My%20orders/entity/order_entity.dart';
 
 part 'cancelled_orders_state.dart';
 
@@ -11,15 +11,20 @@ class CancelledOrdersCubit extends Cubit<CancelledOrdersState> {
   Future<void> fetchCancelledOrders() async {
     emit(CanclledOrdersLoading());
     try {
-      final orders = await cancelledOrdersService.fetchCancelledOrders();
-      emit(CanclledOrdersSuccess(orders));
+      final cancelledOrders =
+          await cancelledOrdersService.fetchCancelledOrders();
+      if (cancelledOrders.isEmpty) {
+        emit(CanclledOrdersEmpty());
+      } else {
+        emit(CanclledOrdersSuccess(cancelledOrders: cancelledOrders));
+      }
     } catch (e) {
       emit(CanclledOrdersFailure(e.toString()));
     }
   }
 
   Future<void> addToCancelledOrders(
-    CancelledOrdersEntity product,
+    OrdersEntity product,
     String customerName,
     String customerAddress,
   ) async {
@@ -32,7 +37,7 @@ class CancelledOrdersCubit extends Cubit<CancelledOrdersState> {
       );
       final cancelledOrders =
           await cancelledOrdersService.fetchCancelledOrders();
-      emit(CanclledOrdersSuccess(cancelledOrders));
+      emit(CanclledOrdersSuccess(cancelledOrders: cancelledOrders));
     } catch (e) {
       emit(CanclledOrdersFailure(e.toString()));
     }

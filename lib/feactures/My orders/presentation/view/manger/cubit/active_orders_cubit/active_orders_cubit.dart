@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:yumquick/core/service/fetch_active_orders_service.dart';
 import 'package:yumquick/core/service/stripe_service.dart';
-import 'package:yumquick/feactures/My%20orders/entity/active_order_entity.dart';
+import 'package:yumquick/feactures/My%20orders/entity/order_entity.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_profile_info_cubit/fetch_profile_info_cubit.dart';
 
 part 'active_orders_state.dart';
@@ -11,35 +12,12 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
   ActiveOrdersCubit() : super(ActiveOrdersInitial());
 
   final supabase = Supabase.instance.client;
-  String? get userId => supabase.auth.currentUser?.id;
+  final FetchActiveOrdersService fetchActiveOrdersService =
+      FetchActiveOrdersService();
   Future<void> fetchActiveOrders() async {
     emit(ActiveOrdersLoading());
-
+    final orders = await fetchActiveOrdersService.fetchActiveOrders();
     try {
-      final response = await supabase
-          .from('active_orders')
-          .select('''
-      id,               
-      quantity,
-      total_amount,
-      payment_intent_id,
-      products (
-        id,
-        category_id,
-        name,
-        subtitle,
-        image,
-        price,
-        categories,
-        price_after_discount
-      )
-    ''')
-          .eq('user_id', userId!);
-
-      final orders =
-          (response as List)
-              .map((json) => ActiveOrderEntity.fromJson(json))
-              .toList();
       if (orders.isEmpty) {
         emit(ActiveOrdersEmpty());
       } else {
@@ -50,7 +28,7 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
     }
   }
 
-  Future<void> insertCartOrders(List<ActiveOrderEntity> cartItems) async {
+  Future<void> insertCartOrders(List<OrdersEntity> cartItems) async {
     try {
       final data =
           cartItems.map((item) {
@@ -73,7 +51,7 @@ class ActiveOrdersCubit extends Cubit<ActiveOrdersState> {
   }
 
   Future<void> deleteAndCancelOrder(
-    ActiveOrderEntity activeOrder,
+    OrdersEntity activeOrder,
     FetchProfileInfoSuccess userProfileState,
   ) async {
     emit(ActiveOrdersLoading());
