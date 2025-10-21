@@ -1,10 +1,13 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
+import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/favorite_cubit/favorite_cubit.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_profile_info_cubit/fetch_profile_info_cubit.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -37,6 +40,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
     if (user != null) {
       if (!mounted) return;
+      context.read<FetchProfileInfoCubit>().fetchProfileInfo();
+      context.read<FavoritesCubit>().fetchFavorites();
       GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
     } else {
       if (!mounted) return;
