@@ -4,7 +4,6 @@ import 'package:yumquick/feactures/Delivery%20Address/presentation/view/add_new_
 import 'package:yumquick/feactures/Delivery%20Address/presentation/view/delivery_address_view.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/favorite_view.dart';
 import 'package:yumquick/feactures/Menu/presentation/view/menu_view.dart';
-import 'package:yumquick/feactures/Payment%20Methods/presentation/view/payment_methods_view.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/presentation/view/confirm_order_view.dart';
 import 'package:yumquick/feactures/home/presentation/view/confirmed_order_view.dart';
@@ -40,7 +39,6 @@ class AppRouter {
   static const kMyProfileView = '/MyProfileView';
   static const kDeliveryAddress = '/DeliveryAddress';
   static const kAddNewAddess = '/AddNewAddress';
-  static const kPaymentMethods = '/PaymentMethods';
   static const kContactUs = '/ContactUs';
   static const kSettings = '/Settings';
   static const kPasswordSettings = '/PasswordSettings';
@@ -104,10 +102,7 @@ class AppRouter {
         path: kAddNewAddess,
         builder: (context, state) => const AddNewAddressView(),
       ),
-      GoRoute(
-        path: kPaymentMethods,
-        builder: (context, state) => const PaymentMethodsView(),
-      ),
+
       GoRoute(
         path: kContactUs,
         builder: (context, state) => const ContactUsView(),

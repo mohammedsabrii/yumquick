@@ -40,11 +40,9 @@ class DrawerDetails extends StatelessWidget {
             icon: AppAssets.kDeliveryAdress,
           ),
           CustomDrawerItem(
-            onTap: () {
-              GoRouter.of(context).push(AppRouter.kPaymentMethods);
-            },
-            title: 'Payment Methods',
-            icon: AppAssets.kPaymentMethodsDrawer,
+            onTap: () => GoRouter.of(context).push(AppRouter.kMyOrders),
+            title: 'My Orders',
+            icon: AppAssets.kDrawerMenuIcon,
           ),
           CustomDrawerItem(
             onTap: () => GoRouter.of(context).push(AppRouter.kContactUs),
