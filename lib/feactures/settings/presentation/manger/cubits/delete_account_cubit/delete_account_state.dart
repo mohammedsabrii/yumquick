@@ -10,7 +10,7 @@ final class DeleteAccountSuccess extends DeleteAccountState {}
 final class DeleteAccountLoading extends DeleteAccountState {}
 
 final class DeleteAccountFaluire extends DeleteAccountState {
-  final String errorMassage;
+  final String errorMessage;
 
-  DeleteAccountFaluire({required this.errorMassage});
+  DeleteAccountFaluire({required this.errorMessage});
 }

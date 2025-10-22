@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
+import 'package:yumquick/core/utils/colors.dart';
 
 class CustomShowModalBottomSheetBottom extends StatelessWidget {
   const CustomShowModalBottomSheetBottom({
     super.key,
     required this.color,
-    required this.text,
-    required this.textColor,
+    this.title,
+    this.textColor = AppColor.kCultured,
+    this.text,
     this.onTap,
   });
-  final Color color, textColor;
-  final String text;
+  final Color? color, textColor;
+  final String? title;
+  final Widget? text;
   final Function()? onTap;
   @override
   Widget build(BuildContext context) {
@@ -24,12 +27,14 @@ class CustomShowModalBottomSheetBottom extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         child: Center(
-          child: Text(
-            text,
-            style: AppStyles.styleLeagueSpartanMediem20(
-              context,
-            ).copyWith(color: textColor),
-          ),
+          child:
+              text ??
+              Text(
+                title ?? '',
+                style: AppStyles.styleLeagueSpartanMediem20(
+                  context,
+                ).copyWith(color: textColor),
+              ),
         ),
       ),
     );

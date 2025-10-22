@@ -43,7 +43,7 @@ class CustomShowModalBottomSheetForCancelOrder extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  text: 'Keep order',
+                  title: 'Keep order',
                   color: AppColor.kPinkishOrange,
                   textColor: AppColor.kMainColor,
                 ),

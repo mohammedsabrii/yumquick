@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/widget/custom_container.dart';
+import 'package:yumquick/feactures/settings/presentation/manger/cubits/delete_account_cubit/delete_account_cubit.dart';
 import 'package:yumquick/feactures/settings/presentation/view/widget/delete_account_model_bottom_sheet.dart';
 import 'package:yumquick/feactures/settings/presentation/view/widget/settings_item.dart';
 
@@ -43,7 +45,12 @@ class SettingsViewDetailes extends StatelessWidget {
               onTap: () {
                 showModalBottomSheet(
                   context: context,
-                  builder: (context) => const DeleteAccountModelBottomSheet(),
+                  builder: (_) {
+                    return BlocProvider(
+                      create: (context) => DeleteAccountCubit(),
+                      child: const DeleteAccountModelBottomSheet(),
+                    );
+                  },
                 );
               },
               space: MediaQuery.sizeOf(context).width * 0.06712,

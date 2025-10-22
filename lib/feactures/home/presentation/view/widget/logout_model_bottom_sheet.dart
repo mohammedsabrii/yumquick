@@ -41,7 +41,7 @@ class LogoutModelBottomSheet extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const CustomShowModalBottomSheetBottom(
-                  text: 'Cancel',
+                  title: 'Cancel',
                   color: AppColor.kPinkishOrange,
                   textColor: AppColor.kMainColor,
                 ),
@@ -65,7 +65,7 @@ class LogoutModelBottomSheet extends StatelessWidget {
                     GoRouter.of(context).pushReplacement(AppRouter.kLogInView);
                   },
                   color: AppColor.kMainColor,
-                  text: 'Yes, logout',
+                  title: 'Yes, logout',
                   textColor: AppColor.kCultured,
                 ),
               ],

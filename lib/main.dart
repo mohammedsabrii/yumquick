@@ -25,9 +25,12 @@ import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/logi
 import 'package:yumquick/feactures/my%20profile/presentation/manger/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_profile_info_cubit/fetch_profile_info_cubit.dart';
 import 'package:yumquick/feactures/settings/presentation/manger/cubits/change_password_cubit/change_password_cubit.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await InAppWebViewController.setWebContentsDebuggingEnabled(true);
   Stripe.publishableKey = kStripePublishablekey;
   await Hive.initFlutter();

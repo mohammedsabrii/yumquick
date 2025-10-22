@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_show_model_botton_sheet_bottom.dart';
+import 'package:yumquick/core/widget/custom_show_snackbar.dart';
+import 'package:yumquick/feactures/settings/presentation/manger/cubits/delete_account_cubit/delete_account_cubit.dart';
 
 class DeleteAccountModelBottomSheet extends StatelessWidget {
   const DeleteAccountModelBottomSheet({super.key});
@@ -17,44 +21,64 @@ class DeleteAccountModelBottomSheet extends StatelessWidget {
         height: MediaQuery.sizeOf(context).height * 0.35,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-
           children: [
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.058),
-
             Text(
-              'Are you sure you want to delete your account? \nIf you delete your account, you will not be able to recover your data. ',
+              'Are you sure you want to delete your account?\nIf you delete your account, you will not be able to recover your data.',
               textAlign: TextAlign.center,
               style: AppStyles.styleLeagueSpartanBold20(
                 context,
               ).copyWith(color: AppColor.kDarkRed),
             ),
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.028),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const CustomShowModalBottomSheetBottom(
-                  text: 'Cancel',
+                CustomShowModalBottomSheetBottom(
+                  onTap: () {
+                    GoRouter.of(context).pop();
+                  },
+                  title: 'Cancel',
                   color: AppColor.kPinkishOrange,
                   textColor: AppColor.kMainColor,
                 ),
-                CustomShowModalBottomSheetBottom(
-                  onTap: () async {
-                    // final supabase = Supabase.instance.client;
-                    // final userId = supabase.from('deleteprofiles').insert('id');
-                    // await supabase.from('profiles').delete().eq('id', userId);
-                    // // await Supabase.instance.client
-                    // //     .from('deleteProfiles')
-                    // //     .insert('id');
-                    // await supabase.auth.admin.deleteUser(userId.toString());
-                    // await supabase.auth.signOut();
+                BlocConsumer<DeleteAccountCubit, DeleteAccountState>(
+                  listener: (context, state) {
+                    if (state is DeleteAccountSuccess) {
+                      customShowSnackBar(
+                        context,
+                        title: 'Delete acount success ',
+                      );
+                    } else if (state is DeleteAccountFaluire) {
+                      customShowSnackBar(context, title: state.errorMessage);
+                    }
                   },
-                  text: 'Delete any way',
-                  color: AppColor.kMainColor,
-                  textColor: AppColor.kPinkishOrange,
+                  builder: (context, state) {
+                    return CustomShowModalBottomSheetBottom(
+                      onTap: () async {
+                        await BlocProvider.of<DeleteAccountCubit>(
+                          context,
+                        ).deleteAccount();
+                        GoRouter.of(context).pop();
+                      },
+                      text:
+                          state is DeleteAccountLoading
+                              ? const Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColor.kCultured,
+                                ),
+                              )
+                              : Text(
+                                'Delete any way',
+                                style: AppStyles.styleLeagueSpartanMediem20(
+                                  context,
+                                ).copyWith(color: AppColor.kCultured),
+                              ),
+                      color: AppColor.kMainColor,
+                    );
+                  },
                 ),
               ],
             ),
-            const SizedBox(height: 20),
           ],
         ),
       ),

@@ -1,24 +1,38 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 
 part 'delete_account_state.dart';
 
 class DeleteAccountCubit extends Cubit<DeleteAccountState> {
   DeleteAccountCubit() : super(DeleteAccountInitial());
-  Future<void> deleteAccount(BuildContext context) async {
+
+  final supabase = Supabase.instance.client;
+
+  Future<void> deleteAccount() async {
     emit(DeleteAccountLoading());
+
     try {
-      final supabase = Supabase.instance.client;
-      final userId = supabase.auth.currentUser?.id;
+      final user = supabase.auth.currentUser;
+      if (user == null) {
+        emit(DeleteAccountFaluire(errorMessage: 'No user logged in'));
+        return;
+      }
 
-      await supabase.from('profiles').delete().eq('id', userId!);
+      final response = await supabase.functions.invoke(
+        'delete_user',
+        body: {'userId': user.id},
+      );
 
-      emit(DeleteAccountSuccess());
+      if (response.status == 200) {
+        await supabase.auth.signOut();
+        emit(DeleteAccountSuccess());
+      } else {
+        emit(DeleteAccountFaluire(errorMessage: response.data.toString()));
+      }
     } catch (e) {
-      emit(DeleteAccountFaluire(errorMassage: e.toString()));
-      customShowSnackBar(context, title: e.toString());
+      emit(DeleteAccountFaluire(errorMessage: e.toString()));
+      print(e.toString());
     }
   }
 }
