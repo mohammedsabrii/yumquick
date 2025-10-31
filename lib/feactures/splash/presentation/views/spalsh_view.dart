@@ -10,7 +10,7 @@ class SpalshView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.kYellowBase,
+        backgroundColor: AppColor.kMainColor,
         body: SplashViewBody(),
       ),
     );

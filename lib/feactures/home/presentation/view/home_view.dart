@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +9,7 @@ import 'package:yumquick/feactures/home/presentation/view/manger/cubit/search_cu
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_cart.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_details.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/home_view_body.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/notifications_drawer_details.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/notification_drawer_bloc_bulider.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/search_widget.dart';
 
 class HomeView extends StatefulWidget {
@@ -90,7 +89,7 @@ class HomeViewState extends State<HomeView> {
               HomeViewBody(
                 onOpenCartDrawer: () => openDrawer(const DrawerCart()),
                 onOpenNotificationDrawer:
-                    () => openDrawer(const NotificationDrawerDetails()),
+                    () => openDrawer(const NotificationDrawerBlocBulider()),
                 onOpenUserDrawer: () => openDrawer(const DrawerDetails()),
               ),
               Positioned(

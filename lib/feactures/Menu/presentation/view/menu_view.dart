@@ -4,7 +4,7 @@ import 'package:yumquick/feactures/Menu/presentation/view/widget/menu_view_body.
 import 'package:yumquick/core/widget/custom_boutton_navigation_bar.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_details.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/drawer_empty_cart.dart';
-import 'package:yumquick/feactures/home/presentation/view/widget/notifications_drawer_details.dart';
+import 'package:yumquick/feactures/home/presentation/view/widget/notification_drawer_bloc_bulider.dart';
 import 'package:yumquick/feactures/home/presentation/view/widget/search_widget.dart';
 
 class MenuView extends StatefulWidget {
@@ -37,7 +37,7 @@ class _MenuViewState extends State<MenuView> {
             MenuViewBody(
               onOpenCartDrawer: () => openDrawer(const DrawerEmptyCart()),
               onOpenNotificationDrawer:
-                  () => openDrawer(const NotificationDrawerDetails()),
+                  () => openDrawer(const NotificationDrawerBlocBulider()),
               onOpenUserDrawer: () => openDrawer(const DrawerDetails()),
             ),
             Positioned(

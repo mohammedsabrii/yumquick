@@ -51,6 +51,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: SvgPicture.asset(AppAssets.kLogo1));
+    return Center(child: SvgPicture.asset(AppAssets.kLogo2));
   }
 }

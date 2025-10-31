@@ -21,17 +21,21 @@ class HomeViewHeader extends StatelessWidget {
         SizedBox(width: mediaQuery.width * 0.074),
         GestureDetector(
           onTap: onOpenCartDrawer,
-          child: SvgPicture.asset(AppAssets.kCartIcon),
+          child: SvgPicture.asset(AppAssets.kCartIcon, height: 32, width: 32),
         ),
         SizedBox(width: mediaQuery.width * 0.01781),
         GestureDetector(
           onTap: onOpenNotificationDrawer,
-          child: SvgPicture.asset(AppAssets.kNotiFicationIcon),
+          child: SvgPicture.asset(
+            AppAssets.kNotiFicationIcon,
+            height: 32,
+            width: 32,
+          ),
         ),
         SizedBox(width: mediaQuery.width * 0.01781),
         GestureDetector(
           onTap: onOpenUserDrawer,
-          child: SvgPicture.asset(AppAssets.kUserIcon),
+          child: SvgPicture.asset(AppAssets.kUserIcon, height: 32, width: 32),
         ),
         SizedBox(width: mediaQuery.width * 0.089),
       ],

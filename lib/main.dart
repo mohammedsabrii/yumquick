@@ -19,6 +19,7 @@ import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/ac
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/cart_cubit/cart_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_offers_cubit/fetch_offers_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/get_prodacts_cubit/get_prodacts_cubit.dart';
+import 'package:yumquick/feactures/home/presentation/view/manger/cubit/notifications_cubit/notifications_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/search_cubit/search_cubit.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/stripe_cubit/stripe_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/auth_cubit.dart';
@@ -55,6 +56,9 @@ class YumQuick extends StatelessWidget {
         BlocProvider(create: (context) => ChangePasswordCubit()),
         BlocProvider(
           create: (context) => FetchProfileInfoCubit()..fetchProfileInfo(),
+        ),
+        BlocProvider(
+          create: (context) => NotificationsCubit()..fetchNotifications(),
         ),
         BlocProvider(create: (context) => GetProdactsCubit()..getProdacts()),
         BlocProvider(create: (context) => FetchOffersCubit()..getOffers()),
