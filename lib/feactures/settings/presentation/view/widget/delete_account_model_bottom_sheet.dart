@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_show_model_botton_sheet_bottom.dart';
 import 'package:yumquick/core/widget/custom_show_snackbar.dart';
-import 'package:yumquick/feactures/settings/presentation/manger/cubits/delete_account_cubit/delete_account_cubit.dart';
+import 'package:yumquick/feactures/settings/presentation/manger/cubits/delete_user_cubit/delete_user_cubit.dart';
 
 class DeleteAccountModelBottomSheet extends StatelessWidget {
   const DeleteAccountModelBottomSheet({super.key});
@@ -41,27 +42,30 @@ class DeleteAccountModelBottomSheet extends StatelessWidget {
                   color: AppColor.kPinkishOrange,
                   textColor: AppColor.kMainColor,
                 ),
-                BlocConsumer<DeleteAccountCubit, DeleteAccountState>(
+                BlocConsumer<DeleteUserCubit, DeleteUserState>(
                   listener: (context, state) {
-                    if (state is DeleteAccountSuccess) {
+                    if (state is DeleteUserSuccess) {
                       customShowSnackBar(
                         context,
                         title: 'Delete acount success ',
                       );
-                    } else if (state is DeleteAccountFaluire) {
+                    } else if (state is DeleteUserFaluire) {
                       customShowSnackBar(context, title: state.errorMessage);
                     }
                   },
                   builder: (context, state) {
                     return CustomShowModalBottomSheetBottom(
                       onTap: () async {
-                        await BlocProvider.of<DeleteAccountCubit>(
+                        await BlocProvider.of<DeleteUserCubit>(
                           context,
                         ).deleteAccount();
-                        GoRouter.of(context).pop();
+
+                        GoRouter.of(
+                          context,
+                        ).pushReplacement(AppRouter.kLogInView);
                       },
                       text:
-                          state is DeleteAccountLoading
+                          state is DeleteUserLoading
                               ? const Center(
                                 child: CircularProgressIndicator(
                                   color: AppColor.kCultured,

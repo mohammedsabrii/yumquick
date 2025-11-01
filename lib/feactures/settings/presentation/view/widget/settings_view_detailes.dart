@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/widget/custom_container.dart';
-import 'package:yumquick/feactures/settings/presentation/manger/cubits/delete_account_cubit/delete_account_cubit.dart';
+import 'package:yumquick/feactures/settings/presentation/manger/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:yumquick/feactures/settings/presentation/view/widget/delete_account_model_bottom_sheet.dart';
 import 'package:yumquick/feactures/settings/presentation/view/widget/settings_item.dart';
 
@@ -47,7 +47,7 @@ class SettingsViewDetailes extends StatelessWidget {
                   context: context,
                   builder: (_) {
                     return BlocProvider(
-                      create: (context) => DeleteAccountCubit(),
+                      create: (context) => DeleteUserCubit(),
                       child: const DeleteAccountModelBottomSheet(),
                     );
                   },
