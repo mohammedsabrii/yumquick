@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
 import 'package:yumquick/core/utils/app_router.dart';
 import 'package:yumquick/core/widget/custom_container.dart';
-import 'package:yumquick/feactures/settings/presentation/manger/cubits/delete_user_cubit/delete_user_cubit.dart';
-import 'package:yumquick/feactures/settings/presentation/view/widget/delete_account_model_bottom_sheet.dart';
 import 'package:yumquick/feactures/settings/presentation/view/widget/settings_item.dart';
 
 class SettingsViewDetailes extends StatelessWidget {
@@ -40,24 +37,6 @@ class SettingsViewDetailes extends StatelessWidget {
               height: 34.45,
               icon: AppAssets.kPasswordSettingIcon,
               title: 'Password Settings',
-            ),
-            SettingsItem(
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (_) {
-                    return BlocProvider(
-                      create: (context) => DeleteUserCubit(),
-                      child: const DeleteAccountModelBottomSheet(),
-                    );
-                  },
-                );
-              },
-              space: MediaQuery.sizeOf(context).width * 0.06712,
-              width: 23.47,
-              height: 34.91,
-              icon: AppAssets.kDeleteAccountIcon,
-              title: 'Delete Account',
             ),
           ],
         ),
