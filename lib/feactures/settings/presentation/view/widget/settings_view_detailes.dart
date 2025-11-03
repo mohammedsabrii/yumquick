@@ -10,22 +10,21 @@ class SettingsViewDetailes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.sizeOf(context);
     return CustomContainer(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.sizeOf(context).width * 0.089,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: mq.width * 0.089),
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.0656),
+            SizedBox(height: mq.height * 0.0656),
             SettingsItem(
-              space: MediaQuery.sizeOf(context).width * 0.06183,
+              space: mq.width * 0.06183,
               onTap:
                   () => GoRouter.of(
                     context,
                   ).push(AppRouter.kNotificationSettings),
-              width: 24.50,
-              height: 35.06,
+              width: mq.width * 0.06234,
+              height: mq.height * 0.042756,
               icon: AppAssets.kNotificationSettingIcon,
               title: 'Notification Settings',
             ),
@@ -33,10 +32,17 @@ class SettingsViewDetailes extends StatelessWidget {
               onTap:
                   () => GoRouter.of(context).push(AppRouter.kPasswordSettings),
               space: MediaQuery.sizeOf(context).width * 0.044,
-              width: 35.32,
-              height: 34.45,
+              width: mq.width * 0.07633587786259541984732824427481,
+              height: mq.height * 0.03658536585365853658536585365854,
               icon: AppAssets.kPasswordSettingIcon,
               title: 'Password Settings',
+            ),
+            SettingsItem(
+              onTap: () => GoRouter.of(context).push(AppRouter.kMyProfileView),
+              space: MediaQuery.sizeOf(context).width * 0.044,
+
+              icon: AppAssets.kEditProfileIcon,
+              title: 'Profile Settings',
             ),
           ],
         ),

@@ -110,4 +110,5 @@ class AppAssets {
   static const kCancelledOrderIcon = 'assets/images/cancelled_order_icon.svg';
   static const kEmptyNotification =
       'assets/images/empty_notification_drawer.svg';
+  static const kEditProfileIcon = 'assets/images/edit_profile_icon.svg';
 }

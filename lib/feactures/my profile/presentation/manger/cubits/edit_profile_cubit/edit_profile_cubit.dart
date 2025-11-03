@@ -104,6 +104,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       emit(EditProfileFailure(errorMessage: e.toString()));
       customShowSnackBar(context, title: e.toString());
     } catch (e) {
+      print('🚑🚑🚑🚑🚑🚑🚑🚑🚑🚑🚑 $e');
       emit(EditProfileFailure(errorMessage: 'Failed to update profile: $e'));
       customShowSnackBar(context, title: 'Failed to update profile: $e');
     }

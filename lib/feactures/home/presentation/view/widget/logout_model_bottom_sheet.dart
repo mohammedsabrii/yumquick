@@ -48,12 +48,8 @@ class LogoutModelBottomSheet extends StatelessWidget {
                   onTap: () async {
                     final profileBox = Hive.box<ProfileEntity>(kProfileBox);
                     final favoritesBox = Hive.box<String>(kFavoritesBox);
-                    final categoryProductsBox = Hive.box<ProductsEntity>(
-                      kCategoryProductsBox,
-                    );
                     await profileBox.clear();
                     await favoritesBox.clear();
-                    await categoryProductsBox.clear();
 
                     context.read<FavoritesCubit>().emit(FavoritesInitial());
                     context.read<FetchProfileInfoCubit>().emit(

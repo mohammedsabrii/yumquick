@@ -6,7 +6,7 @@ class FetchCompletedOrdersService {
   Future<List<OrdersEntity>> fetchCompletedOrders() async {
     final userId = supabase.auth.currentUser?.id;
     final response = await supabase
-        .from('completed_orders')
+        .from('completed')
         .select('''
       id,
       user_id,               

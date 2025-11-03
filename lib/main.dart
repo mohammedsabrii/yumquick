@@ -37,7 +37,6 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ProfileEntityAdapter());
   await Hive.openBox<ProfileEntity>(kProfileBox);
-  await Hive.openBox<ProductsEntity>(kCategoryProductsBox);
   await Hive.openBox<String>(kFavoritesBox);
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(url: supbaseUrl, anonKey: supbaseAnonKey);

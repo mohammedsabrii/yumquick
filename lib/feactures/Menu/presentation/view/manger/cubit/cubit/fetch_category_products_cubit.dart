@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:yumquick/core/service/fetch_category_products_service.dart';
-import 'package:yumquick/core/utils/app_constant.dart';
 import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 
 part 'fetch_category_products_state.dart';
@@ -39,17 +37,7 @@ class GetCategoryProdactsCubit extends Cubit<GetCategoryProdactsState> {
       if (pageNumber == 1) {
         emit(GetCategoryProdactsLoading());
       }
-      final box = Hive.box<ProductsEntity>(kCategoryProductsBox);
-      final localProducts =
-          box.values
-              .where((product) => product.categoryId == categoryId)
-              .toList();
-      if (localProducts.isNotEmpty && pageNumber == 1) {
-        cachedProducts[categoryId] = localProducts;
-        emit(GetCategoryProdactsSuccess(categoryProducts: cachedProducts));
-        isLoading[categoryId] = false;
-        return;
-      }
+
       final newProducts = await service.getCategoryProducts(
         categoryId: categoryId,
         pageNumber: pageNumber,
@@ -62,11 +50,6 @@ class GetCategoryProdactsCubit extends Cubit<GetCategoryProdactsState> {
         ...newProducts.where((p) => !ids.contains(p.id)),
       ];
       cachedProducts[categoryId] = unique;
-
-      if (pageNumber == 1) {
-        await box.clear();
-        await box.addAll(newProducts.take(10).toList());
-      }
 
       if (newProducts.length < limit) {
         hasMore[categoryId] = false;

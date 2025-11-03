@@ -14,49 +14,52 @@ class DrawerDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.sizeOf(context);
     return CustomDrawer(
-      child: Column(
-        children: [
-          const CustomDrawerHeader(),
-          SizedBox(height: mediaQuery.height * 0.0550),
-          CustomDrawerItem(
-            onTap: () {
-              GoRouter.of(context).push(AppRouter.kMyOrders);
-            },
-            title: 'My Orders',
-            icon: AppAssets.kMyOrderDrawer,
-          ),
-          CustomDrawerItem(
-            onTap: () {
-              GoRouter.of(context).push(AppRouter.kMyProfileView);
-            },
-            title: 'My Profile',
-            icon: AppAssets.kUserDrawrIcon,
-          ),
-          CustomDrawerItem(
-            onTap: () {
-              GoRouter.of(context).push(AppRouter.kDeliveryAddress);
-            },
-            title: 'Delivery Address',
-            icon: AppAssets.kDeliveryAdress,
-          ),
-          CustomDrawerItem(
-            onTap: () => GoRouter.of(context).push(AppRouter.kMyOrders),
-            title: 'My Orders',
-            icon: AppAssets.kDrawerMenuIcon,
-          ),
-          CustomDrawerItem(
-            onTap: () => GoRouter.of(context).push(AppRouter.kContactUs),
-            title: 'Contact Us',
-            icon: AppAssets.kContactUs,
-          ),
-          CustomDrawerItem(
-            onTap: () => GoRouter.of(context).push(AppRouter.kSettings),
-            title: 'Settings',
-            icon: AppAssets.kSettingsIcon,
-          ),
-          SizedBox(height: mediaQuery.height * 0.0585),
-          const CustomLogoutWidget(),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const CustomDrawerHeader(),
+            SizedBox(height: mediaQuery.height * 0.0550),
+            CustomDrawerItem(
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kMyOrders);
+              },
+              title: 'My Orders',
+              icon: AppAssets.kMyOrderDrawer,
+            ),
+            CustomDrawerItem(
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kMyProfileView);
+              },
+              title: 'My Profile',
+              icon: AppAssets.kUserDrawrIcon,
+            ),
+            CustomDrawerItem(
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kDeliveryAddress);
+              },
+              title: 'Delivery Address',
+              icon: AppAssets.kDeliveryAdress,
+            ),
+            CustomDrawerItem(
+              onTap: () => GoRouter.of(context).push(AppRouter.kMyOrders),
+              title: 'My Orders',
+              icon: AppAssets.kDrawerMenuIcon,
+            ),
+            CustomDrawerItem(
+              onTap: () => GoRouter.of(context).push(AppRouter.kContactUs),
+              title: 'Contact Us',
+              icon: AppAssets.kContactUs,
+            ),
+            CustomDrawerItem(
+              onTap: () => GoRouter.of(context).push(AppRouter.kSettings),
+              title: 'Settings',
+              icon: AppAssets.kSettingsIcon,
+            ),
+            SizedBox(height: mediaQuery.height * 0.0585),
+            const CustomLogoutWidget(),
+            SizedBox(height: mediaQuery.height * 0.0585),
+          ],
+        ),
       ),
     );
   }
