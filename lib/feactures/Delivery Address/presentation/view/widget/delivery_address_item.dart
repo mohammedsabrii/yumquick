@@ -30,7 +30,7 @@ class DeliveryAddressItem extends StatelessWidget {
               newAddress: newAdress,
             );
           },
-          lableText: address,
+          hintText: address,
           textFieldTitle: 'Edit your address',
         ),
         SizedBox(height: mq.height * 0.0293),

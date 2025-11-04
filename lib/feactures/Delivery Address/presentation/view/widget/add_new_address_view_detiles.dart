@@ -28,12 +28,12 @@ class AddNewAddressViewDetiles extends StatelessWidget {
               ),
               SizedBox(height: mq.height * 0.0627),
               const CustomTextField(
-                lableText: 'New Address Name',
+                hintText: 'New Address Name',
                 textFieldTitle: 'Name',
               ),
               SizedBox(height: mq.height * 0.0257),
               const CustomTextField(
-                lableText: 'New Address',
+                hintText: 'New Address',
                 textFieldTitle: 'Address',
               ),
               SizedBox(height: mq.height * 0.1277),

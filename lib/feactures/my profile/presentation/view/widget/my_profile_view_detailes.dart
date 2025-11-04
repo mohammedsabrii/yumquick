@@ -73,7 +73,7 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                       height: MediaQuery.sizeOf(context).height * 0.0469,
                     ),
                     CustomTextField(
-                      lableText:
+                      hintText:
                           state.name.isNotEmpty ? state.name : 'No name set',
                       textFieldTitle: 'Full Name',
                       onChanged: (value) {
@@ -84,7 +84,7 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                       },
                     ),
                     CustomTextField(
-                      lableText:
+                      hintText:
                           state.email.isNotEmpty ? state.email : 'No email set',
                       textFieldTitle: 'Email',
                       onChanged: (value) {
@@ -95,7 +95,7 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                       },
                     ),
                     CustomTextField(
-                      lableText:
+                      hintText:
                           state.phone.isNotEmpty ? state.phone : 'No phone set',
                       textFieldTitle: 'Phone Number',
                       onChanged: (value) {
@@ -106,7 +106,7 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                       },
                     ),
                     CustomTextField(
-                      lableText:
+                      hintText:
                           state.address.isNotEmpty
                               ? state.address
                               : 'No address set',
@@ -119,7 +119,7 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                       },
                     ),
                     CustomTextField(
-                      lableText:
+                      hintText:
                           state.cuntry.isNotEmpty
                               ? state.cuntry
                               : 'No country set',

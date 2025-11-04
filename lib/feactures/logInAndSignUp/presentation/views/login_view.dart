@@ -7,10 +7,15 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.kYellowBase,
-        body: LoginViewBody(),
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: const LoginViewBody(),
+        ),
       ),
     );
   }

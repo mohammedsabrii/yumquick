@@ -9,7 +9,6 @@ import 'package:yumquick/core/widget/custom_button.dart';
 import 'package:yumquick/core/widget/custom_show_snackbar.dart';
 import 'package:yumquick/core/widget/custom_text_field.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/login_cubit/auth_cubit.dart';
-// import 'package:yumquick/feactures/logInAndSignUp/presentation/manger/cubit/signup_cubit/signup_cubit.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/custon_signup_widget.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/date_of_birth_text_fild.dart';
 import 'package:yumquick/feactures/logInAndSignUp/presentation/views/widget/signup_with_gmail.dart';
@@ -34,6 +33,7 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
       address;
   final TextEditingController dateController = TextEditingController();
   DateTime? selectedDate;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -76,124 +76,177 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
       },
       builder: (context, state) {
         return SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.041),
-              Center(
-                child: CustomTextField(
-                  onChanged: (data) {
-                    name = data;
-                  },
-                  textFieldTitle: 'Full name',
-                  lableText: 'Enter Your Name',
-                ),
-              ),
-              Center(
-                child: CustomTextField(
-                  onChanged: (data) {
-                    email = data;
-                  },
-                  textFieldTitle: 'Email',
-                  lableText: 'Your Email',
-                ),
-              ),
-              Center(
-                child: CustomTextField(
-                  onChanged: (data) {
-                    password = data;
-                  },
-                  textFieldTitle: 'Password',
-                  lableText: 'Password',
-                ),
-              ),
-              Center(
-                child: CustomTextField(
-                  onChanged: (data) {
-                    confirmPassword = data;
-                  },
-                  textFieldTitle: 'Confirm Password',
-                  lableText: 'Confirm Password',
-                ),
-              ),
+          child: Form(
+            key: formKey,
 
-              const SizedBox(height: 6),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: MediaQuery.sizeOf(context).height * 0.041),
+                Center(
+                  child: CustomTextField(
+                    validator: (data) {
+                      if (data == null || data.isEmpty) {
+                        return 'Field is required';
+                      }
+                      return null;
+                    },
+                    onChanged: (data) {
+                      name = data;
+                    },
+                    textFieldTitle: 'Full name',
+                    hintText: 'Enter Your Name',
+                  ),
+                ),
+                Center(
+                  child: CustomTextField(
+                    validator: (data) {
+                      if (data == null || data.isEmpty) {
+                        return 'Field is required';
+                      }
+                      return null;
+                    },
+                    onChanged: (data) {
+                      email = data;
+                    },
+                    textFieldTitle: 'Email',
+                    hintText: 'Your Email',
+                  ),
+                ),
+                Center(
+                  child: CustomTextField(
+                    validator: (data) {
+                      if (data == null || data.isEmpty) {
+                        return 'Field is required';
+                      }
+                      return null;
+                    },
+                    onChanged: (data) {
+                      password = data;
+                    },
+                    textFieldTitle: 'Password',
+                    hintText: 'Password',
+                  ),
+                ),
+                Center(
+                  child: CustomTextField(
+                    validator: (data) {
+                      if (data == null || data.isEmpty) {
+                        return 'Field is required';
+                      }
+                      return null;
+                    },
+                    onChanged: (data) {
+                      confirmPassword = data;
+                    },
+                    textFieldTitle: 'Confirm Password',
+                    hintText: 'Confirm Password',
+                  ),
+                ),
 
-              Center(
-                child: CustomTextField(
-                  onChanged: (data) {
-                    mobileNumber = data;
-                  },
-                  textFieldTitle: 'Mobile Number',
-                  lableText: 'Your Mobile Number',
-                ),
-              ),
-              Center(
-                child: CustomTextField(
-                  onChanged: (data) {
-                    country = data;
-                  },
-                  textFieldTitle: 'Country',
-                  lableText: 'Enter your country',
-                ),
-              ),
-              Center(
-                child: CustomTextField(
-                  onChanged: (data) {
-                    address = data;
-                  },
-                  textFieldTitle: 'Address',
-                  lableText: 'Enter your address',
-                ),
-              ),
-              Center(
-                child: DateOfBirthField(
-                  dateController: dateController,
-                  onPressed: () => selectDate(context),
-                  onTap: () => selectDate(context),
-                ),
-              ),
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.042),
-              CustomButton(
-                onTap: () async {
-                  BlocProvider.of<AuthCubit>(context).signUpUser(
-                    name: name!,
-                    email: email!,
-                    password: password!,
-                    confirmPassword: confirmPassword!,
-                    phoneNumber: mobileNumber!,
-                    dateOfBirth: selectedDate ?? DateTime.now(),
-                    address: address!,
-                    country: country!,
-                  );
-                },
-                color: AppColor.kMainColor,
-                title: 'Sign Up',
-                textColor: Colors.white,
-                isLodaing: isLoading,
-              ),
-              const SizedBox(height: 9),
-              Center(
-                child: Text(
-                  'or sign up with',
-                  style: AppStyles.styleLeagueSpartanMediem14(
-                    context,
-                  ).copyWith(color: const Color(0xFF252525)),
-                ),
-              ),
-              const SizedBox(height: 9),
-              SignUpWithGmail(isLoding: isLoading),
-              const SizedBox(height: 9),
+                const SizedBox(height: 6),
 
-              CustomSignupWidget(
-                title: 'Already have an account?',
-                subTitle: '  Log In',
-                onTap: () {
-                  GoRouter.of(context).push(AppRouter.kLogInView);
-                },
-              ),
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.041),
-            ],
+                Center(
+                  child: CustomTextField(
+                    validator: (data) {
+                      if (data == null || data.isEmpty) {
+                        return 'Field is required';
+                      }
+                      return null;
+                    },
+                    onChanged: (data) {
+                      mobileNumber = data;
+                    },
+                    textFieldTitle: 'Mobile Number',
+                    hintText: 'Your Mobile Number',
+                  ),
+                ),
+                Center(
+                  child: CustomTextField(
+                    validator: (data) {
+                      if (data == null || data.isEmpty) {
+                        return 'Field is required';
+                      }
+                      return null;
+                    },
+                    onChanged: (data) {
+                      country = data;
+                    },
+                    textFieldTitle: 'Country',
+                    hintText: 'Enter your country',
+                  ),
+                ),
+                Center(
+                  child: CustomTextField(
+                    validator: (data) {
+                      if (data == null || data.isEmpty) {
+                        return 'Field is required';
+                      }
+                      return null;
+                    },
+                    onChanged: (data) {
+                      address = data;
+                    },
+                    textFieldTitle: 'Address',
+                    hintText: 'Enter your address',
+                  ),
+                ),
+                Center(
+                  child: DateOfBirthField(
+                    validator: (data) {
+                      if (data == null || data.isEmpty) {
+                        return 'Field is required';
+                      }
+                      return null;
+                    },
+                    dateController: dateController,
+                    onPressed: () => selectDate(context),
+                  ),
+                ),
+                SizedBox(height: MediaQuery.sizeOf(context).height * 0.042),
+                CustomButton(
+                  onTap: () async {
+                    if (formKey.currentState!.validate()) {
+                      BlocProvider.of<AuthCubit>(context).signUpUser(
+                        name: name!,
+                        email: email!,
+                        password: password!,
+                        confirmPassword: confirmPassword!,
+                        phoneNumber: mobileNumber!,
+                        dateOfBirth: selectedDate ?? DateTime.now(),
+                        address: address!,
+                        country: country!,
+                      );
+                    }
+                  },
+                  color: AppColor.kMainColor,
+                  title: 'Sign Up',
+                  textColor: Colors.white,
+                  isLodaing: isLoading,
+                ),
+                const SizedBox(height: 9),
+                Center(
+                  child: Text(
+                    'or sign up with',
+                    style: AppStyles.styleLeagueSpartanMediem14(
+                      context,
+                    ).copyWith(color: const Color(0xFF252525)),
+                  ),
+                ),
+                const SizedBox(height: 9),
+                SignUpWithGmail(isLoding: isLoading),
+                const SizedBox(height: 9),
+
+                CustomSignupWidget(
+                  title: 'Already have an account?',
+                  subTitle: '  Log In',
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.kLogInView);
+                  },
+                ),
+                SizedBox(height: MediaQuery.sizeOf(context).height * 0.041),
+              ],
+            ),
           ),
         );
       },

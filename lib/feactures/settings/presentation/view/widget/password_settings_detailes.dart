@@ -40,7 +40,7 @@ class PasswordSettingsDetailes extends StatelessWidget {
                   // Current Password
                   CustomTextField(
                     controller: currentPasswordController,
-                    lableText: 'Current Password',
+                    hintText: 'Current Password',
                     textFieldTitle: 'Current Password',
                     suffixIcon: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -63,7 +63,7 @@ class PasswordSettingsDetailes extends StatelessWidget {
                   // New Password
                   CustomTextField(
                     controller: newPasswordController,
-                    lableText: 'New Password',
+                    hintText: 'New Password',
                     textFieldTitle: 'New Password',
                     suffixIcon: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -76,7 +76,7 @@ class PasswordSettingsDetailes extends StatelessWidget {
                   // Confirm Password
                   CustomTextField(
                     controller: confirmPasswordController,
-                    lableText: 'Confirm New Password',
+                    hintText: 'Confirm New Password',
                     textFieldTitle: 'Confirm New Password',
                     suffixIcon: Padding(
                       padding: const EdgeInsets.all(10.0),
