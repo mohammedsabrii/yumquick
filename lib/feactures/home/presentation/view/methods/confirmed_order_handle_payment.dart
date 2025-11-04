@@ -14,7 +14,7 @@ Future<void> handlePaymentSuccess(
   FetchProfileInfoSuccess profileState,
   PaymentIntentModel paymentIntentModel,
 ) async {
-  final cartsCubit = context.read<CartsCubit>();
+  final cartsCubit = BlocProvider.of<CartsCubit>(context);
   final cartState = cartsCubit.state;
 
   if (cartState is! CartsSuccess) return;
@@ -31,7 +31,7 @@ Future<void> handlePaymentSuccess(
         );
       }).toList();
 
-  await context.read<ActiveOrdersCubit>().insertCartOrders(cartItems);
+  await BlocProvider.of<ActiveOrdersCubit>(context).insertCartOrders(cartItems);
 
   for (var cart in cartState.cartProducts) {
     await cartsCubit.removeFromCart(cart);

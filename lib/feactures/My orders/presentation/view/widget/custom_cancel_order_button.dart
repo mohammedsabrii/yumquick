@@ -21,12 +21,12 @@ class CustomCancelOrderButton extends StatelessWidget {
         if (state is FetchProfileInfoSuccess) {
           return CustomShowModalBottomSheetBottom(
             onTap: () {
-              final userState = context.read<FetchProfileInfoCubit>().state;
+              final userState =
+                  BlocProvider.of<FetchProfileInfoCubit>(context).state;
               if (userState is FetchProfileInfoSuccess) {
-                context.read<ActiveOrdersCubit>().deleteAndCancelOrder(
-                  orderEntity,
-                  userState,
-                );
+                BlocProvider.of<ActiveOrdersCubit>(
+                  context,
+                ).deleteAndCancelOrder(orderEntity, userState);
                 GoRouter.of(context).pop();
                 GoRouter.of(context).push(AppRouter.kCancelOrderView);
               }

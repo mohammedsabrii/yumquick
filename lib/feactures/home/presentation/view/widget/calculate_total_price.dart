@@ -13,7 +13,7 @@ class CalculateTotalPrice extends StatelessWidget {
     return BlocBuilder<CartsCubit, CartsState>(
       builder: (context, state) {
         if (state is! CartsSuccess) return const SizedBox();
-        final cubit = context.read<CartsCubit>();
+        final cubit = BlocProvider.of<CartsCubit>(context);
 
         return Column(
           children: [

@@ -34,7 +34,7 @@ class CustomTotalItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isLocal =
         quantity != null && (onIncrement != null || onDecrement != null);
-    final cartsCubit = isLocal ? null : context.watch<CartsCubit>();
+    final cartsCubit = isLocal ? null : BlocProvider.of<CartsCubit>(context);
     int currentQuantity = quantity ?? product.quantity;
     int productIndex = -1;
     if (!isLocal) {
@@ -59,10 +59,9 @@ class CustomTotalItem extends StatelessWidget {
               return;
             }
             if (productIndex != -1) {
-              context.read<CartsCubit>().updateQuantity(
-                product.product,
-                currentQuantity - 1,
-              );
+              BlocProvider.of<CartsCubit>(
+                context,
+              ).updateQuantity(product.product, currentQuantity - 1);
             }
           },
           child: SvgPicture.asset(
@@ -90,10 +89,9 @@ class CustomTotalItem extends StatelessWidget {
               return;
             }
             if (productIndex != -1) {
-              context.read<CartsCubit>().updateQuantity(
-                product.product,
-                currentQuantity + 1,
-              );
+              BlocProvider.of<CartsCubit>(
+                context,
+              ).updateQuantity(product.product, currentQuantity + 1);
             }
           },
           child: SvgPicture.asset(

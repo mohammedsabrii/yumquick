@@ -27,10 +27,9 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
         pickedImage = pickedFile;
       });
 
-      context.read<EditProfileCubit>().updateLocalData(
+      BlocProvider.of<EditProfileCubit>(
         context,
-        newProfilePicture: pickedFile.path,
-      );
+      ).updateLocalData(context, newProfilePicture: pickedFile.path);
     }
   }
 
@@ -77,10 +76,9 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                           state.name.isNotEmpty ? state.name : 'No name set',
                       textFieldTitle: 'Full Name',
                       onChanged: (value) {
-                        context.read<EditProfileCubit>().updateLocalData(
+                        BlocProvider.of<EditProfileCubit>(
                           context,
-                          newName: value,
-                        );
+                        ).updateLocalData(context, newName: value);
                       },
                     ),
                     CustomTextField(
@@ -88,10 +86,9 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                           state.email.isNotEmpty ? state.email : 'No email set',
                       textFieldTitle: 'Email',
                       onChanged: (value) {
-                        context.read<EditProfileCubit>().updateLocalData(
+                        BlocProvider.of<EditProfileCubit>(
                           context,
-                          newEmail: value,
-                        );
+                        ).updateLocalData(context, newEmail: value);
                       },
                     ),
                     CustomTextField(
@@ -99,10 +96,9 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                           state.phone.isNotEmpty ? state.phone : 'No phone set',
                       textFieldTitle: 'Phone Number',
                       onChanged: (value) {
-                        context.read<EditProfileCubit>().updateLocalData(
+                        BlocProvider.of<EditProfileCubit>(
                           context,
-                          newPhone: value,
-                        );
+                        ).updateLocalData(context, newPhone: value);
                       },
                     ),
                     CustomTextField(
@@ -112,10 +108,9 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                               : 'No address set',
                       textFieldTitle: 'Address',
                       onChanged: (value) {
-                        context.read<EditProfileCubit>().updateLocalData(
+                        BlocProvider.of<EditProfileCubit>(
                           context,
-                          newAddress: value,
-                        );
+                        ).updateLocalData(context, newAddress: value);
                       },
                     ),
                     CustomTextField(
@@ -125,10 +120,9 @@ class _MyProfileViewDetailesState extends State<MyProfileViewDetailes> {
                               : 'No country set',
                       textFieldTitle: 'Country',
                       onChanged: (value) {
-                        context.read<EditProfileCubit>().updateLocalData(
+                        BlocProvider.of<EditProfileCubit>(
                           context,
-                          newCountry: value,
-                        );
+                        ).updateLocalData(context, newCountry: value);
                       },
                     ),
                     SizedBox(

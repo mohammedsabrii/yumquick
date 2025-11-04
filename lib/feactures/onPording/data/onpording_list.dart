@@ -17,7 +17,7 @@ List<OnpordingModel> onpordingList = [
         'Lorem ipsum dolor sit amet, conse ctetur  adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
   ),
   OnpordingModel(
-    image: AppAssets.kOnPording2,
+    image: AppAssets.kOnPording3,
     icon: AppAssets.kDeliveryIcon,
     title: 'Fast Delivery',
     subtitle:

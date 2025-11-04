@@ -65,7 +65,9 @@ class MenuPageViewDetails extends StatelessWidget {
                         current is GetCategoryProdactsFailure ||
                         current is GetCategoryProdactsLoading,
                 builder: (context, state) {
-                  final cubit = context.read<GetCategoryProdactsCubit>();
+                  final cubit = BlocProvider.of<GetCategoryProdactsCubit>(
+                    context,
+                  );
 
                   if (state is GetCategoryProdactsLoading &&
                       (cubit.cachedProducts[categoryId]?.isEmpty ?? true)) {

@@ -51,7 +51,7 @@ class RecommendGridViewState extends State<RecommendGridView> {
           );
         }
 
-        final cubit = context.read<GetProdactsCubit>();
+        final cubit = BlocProvider.of<GetProdactsCubit>(context);
 
         return SliverGrid(
           delegate: SliverChildBuilderDelegate(

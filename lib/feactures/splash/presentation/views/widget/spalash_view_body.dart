@@ -40,8 +40,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
     if (user != null) {
       if (!mounted) return;
-      context.read<FetchProfileInfoCubit>().fetchProfileInfo();
-      context.read<FavoritesCubit>().fetchFavorites();
+      BlocProvider.of<FetchProfileInfoCubit>(context).fetchProfileInfo();
+      BlocProvider.of<FavoritesCubit>(context).fetchFavorites();
       GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
     } else {
       if (!mounted) return;

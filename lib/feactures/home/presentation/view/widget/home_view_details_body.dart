@@ -21,11 +21,11 @@ class _HomeViewDetilesBodyState extends State<HomeViewDetilesBody> {
   void initState() {
     super.initState();
     scrollController.addListener(onScroll);
-    context.read<GetProdactsCubit>().getProdacts(isRefresh: true);
+    BlocProvider.of<GetProdactsCubit>(context).getProdacts(isRefresh: true);
   }
 
   void onScroll() {
-    final cubit = context.read<GetProdactsCubit>();
+    final cubit = BlocProvider.of<GetProdactsCubit>(context);
     if (!cubit.hasMore || cubit.isLoading) return;
 
     final position = scrollController.position;

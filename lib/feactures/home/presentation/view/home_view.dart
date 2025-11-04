@@ -81,7 +81,7 @@ class HomeViewState extends State<HomeView> {
         body: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
-            context.read<SearchCubit>().clearSearch();
+            BlocProvider.of<SearchCubit>(context).clearSearch();
           },
 
           child: Stack(

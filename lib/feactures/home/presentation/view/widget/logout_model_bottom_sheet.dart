@@ -51,10 +51,12 @@ class LogoutModelBottomSheet extends StatelessWidget {
                     await profileBox.clear();
                     await favoritesBox.clear();
 
-                    context.read<FavoritesCubit>().emit(FavoritesInitial());
-                    context.read<FetchProfileInfoCubit>().emit(
-                      FetchProfileInfoInitial(),
-                    );
+                    BlocProvider.of<FavoritesCubit>(
+                      context,
+                    ).emit(FavoritesInitial());
+                    BlocProvider.of<FetchProfileInfoCubit>(
+                      context,
+                    ).emit(FetchProfileInfoInitial());
 
                     await Supabase.instance.client.auth.signOut();
                     GoRouter.of(context).pushReplacement(AppRouter.kLogInView);

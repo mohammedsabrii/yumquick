@@ -67,7 +67,7 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
             context,
             title: 'Please verify your email address',
           );
-          GoRouter.of(context).pop();
+          GoRouter.of(context).pushReplacement(AppRouter.kLogInView);
           isLoading = false;
         } else if (state is AuthFailure) {
           customShowSnackBar(context, title: state.errorMessage);
@@ -78,7 +78,6 @@ class _SignUpViewBodyDetailsState extends State<SignUpViewBodyDetails> {
         return SingleChildScrollView(
           child: Form(
             key: formKey,
-
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

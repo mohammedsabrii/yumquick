@@ -41,7 +41,7 @@ class _MenuPageViewState extends State<MenuPageView> {
   void onScroll(String categoryId) {
     if (!scrollControllers.containsKey(categoryId)) return;
     final controller = scrollControllers[categoryId]!;
-    final cubit = context.read<GetCategoryProdactsCubit>();
+    final cubit = BlocProvider.of<GetCategoryProdactsCubit>(context);
 
     if (controller.position.pixels >=
             controller.position.maxScrollExtent * 0.8 &&

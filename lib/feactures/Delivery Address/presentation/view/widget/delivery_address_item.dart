@@ -25,10 +25,9 @@ class DeliveryAddressItem extends StatelessWidget {
         SizedBox(height: mq.height * 0.0293),
         CustomTextField(
           onChanged: (newAdress) {
-            context.read<EditProfileCubit>().updateLocalData(
+            BlocProvider.of<EditProfileCubit>(
               context,
-              newAddress: newAdress,
-            );
+            ).updateLocalData(context, newAddress: newAdress);
           },
           hintText: address,
           textFieldTitle: 'Edit your address',
