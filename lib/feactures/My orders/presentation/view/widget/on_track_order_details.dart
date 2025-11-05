@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:yumquick/core/utils/app_assets.dart';
-import 'package:yumquick/core/utils/app_router.dart';
-import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/My%20orders/entity/order_entity.dart';
-import 'package:yumquick/feactures/My%20orders/presentation/view/widget/custom_order_container.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/order_meta_data.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/order_status.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/order_title_and_price.dart';
 
-class CompletedOrderDetails extends StatelessWidget {
-  const CompletedOrderDetails({super.key, required this.ordersEntity});
+class OnTrackOrderDetails extends StatelessWidget {
+  const OnTrackOrderDetails({super.key, required this.ordersEntity});
   final OrdersEntity ordersEntity;
   @override
   Widget build(BuildContext context) {
@@ -23,20 +19,9 @@ class CompletedOrderDetails extends StatelessWidget {
         OrderMetaData(activeOrderEntity: ordersEntity),
         const OrderStatus(
           icon: AppAssets.kCompletedIcon,
-          title: 'Order delivered',
+          title: 'Your order is on the way now',
         ),
-        GestureDetector(
-          onTap: () {
-            GoRouter.of(
-              context,
-            ).push(AppRouter.kProdactDetailsView, extra: ordersEntity.product);
-          },
-          child: const CustomOrderContainer(
-            title: 'Order Again',
-            color: AppColor.kPinkishOrange,
-            textColor: AppColor.kMainColor,
-          ),
-        ),
+
         const SizedBox(height: 5),
       ],
     );

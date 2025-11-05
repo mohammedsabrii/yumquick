@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/manger/cubit/on_track_orders_cubit/on_track_orders_cubit.dart';
-import 'package:yumquick/feactures/My%20orders/presentation/view/widget/completed_orders_item.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/no_active_orders_view.dart';
+import 'package:yumquick/feactures/My%20orders/presentation/view/widget/on_track_orders_item.dart';
 
 class OnTrackOrders extends StatelessWidget {
   const OnTrackOrders({super.key});
@@ -40,7 +40,7 @@ class OnTrackOrders extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: state.onTrakOrders.length,
                     itemBuilder: (context, index) {
-                      return CompletedOrdersItem(
+                      return OnTrackOrdersItem(
                         ordersEntity: state.onTrakOrders[index],
                       );
                     },
