@@ -24,8 +24,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   Future<void> navigateToNextScreen() async {
-    await Future.delayed(const Duration(seconds: 3));
-
     final prefs = await SharedPreferences.getInstance();
     final isFirstTime = prefs.getBool('isFirstTime') ?? true;
 
