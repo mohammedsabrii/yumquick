@@ -25,6 +25,14 @@ class _MyOrdersPageViewWithIndexState extends State<MyOrdersPageViewWithIndex> {
     });
   }
 
+  void changePage(int index) {
+    pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   void dispose() {
     pageController.dispose();
@@ -38,7 +46,10 @@ class _MyOrdersPageViewWithIndexState extends State<MyOrdersPageViewWithIndex> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: CustomMyOrdersPageViewList(cruntPageIndex: pageIndex),
+            child: CustomMyOrdersPageViewList(
+              cruntPageIndex: pageIndex,
+              onTap: changePage,
+            ),
           ),
           const SizedBox(height: 20),
 

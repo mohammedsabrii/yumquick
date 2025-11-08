@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:yumquick/feactures/My%20orders/presentation/view/widget/my_order_page_view_container.dart';
 
 class CustomMyOrdersPageViewList extends StatelessWidget {
-  const CustomMyOrdersPageViewList({super.key, required this.cruntPageIndex});
+  const CustomMyOrdersPageViewList({
+    super.key,
+    required this.cruntPageIndex,
+    required this.onTap,
+  });
 
   final List<String> title = const [
     'Active',
@@ -11,6 +15,7 @@ class CustomMyOrdersPageViewList extends StatelessWidget {
     'Cancelled',
   ];
   final int cruntPageIndex;
+  final Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +27,13 @@ class CustomMyOrdersPageViewList extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: MyOrdersPageViewContainer(
-              title: title[index],
-              isActive: index == cruntPageIndex,
+            child: GestureDetector(
+              onTap: () => onTap(index),
+
+              child: MyOrdersPageViewContainer(
+                title: title[index],
+                isActive: index == cruntPageIndex,
+              ),
             ),
           );
         },
