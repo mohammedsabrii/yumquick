@@ -33,7 +33,6 @@ class CustomCancelOrderButton extends StatelessWidget {
             },
             color: AppColor.kMainColor,
             title: 'Cancel Order',
-            textColor: AppColor.kCultured,
           );
         } else if (state is FetchProfileInfoFaliure) {
           return Center(

@@ -21,7 +21,8 @@ class OffersDetailspriceAndQuantity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.sizeOf(context);
-    return productEntity.priceAfterDiscount != null
+    return productEntity.priceAfterDiscount != null &&
+            productEntity.priceAfterDiscount != 0
         ? Row(
           children: [
             Text(

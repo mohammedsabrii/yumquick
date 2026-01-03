@@ -26,7 +26,8 @@ class OffersDetailsImage extends StatelessWidget {
           ),
         ),
 
-        productEntity.priceAfterDiscount != null
+        productEntity.priceAfterDiscount != null &&
+                productEntity.priceAfterDiscount != 0
             ? Positioned(
               top: mediaQuery.height * -0.02699,
               right: mediaQuery.width * -0.0585,

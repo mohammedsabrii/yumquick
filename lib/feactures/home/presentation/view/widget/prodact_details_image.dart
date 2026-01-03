@@ -25,7 +25,8 @@ class ProdactDetailsImage extends StatelessWidget {
           ),
         ),
 
-        productsEntity.priceAfterDiscount != null
+        productsEntity.priceAfterDiscount != null &&
+                productsEntity.priceAfterDiscount != 0
             ? Stack(
               children: [
                 Positioned(

@@ -30,6 +30,7 @@ class LoginViewBodyDetails extends StatelessWidget {
           isLoading = false;
         } else if (state is AuthFailure) {
           isLoading = false;
+          print(state.errorMessage);
         }
       },
       builder: (context, state) {

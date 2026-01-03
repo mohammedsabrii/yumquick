@@ -49,6 +49,7 @@ class _OffersPageViewState extends State<OffersPageView> {
             final products =
                 state.products.where((product) {
                   return product.priceAfterDiscount != null &&
+                      product.priceAfterDiscount != 0 &&
                       product.priceAfterDiscount! < product.price;
                 }).toList();
             if (products.isNotEmpty) {

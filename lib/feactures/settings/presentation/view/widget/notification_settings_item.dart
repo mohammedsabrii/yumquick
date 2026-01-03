@@ -33,7 +33,7 @@ class NotificationSettingsItem extends StatelessWidget {
                 trackOutlineColor: WidgetStateProperty.all<Color>(
                   Colors.transparent,
                 ),
-                activeColor: AppColor.kCultured,
+                activeThumbColor: AppColor.kCultured,
                 inactiveThumbColor: AppColor.kCultured,
                 value: isActive,
 

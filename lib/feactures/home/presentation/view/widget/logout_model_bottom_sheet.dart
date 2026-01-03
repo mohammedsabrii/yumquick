@@ -9,7 +9,6 @@ import 'package:yumquick/core/utils/app_styles.dart';
 import 'package:yumquick/core/utils/colors.dart';
 import 'package:yumquick/core/widget/custom_show_model_botton_sheet_bottom.dart';
 import 'package:yumquick/feactures/Favorites/presentation/view/manger/cubit/favorite_cubit/favorite_cubit.dart';
-import 'package:yumquick/feactures/home/entity/prodacts_entity.dart';
 import 'package:yumquick/feactures/home/entity/profile_entity.dart';
 import 'package:yumquick/feactures/home/presentation/view/manger/cubit/fetch_profile_info_cubit/fetch_profile_info_cubit.dart';
 
@@ -63,7 +62,6 @@ class LogoutModelBottomSheet extends StatelessWidget {
                   },
                   color: AppColor.kMainColor,
                   title: 'Yes, logout',
-                  textColor: AppColor.kCultured,
                 ),
               ],
             ),
